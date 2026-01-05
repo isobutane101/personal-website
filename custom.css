@@ -1,0 +1,141 @@
+/* =============================================
+   CUSTOM CSS - Styles Tailwind can't handle
+   ============================================= */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* =============================================
+   NOISE TEXTURE OVERLAY
+   ============================================= */
+.noise {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* =============================================
+   VOLUNTEER COUNTER ANIMATION
+   CSS-only counter that animates when scrolled into view
+   ============================================= */
+@property --volunteer-count {
+    syntax: '<integer>';
+    initial-value: 0;
+    inherits: false;
+}
+
+/* Smoother keyframes with easing built in */
+@keyframes countUp {
+    0% { --volunteer-count: 0; }
+    10% { --volunteer-count: 35; }
+    20% { --volunteer-count: 80; }
+    30% { --volunteer-count: 130; }
+    40% { --volunteer-count: 180; }
+    50% { --volunteer-count: 225; }
+    60% { --volunteer-count: 265; }
+    70% { --volunteer-count: 300; }
+    80% { --volunteer-count: 325; }
+    90% { --volunteer-count: 340; }
+    100% { --volunteer-count: 350; }
+}
+
+.stat-number {
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 600;
+    line-height: 1;
+    background: linear-gradient(135deg, #6b8aff 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    counter-reset: volunteer-counter var(--volunteer-count);
+    /*
+     * Scroll-triggered animation:
+     * - Starts as element begins entering viewport (entry 0%)
+     * - Completes when element is ~1/3 up the screen (contain 30%)
+     * - User sees full count-up animation as element scrolls into comfortable view
+     */
+    animation: countUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% contain 30%;
+}
+
+.stat-number::after {
+    content: counter(volunteer-counter);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-plus {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 600;
+    background: linear-gradient(135deg, #6b8aff 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/*
+ * Fallback for browsers without scroll-driven animations (Safari, older browsers)
+ * Uses time-based animation instead
+ */
+@supports not (animation-timeline: view()) {
+    .stat-number {
+        animation: countUp 3.5s ease-out forwards;
+    }
+}
+
+/*
+ * Mobile: Use time-based animation since scroll range is too limited
+ * for smooth scroll-driven animation on small screens
+ */
+@media (max-width: 768px) {
+    .stat-number {
+        animation: countUp 3s ease-out forwards;
+        animation-timeline: auto;
+        animation-range: normal;
+    }
+}
+
+/* =============================================
+   MOBILE OPTIMIZATIONS
+   ============================================= */
+@media (max-width: 768px) {
+    /* Ensure touch targets are large enough */
+    a, button {
+        min-height: 44px;
+    }
+
+    /* Prevent horizontal scroll */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Better text sizing on mobile */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* =============================================
+   REDUCED MOTION PREFERENCE
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .stat-number {
+        --volunteer-count: 350;
+    }
+}

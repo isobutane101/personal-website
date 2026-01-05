@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Adi Desai - Student Researcher & Community Advocate</title>
+
+    <meta name="description" content="Adi Desai - Student researcher at Lakeside School, Seattle. Building projects at the intersection of science, technology, and community health.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: {
+                            DEFAULT: '#0a0a0a',
+                            elevated: '#0f0f0f',
+                        },
+                        card: {
+                            DEFAULT: '#141414',
+                            hover: '#1a1a1a',
+                        },
+                        border: {
+                            DEFAULT: '#252525',
+                            hover: '#3a3a3a',
+                        },
+                        text: {
+                            DEFAULT: '#f5f5f5',
+                            secondary: '#a0a0a0',
+                            tertiary: '#606060',
+                        },
+                        accent: {
+                            DEFAULT: '#6b8aff',
+                            secondary: '#c084fc',
+                        },
+                    },
+                    fontFamily: {
+                        sora: ['Sora', 'system-ui', 'sans-serif'],
+                    },
+                    spacing: {
+                        'section': '120px',
+                        'section-mobile': '64px',
+                        'page': '48px',
+                        'page-mobile': '24px',
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body class="font-sora bg-bg text-text antialiased overflow-x-hidden">
+    <!-- Noise texture overlay -->
+    <div class="noise"></div>
+
+    <!-- ========================================
+         NAVIGATION
+         ======================================== -->
+    <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-page py-6 z-[1000] bg-bg/85 backdrop-blur-xl border-b border-border max-md:px-page-mobile">
+        <a href="https://adidesai.org" class="w-10 h-10 flex items-center justify-center text-xl font-semibold border border-accent rounded-full text-accent bg-bg transition-all duration-300 ease-out hover:bg-accent hover:text-bg hover:scale-105">A</a>
+        <div class="flex items-center gap-6 max-md:gap-4">
+            <a href="#about" class="text-sm text-text-secondary transition-colors duration-200 hover:text-text max-md:hidden">About</a>
+            <a href="#work" class="text-sm text-text-secondary transition-colors duration-200 hover:text-text max-md:hidden">Work</a>
+            <a href="#contact" class="px-5 py-2.5 text-sm border border-accent rounded-full text-accent transition-all duration-300 ease-out hover:bg-accent hover:text-bg hover:-translate-y-0.5">Contact</a>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <header class="min-h-screen flex flex-col justify-center px-page relative max-md:px-page-mobile">
+        <div class="max-w-3xl">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="w-12 h-px bg-gradient-to-r from-accent to-accent-secondary"></span>
+                <span class="text-sm text-accent uppercase tracking-widest">Student & Researcher</span>
+            </div>
+            <h1 class="text-[clamp(3.5rem,12vw,8rem)] font-semibold leading-none tracking-tight mb-8 bg-gradient-to-br from-text via-text to-text-secondary bg-clip-text text-transparent max-md:text-[clamp(2.5rem,15vw,4rem)]">Adi Desai</h1>
+            <p class="text-xl font-light text-text-secondary max-w-lg leading-relaxed mb-10">
+                High school junior building at the intersection of <span class="text-text">biomedical engineering</span>, <span class="text-text">community health</span>, and <span class="text-text">technology</span>. Based in Seattle.
+            </p>
+            <div class="flex gap-4 flex-wrap">
+                <a href="#work" class="px-6 py-3 bg-accent text-bg font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25">View My Work</a>
+                <a href="#contact" class="px-6 py-3 border border-border text-text-secondary font-medium rounded-full transition-all duration-300 hover:border-text-secondary hover:text-text hover:-translate-y-0.5">Get in Touch</a>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- ========================================
+         ABOUT SECTION
+         ======================================== -->
+    <section id="about" class="py-section px-page bg-bg-elevated border-y border-border max-md:py-section-mobile max-md:px-page-mobile">
+        <div class="grid grid-cols-[1fr_2fr] gap-20 max-w-5xl max-md:grid-cols-1 max-md:gap-6">
+            <div>
+                <h2 class="text-sm font-medium uppercase tracking-widest text-accent">About</h2>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-card border border-border rounded-xl p-8 border-l-[3px] border-l-accent max-md:p-6">
+                    <p class="text-xl font-light leading-relaxed text-text-secondary mb-5">
+                        I'm passionate about using science to solve problems that matter. Whether it's designing a <span class="text-text">low-cost biosensor</span> for vital signs monitoring or creating <span class="text-text">multilingual health resources</span> for immigrant communities, I focus on work with real-world impact.
+                    </p>
+                    <p class="text-xl font-light leading-relaxed text-text-secondary">
+                        Currently exploring research at the intersection of biology, wearable technology, and accessible healthcare.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SKILLS SECTION
+         ======================================== -->
+    <section class="py-section px-page max-md:py-section-mobile max-md:px-page-mobile">
+        <div class="mb-12">
+            <h2 class="text-sm font-medium uppercase tracking-widest text-accent">Skills</h2>
+        </div>
+        <div class="grid grid-cols-4 gap-4 max-w-5xl max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-3">
+            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">01</span>
+                <h3 class="text-base font-medium mb-2">Research</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">Scientific Writing, Data Analysis, Literature Review</p>
+            </div>
+            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">02</span>
+                <h3 class="text-base font-medium mb-2">Science</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">Biology, Chemistry, Lab Techniques</p>
+            </div>
+            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">03</span>
+                <h3 class="text-base font-medium mb-2">Photography</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">Portrait, Landscape, Lightroom, Photoshop</p>
+            </div>
+            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">04</span>
+                <h3 class="text-base font-medium mb-2">Languages</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">English, Hindi, Gujarati</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         VOLUNTEERING SECTION
+         ======================================== -->
+    <section class="py-section px-page bg-bg-elevated border-y border-border max-md:py-section-mobile max-md:px-page-mobile">
+        <div class="grid grid-cols-[1fr_2fr] gap-20 max-w-5xl max-md:grid-cols-1 max-md:gap-6">
+            <div>
+                <h2 class="text-sm font-medium uppercase tracking-widest text-accent">Volunteering</h2>
+            </div>
+            <div class="flex flex-col gap-6">
+                <!-- Stats Card -->
+                <div class="bg-card border border-border rounded-xl py-8 px-8 border-l-[3px] border-l-accent text-center max-md:py-6 max-md:px-6">
+                    <div class="flex items-baseline justify-center gap-1 mb-2">
+                        <span class="text-[clamp(3rem,10vw,5rem)] font-semibold leading-none bg-gradient-to-br from-accent to-accent-secondary bg-clip-text text-transparent">350+</span>
+                    </div>
+                    <span class="text-sm text-text-secondary uppercase tracking-widest font-medium">Hours of Community Service</span>
+                </div>
+                <!-- Organizations Grid -->
+                <div class="grid grid-cols-2 gap-3 max-md:grid-cols-1">
+                    <a href="https://www.northhelpline.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">North Helpline Food Bank</span>
+                    </a>
+                    <a href="https://kcls.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">King County Library System</span>
+                    </a>
+                    <a href="https://www.uwmedicine.org/locations/harborview-medical-center" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Harborview Medical Center</span>
+                    </a>
+                    <a href="https://www.evergreenhealth.com/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Evergreen Hospital</span>
+                    </a>
+                    <a href="https://www.marysplaceseattle.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Mary's Place</span>
+                    </a>
+                    <a href="https://sewausa.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Sewa International</span>
+                    </a>
+                    <a href="https://www.helensplacewa.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Helen's Place</span>
+                    </a>
+                    <a href="https://porchlightcares.org" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
+                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Porchlight Shelter</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         WORK/PROJECTS SECTION
+         ======================================== -->
+    <section id="work" class="py-section px-page max-md:py-section-mobile max-md:px-page-mobile">
+        <div class="mb-12">
+            <h2 class="text-sm font-medium uppercase tracking-widest text-accent mb-3">Selected Work</h2>
+            <p class="text-text-secondary max-w-lg">Projects spanning biomedical research, community advocacy, and creative work.</p>
+        </div>
+        <div class="max-w-5xl flex flex-col gap-4">
+            <!-- Project: Emergency Preparedness -->
+            <a href="emergency-preparedness/index.html" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2025 · Community Work</span>
+                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">Emergency Preparedness for the Elderly</h3>
+                    <p class="text-sm text-text-secondary leading-normal">Multilingual emergency preparedness resources for South Asian immigrant families</p>
+                </div>
+                <div class="flex gap-2 max-lg:hidden">
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">HTML/CSS</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Multilingual</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Community</span>
+                </div>
+                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
+            </a>
+
+            <!-- Project: Photography -->
+            <a href="photos/index.html" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2025 · Hobby</span>
+                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">Photography</h3>
+                    <p class="text-sm text-text-secondary leading-normal">Capturing fleeting moments</p>
+                </div>
+                <div class="flex gap-2 max-lg:hidden">
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Portrait</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Landscape</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Travel</span>
+                </div>
+                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
+            </a>
+
+            <!-- Project: INVISION -->
+            <a href="invision/index.html" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
+                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                <div class="flex flex-col gap-1">
+                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2024 · Science Fair</span>
+                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">INVISION</h3>
+                    <p class="text-sm text-text-secondary leading-normal">Low-cost wearable multi-modal biosensor for continuous vital signs monitoring</p>
+                </div>
+                <div class="flex gap-2 max-lg:hidden">
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Biomedical</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">ESP32</span>
+                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Wearables</span>
+                </div>
+                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         CONTACT SECTION
+         ======================================== -->
+    <section id="contact" class="py-section px-page bg-bg-elevated border-t border-border max-md:py-section-mobile max-md:px-page-mobile">
+        <div class="max-w-xl">
+            <h2 class="text-3xl font-medium mb-3 tracking-tight">Let's connect</h2>
+            <p class="text-base text-text-secondary mb-8 leading-relaxed">Have a project idea, research collaboration, or just want to chat? I'd love to hear from you.</p>
+            <div class="flex flex-col gap-3">
+                <!-- Email -->
+                <a href="mailto:adidesai1909@gmail.com" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
+                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">Email</span>
+                    <span class="text-sm text-text transition-colors">adidesai1909@gmail.com</span>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/isobutane101" target="_blank" rel="noopener" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
+                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">GitHub</span>
+                    <span class="text-sm text-text transition-colors">@isobutane101</span>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank" rel="noopener" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
+                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
+                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">LinkedIn</span>
+                    <span class="text-sm text-text transition-colors">Adi Desai</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer class="flex justify-between items-center py-6 px-page border-t border-border text-sm text-text-tertiary bg-bg max-md:flex-col max-md:gap-2 max-md:text-center max-md:px-page-mobile">
+        <span>Adi Desai</span>
+        <span>© 2025 · Built with care in Seattle</span>
+    </footer>
+</body>
+</html>

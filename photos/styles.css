@@ -1,0 +1,572 @@
+/* =============================================
+   PHOTOGRAPHY PAGE - ADI DESAI
+   ============================================= */
+
+:root {
+    /* COLORS - Brighter, more vibrant */
+    --color-bg: #0a0a0a;
+    --color-bg-elevated: #141414;
+    --color-card: #1a1a1a;
+    --color-border: #2a2a2a;
+    --color-text: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-text-tertiary: #707070;
+    --color-accent: #6b8aff;
+    --color-accent-secondary: #a78bfa;
+    --color-accent-tertiary: #f472b6;
+
+    /* FONTS */
+    --font-main: 'Sora', -apple-system, sans-serif;
+
+    /* GRID */
+    --grid-columns: 3;
+    --grid-gap: 16px;
+}
+
+/* =============================================
+   BASE STYLES
+   ============================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Noise texture */
+.noise {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =============================================
+   PHOTO PROTECTION
+   ============================================= */
+.photo-card img,
+.lightbox-image img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent);
+    background: var(--color-bg);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: scale(1.05);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-right a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+}
+
+.nav-right a:hover {
+    color: var(--color-text);
+}
+
+.nav-cta {
+    padding: 10px 20px;
+    border: 1px solid var(--color-accent);
+    border-radius: 24px;
+    color: var(--color-accent) !important;
+}
+
+.nav-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-bg) !important;
+}
+
+/* =============================================
+   PAGE HEADER
+   ============================================= */
+.page-header {
+    padding: 160px 48px 80px;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(180deg, rgba(107, 138, 255, 0.05) 0%, transparent 100%);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    gap: 12px;
+}
+
+.page-header h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-desc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 500px;
+}
+
+/* =============================================
+   PHOTO GALLERY - Masonry Layout
+   ============================================= */
+.gallery {
+    flex: 1;
+    padding: 48px;
+    background: var(--color-bg);
+}
+
+.photo-grid {
+    column-count: var(--grid-columns);
+    column-gap: var(--grid-gap);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: var(--grid-gap);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: var(--color-card);
+}
+
+.photo-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(107, 138, 255, 0.15);
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Placeholder styling */
+.photo-placeholder {
+    aspect-ratio: 4/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-card) 0%, var(--color-bg-elevated) 100%);
+    border: 1px dashed var(--color-border);
+}
+
+.photo-placeholder span {
+    font-size: 1rem;
+    color: var(--color-text-tertiary);
+}
+
+.photo-placeholder small {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    margin-top: 8px;
+}
+
+/* =============================================
+   LIGHTBOX
+   ============================================= */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 950;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.lightbox:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Scroll wheel animation for content */
+@keyframes scrollWheelIn {
+    0% {
+        opacity: 0;
+        transform: translateY(60px) rotateX(-15deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lightbox:target .lightbox-content {
+    animation: scrollWheelIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.lightbox:target .lightbox-image {
+    animation: fadeSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.lightbox:target .lightbox-info {
+    animation: fadeSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.lightbox-close:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: var(--color-bg-elevated);
+}
+
+/* Navigation Arrows */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--color-text-secondary);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    opacity: 0;
+}
+
+.lightbox:target .lightbox-nav {
+    opacity: 1;
+}
+
+.lightbox-prev {
+    left: 24px;
+}
+
+.lightbox-next {
+    right: 24px;
+}
+
+.lightbox-nav:hover {
+    color: var(--color-text);
+    border-color: var(--color-accent);
+    background: var(--color-bg-elevated);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev:hover {
+    transform: translateY(-50%) scale(1.1) translateX(-4px);
+}
+
+.lightbox-next:hover {
+    transform: translateY(-50%) scale(1.1) translateX(4px);
+}
+
+/* Photo Counter */
+.lightbox-counter {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.lightbox-content {
+    display: flex;
+    gap: 32px;
+    max-width: 1300px;
+    max-height: 90vh;
+    width: 100%;
+}
+
+.lightbox-image {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-image img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-placeholder {
+    min-height: 400px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.lightbox-info {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    align-self: center;
+}
+
+.lightbox-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.meta-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.meta-value {
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.lightbox-caption {
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.lightbox-caption p {
+    font-size: 0.9375rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+    background: var(--color-bg);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+    :root {
+        --grid-columns: 2;
+    }
+
+    .lightbox-content {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .lightbox-image {
+        flex: none;
+    }
+
+    .lightbox-image img {
+        max-height: 50vh;
+    }
+
+    .lightbox-info {
+        width: 100%;
+        align-self: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --grid-columns: 1;
+    }
+
+    .nav {
+        padding: 20px 24px;
+    }
+
+    .nav-right a:not(.nav-cta) {
+        display: none;
+    }
+
+    .page-header {
+        padding: 120px 24px 48px;
+    }
+
+    .gallery {
+        padding: 24px;
+    }
+
+    .lightbox {
+        padding: 16px;
+    }
+
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    .lightbox-image img {
+        max-height: 40vh;
+    }
+
+    .lightbox-info {
+        padding: 20px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
