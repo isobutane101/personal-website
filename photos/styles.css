@@ -256,24 +256,53 @@ a {
 /* =============================================
    LIGHTBOX
    ============================================= */
+
+/* Shared backdrop - stays visible when ANY lightbox is targeted */
+.photo-grid::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    backdrop-filter: blur(20px);
+    z-index: 949;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* Show backdrop when any lightbox is targeted */
+.photo-grid:has(.lightbox:target)::before {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.92);
+    background: transparent;
     z-index: 950;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     opacity: 0;
+    pointer-events: none;
+    /* Fade out slowly after a delay - lets new image appear first */
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+                visibility 0s linear 0.45s;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
 .lightbox:target {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
+    z-index: 951;
+    /* Fade in immediately - no delay */
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0s linear 0s;
 }
 
 .lightbox-content {
@@ -282,14 +311,6 @@ a {
     max-width: 1300px;
     max-height: 90vh;
     width: 100%;
-    opacity: 0;
-    transform: scale(0.98);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.lightbox:target .lightbox-content {
-    opacity: 1;
-    transform: scale(1);
 }
 
 .lightbox-image {
@@ -298,21 +319,34 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease 0.05s;
 }
 
-.lightbox:target .lightbox-image {
+.lightbox-image img {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+}
+
+.lightbox:target .lightbox-image img {
     opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .lightbox-info {
     opacity: 0;
-    transition: opacity 0.2s ease 0.1s;
+    transform: translateY(8px);
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .lightbox:target .lightbox-info {
     opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
 .lightbox-close {
@@ -388,6 +422,9 @@ a {
 
 /* Photo Counter */
 .lightbox-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -395,6 +432,9 @@ a {
     margin-bottom: 20px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--color-border);
+    min-height: 20px;
+    overflow: visible;
+    position: relative;
 }
 
 .lightbox-image img {
@@ -412,6 +452,7 @@ a {
 }
 
 .lightbox-info {
+    position: relative;
     width: 340px;
     flex-shrink: 0;
     display: flex;
@@ -458,6 +499,103 @@ a {
     font-size: 0.9375rem;
     color: var(--color-text-secondary);
     line-height: 1.7;
+}
+
+/* =============================================
+   AWARD STYLING
+   ============================================= */
+
+/* Hide the badge text - we use border glow instead */
+.award-badge {
+    display: none;
+}
+
+/* Gold Key - Golden border */
+.photo-card.award-gold {
+    border: 3px solid #ffc300;
+    box-shadow: 0 0 0 1px rgba(255, 195, 0, 0.3);
+}
+
+.photo-card.award-gold:hover {
+    box-shadow: 0 0 0 1px rgba(255, 195, 0, 0.3),
+                0 20px 40px rgba(107, 138, 255, 0.15);
+}
+
+/* Silver Key - Silver border */
+.photo-card.award-silver {
+    border: 3px solid #c0c5ce;
+    box-shadow: 0 0 0 1px rgba(192, 197, 206, 0.3);
+}
+
+.photo-card.award-silver:hover {
+    box-shadow: 0 0 0 1px rgba(192, 197, 206, 0.3),
+                0 20px 40px rgba(107, 138, 255, 0.15);
+}
+
+/* Honorable Mention - Bronze border */
+.photo-card.award-bronze {
+    border: 3px solid #cd855b;
+    box-shadow: 0 0 0 1px rgba(205, 133, 91, 0.3);
+}
+
+.photo-card.award-bronze:hover {
+    box-shadow: 0 0 0 1px rgba(205, 133, 91, 0.3),
+                0 20px 40px rgba(107, 138, 255, 0.15);
+}
+
+/* Award text in lightbox - small colored badge with hover tooltip */
+.lightbox-award {
+    position: relative;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: default;
+}
+
+.lightbox-award::after {
+    content: attr(data-full);
+    position: absolute;
+    bottom: calc(100% + 28px);
+    right: -24px;
+    width: 340px;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    padding: 14px 24px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 9999;
+    color: var(--color-text);
+    box-sizing: border-box;
+}
+
+.lightbox-award:hover::after {
+    opacity: 1;
+}
+
+.lightbox-award.gold-key {
+    background: rgba(255, 195, 0, 0.15);
+    border: 1px solid rgba(255, 195, 0, 0.4);
+    color: #ffc300;
+}
+
+.lightbox-award.silver-key {
+    background: rgba(192, 197, 206, 0.15);
+    border: 1px solid rgba(192, 197, 206, 0.4);
+    color: #c0c5ce;
+}
+
+.lightbox-award.honorable-mention {
+    background: rgba(205, 133, 91, 0.15);
+    border: 1px solid rgba(205, 133, 91, 0.4);
+    color: #cd855b;
 }
 
 /* =============================================
