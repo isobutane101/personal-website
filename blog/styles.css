@@ -1,0 +1,404 @@
+/* =============================================
+   BLOG PAGE - ADI DESAI
+   ============================================= */
+
+:root {
+    --color-bg: #0a0a0a;
+    --color-bg-elevated: #141414;
+    --color-card: #1a1a1a;
+    --color-border: #2a2a2a;
+    --color-text: #ffffff;
+    --color-text-secondary: #b0b0b0;
+    --color-text-tertiary: #707070;
+    --color-accent: #6b8aff;
+    --color-accent-secondary: #a78bfa;
+
+    --font-main: 'Sora', -apple-system, sans-serif;
+}
+
+/* =============================================
+   BASE STYLES
+   ============================================= */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Noise texture */
+.noise {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    z-index: 900;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-accent);
+    border-radius: 50%;
+    color: var(--color-accent);
+    background: var(--color-bg);
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    transform: scale(1.05);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-right a {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+}
+
+.nav-right a:hover {
+    color: var(--color-text);
+}
+
+.nav-cta {
+    padding: 10px 20px;
+    border: 1px solid var(--color-accent);
+    border-radius: 24px;
+    color: var(--color-accent) !important;
+}
+
+.nav-cta:hover {
+    background: var(--color-accent);
+    color: var(--color-bg) !important;
+}
+
+/* =============================================
+   PAGE HEADER
+   ============================================= */
+.page-header {
+    padding: 160px 48px 80px;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(180deg, rgba(107, 138, 255, 0.05) 0%, transparent 100%);
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    margin-bottom: 24px;
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    gap: 12px;
+}
+
+.page-header h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 600;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-desc {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+}
+
+/* =============================================
+   TAGS FILTER
+   ============================================= */
+.tags-section {
+    padding: 32px 48px;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.tags-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.tag {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-main);
+    color: var(--color-text-secondary);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+}
+
+/* =============================================
+   BLOG CONTENT
+   ============================================= */
+.blog-content {
+    flex: 1;
+    padding: 48px;
+    background: var(--color-bg);
+}
+
+.posts-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* =============================================
+   POST CARD
+   ============================================= */
+.post-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-card {
+    padding: 32px;
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.post-card:hover::before {
+    transform: scaleY(1);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.post-date {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+}
+
+.post-reading {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    padding-left: 16px;
+    border-left: 1px solid var(--color-border);
+}
+
+.post-title {
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: var(--color-text);
+    transition: color 0.2s;
+}
+
+.post-card:hover .post-title {
+    color: var(--color-accent);
+}
+
+.post-excerpt {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.post-stats {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    margin-bottom: 16px;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.post-tag {
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-accent);
+    background: rgba(107, 138, 255, 0.1);
+    border: 1px solid rgba(107, 138, 255, 0.2);
+    border-radius: 12px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 48px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+    background: var(--color-bg);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+    .nav {
+        padding: 20px 24px;
+    }
+
+    .nav-right a:not(.nav-cta) {
+        display: none;
+    }
+
+    .page-header {
+        padding: 120px 24px 48px;
+    }
+
+    .tags-section {
+        padding: 24px;
+    }
+
+    .blog-content {
+        padding: 24px;
+    }
+
+    .post-card {
+        padding: 24px;
+    }
+
+    .post-title {
+        font-size: 1.125rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
