@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog (Shortest First) | Adi Desai</title>
+    <meta name="description" content="Deep dives into diseases, medical breakthroughs, scientific innovations, and the stories behind humanity's greatest health challenges.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="noise"></div>
+
+    <nav class="nav">
+        <a href="https://adidesai.org" class="logo">A</a>
+        <div class="nav-right">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#work">Work</a>
+            <a href="../index.html#contact" class="nav-cta">Contact</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="header-content">
+            <a href="../index.html" class="back-link">← Back to Home</a>
+            <h1>Blog</h1>
+            <p class="header-desc">Deep dives into diseases, medical breakthroughs, scientific innovations, and the stories behind humanity's greatest health challenges.</p>
+        </div>
+    </header>
+
+    <section class="tags-section">
+        <div class="tags-container">
+            <div class="filter-tags">
+                <a href="index.html" class="tag active">All</a>
+                <a href="viral.html" class="tag">Viral</a>
+                <a href="bacterial.html" class="tag">Bacterial</a>
+                <a href="parasitic.html" class="tag">Parasitic</a>
+                <a href="metabolic.html" class="tag">Metabolic</a>
+                <a href="neurodegenerative.html" class="tag">Neurodegenerative</a>
+                <a href="genetic.html" class="tag">Genetic</a>
+                <a href="innovation.html" class="tag">Innovation</a>
+            </div>
+            <div class="sort-container">
+                <span class="sort-label">Sort:</span>
+                <a href="index.html" class="sort-btn">Newest</a>
+                <a href="oldest.html" class="sort-btn">Oldest</a>
+                <a href="shortest.html" class="sort-btn active">Shortest</a>
+                <a href="longest.html" class="sort-btn">Longest</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="blog-content">
+        <div class="posts-grid">
+
+            <a href="staph.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">October 5, 2024</span>
+                        <span class="post-reading">5 min read</span>
+                    </div>
+                    <h2 class="post-title">Staphylococcus Aureus: The Bacterium Living on Your Skin</h2>
+                    <p class="post-excerpt">About 30% of people carry Staph aureus without symptoms. But when it invades, it can cause life-threatening infections.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">30%</span><span class="stat-label">Population colonized</span></div>
+                        <div class="stat"><span class="stat-value">20,000</span><span class="stat-label">US deaths annually</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Bacterial</span></div>
+                </article>
+            </a>
+
+            <a href="mrsa.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">November 1, 2024</span>
+                        <span class="post-reading">6 min read</span>
+                    </div>
+                    <h2 class="post-title">MRSA: When Antibiotics Stop Working</h2>
+                    <p class="post-excerpt">Methicillin-resistant Staphylococcus aureus represents one of the greatest threats of the antibiotic resistance era.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">323,700</span><span class="stat-label">US hospital cases/year</span></div>
+                        <div class="stat"><span class="stat-value">10,600</span><span class="stat-label">US deaths annually</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Bacterial</span></div>
+                </article>
+            </a>
+
+            <a href="strep.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">October 18, 2024</span>
+                        <span class="post-reading">6 min read</span>
+                    </div>
+                    <h2 class="post-title">Streptococcus: From Sore Throats to Flesh-Eating Disease</h2>
+                    <p class="post-excerpt">Group A Streptococcus causes everything from strep throat to necrotizing fasciitis.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">500K+</span><span class="stat-label">Deaths annually</span></div>
+                        <div class="stat"><span class="stat-value">18M</span><span class="stat-label">Severe cases/year</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Bacterial</span></div>
+                </article>
+            </a>
+
+            <a href="ebola.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">November 15, 2024</span>
+                        <span class="post-reading">7 min read</span>
+                    </div>
+                    <h2 class="post-title">Ebola: Inside the Deadliest Outbreaks</h2>
+                    <p class="post-excerpt">With fatality rates up to 90%, Ebola hemorrhagic fever is one of the most lethal diseases known.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">50%</span><span class="stat-label">Average fatality rate</span></div>
+                        <div class="stat"><span class="stat-value">11,325</span><span class="stat-label">Deaths in 2014-16</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="tb.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">November 28, 2024</span>
+                        <span class="post-reading">8 min read</span>
+                    </div>
+                    <h2 class="post-title">Tuberculosis: The White Plague That Never Left</h2>
+                    <p class="post-excerpt">TB infects a quarter of the world's population and remains one of the deadliest infectious diseases.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">1.6M</span><span class="stat-label">Deaths in 2021</span></div>
+                        <div class="stat"><span class="stat-value">10.6M</span><span class="stat-label">New cases annually</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Bacterial</span></div>
+                </article>
+            </a>
+
+            <a href="measles.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">8 min read</span>
+                    </div>
+                    <h2 class="post-title">Measles: The Most Contagious Virus</h2>
+                    <p class="post-excerpt">How the most contagious disease known to humanity went from killing 2.6 million children annually to near elimination.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">R₀ 12-18</span><span class="stat-label">Most contagious</span></div>
+                        <div class="stat"><span class="stat-value">136K</span><span class="stat-label">Deaths in 2022</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="mash.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 4, 2025</span>
+                        <span class="post-reading">8 min read</span>
+                    </div>
+                    <h2 class="post-title">MASH: The Silent Liver Epidemic</h2>
+                    <p class="post-excerpt">Metabolic dysfunction-associated steatohepatitis is becoming the leading cause of liver transplants.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">25%</span><span class="stat-label">Global population affected</span></div>
+                        <div class="stat"><span class="stat-value">2024</span><span class="stat-label">First drug approved</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Metabolic</span></div>
+                </article>
+            </a>
+
+            <a href="polio.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 3, 2025</span>
+                        <span class="post-reading">8 min read</span>
+                    </div>
+                    <h2 class="post-title">Polio: The Disease That Paralyzed a Generation</h2>
+                    <p class="post-excerpt">How the poliovirus attacks the nervous system, the heroes who developed the vaccines.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">99.9%</span><span class="stat-label">Reduction since 1988</span></div>
+                        <div class="stat"><span class="stat-value">2</span><span class="stat-label">Endemic countries remain</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="malaria.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">December 12, 2024</span>
+                        <span class="post-reading">9 min read</span>
+                    </div>
+                    <h2 class="post-title">Malaria: The Ancient Killer We Still Can't Stop</h2>
+                    <p class="post-excerpt">Plasmodium parasites have been killing humans for over 50,000 years.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">619K</span><span class="stat-label">Deaths in 2021</span></div>
+                        <div class="stat"><span class="stat-value">247M</span><span class="stat-label">Cases annually</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Parasitic</span></div>
+                </article>
+            </a>
+
+            <a href="parkinsons.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">9 min read</span>
+                    </div>
+                    <h2 class="post-title">Parkinson's Disease: The Shaking Palsy</h2>
+                    <p class="post-excerpt">From James Parkinson's 1817 essay to modern deep brain stimulation.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">10M+</span><span class="stat-label">People affected</span></div>
+                        <div class="stat"><span class="stat-value">1960s</span><span class="stat-label">Levodopa revolution</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Neurodegenerative</span></div>
+                </article>
+            </a>
+
+            <a href="cholera.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">9 min read</span>
+                    </div>
+                    <h2 class="post-title">Cholera: The Disease That Built Public Health</h2>
+                    <p class="post-excerpt">How a devastating waterborne disease led to the birth of epidemiology.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">1854</span><span class="stat-label">John Snow's breakthrough</span></div>
+                        <div class="stat"><span class="stat-value">&lt;1%</span><span class="stat-label">Fatality with treatment</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Bacterial</span></div>
+                </article>
+            </a>
+
+            <a href="ozempic.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 7, 2025</span>
+                        <span class="post-reading">9 min read</span>
+                    </div>
+                    <h2 class="post-title">Ozempic: The Drug That Changed Everything</h2>
+                    <p class="post-excerpt">How a diabetes medication became the most talked-about drug of the decade.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">15-20%</span><span class="stat-label">Average weight loss</span></div>
+                        <div class="stat"><span class="stat-value">9M+</span><span class="stat-label">US prescriptions (2023)</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Metabolic</span></div>
+                </article>
+            </a>
+
+            <a href="pcr.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 9, 2025</span>
+                        <span class="post-reading">10 min read</span>
+                    </div>
+                    <h2 class="post-title">PCR: The Invention That Changed Biology</h2>
+                    <p class="post-excerpt">How Kary Mullis's late-night brainstorm led to polymerase chain reaction.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">1983</span><span class="stat-label">Invented</span></div>
+                        <div class="stat"><span class="stat-value">1993</span><span class="stat-label">Nobel Prize</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Innovation</span></div>
+                </article>
+            </a>
+
+            <a href="smallpox.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">December 20, 2024</span>
+                        <span class="post-reading">10 min read</span>
+                    </div>
+                    <h2 class="post-title">Smallpox: Humanity's Greatest Victory Over Disease</h2>
+                    <p class="post-excerpt">The only human disease ever eradicated, smallpox killed an estimated 300 million people in the 20th century.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">1980</span><span class="stat-label">Declared eradicated</span></div>
+                        <div class="stat"><span class="stat-value">300M+</span><span class="stat-label">20th century deaths</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="cystic-fibrosis.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">10 min read</span>
+                    </div>
+                    <h2 class="post-title">Cystic Fibrosis: From Fatal Childhood Disease to Treatable Condition</h2>
+                    <p class="post-excerpt">How the discovery of a single gene led to breakthrough therapies.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">1989</span><span class="stat-label">Gene discovered</span></div>
+                        <div class="stat"><span class="stat-value">90%</span><span class="stat-label">Eligible for modulators</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Genetic</span></div>
+                </article>
+            </a>
+
+            <a href="diabetes.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 6, 2025</span>
+                        <span class="post-reading">10 min read</span>
+                    </div>
+                    <h2 class="post-title">Diabetes: The Epidemic of Our Time</h2>
+                    <p class="post-excerpt">From a death sentence to a manageable condition—the history, science, and future of diabetes.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">537M</span><span class="stat-label">Adults with diabetes</span></div>
+                        <div class="stat"><span class="stat-value">6.7M</span><span class="stat-label">Deaths annually</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Metabolic</span></div>
+                </article>
+            </a>
+
+            <a href="cardiac.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 5, 2025</span>
+                        <span class="post-reading">10 min read</span>
+                    </div>
+                    <h2 class="post-title">Heart Disease: The World's Leading Killer</h2>
+                    <p class="post-excerpt">Cardiovascular disease claims more lives than any other cause—nearly 18 million annually.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">17.9M</span><span class="stat-label">Deaths annually</span></div>
+                        <div class="stat"><span class="stat-value">#1</span><span class="stat-label">Cause of death globally</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Metabolic</span></div>
+                </article>
+            </a>
+
+            <a href="alphafold.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 9, 2025</span>
+                        <span class="post-reading">11 min read</span>
+                    </div>
+                    <h2 class="post-title">AlphaFold: The AI That Solved Biology's Grand Challenge</h2>
+                    <p class="post-excerpt">How DeepMind cracked the 50-year-old protein folding problem.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">200M+</span><span class="stat-label">Proteins predicted</span></div>
+                        <div class="stat"><span class="stat-value">2024</span><span class="stat-label">Nobel Prize</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Innovation</span></div>
+                </article>
+            </a>
+
+            <a href="alzheimers.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">11 min read</span>
+                    </div>
+                    <h2 class="post-title">Alzheimer's Disease: The Long Goodbye</h2>
+                    <p class="post-excerpt">From Alois Alzheimer's first patient to the controversial new treatments.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">55M</span><span class="stat-label">People with dementia</span></div>
+                        <div class="stat"><span class="stat-value">$1.3T</span><span class="stat-label">Global cost</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Neurodegenerative</span></div>
+                </article>
+            </a>
+
+            <a href="hepatitis.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">11 min read</span>
+                    </div>
+                    <h2 class="post-title">Hepatitis A, B, C: Three Viruses, Three Stories</h2>
+                    <p class="post-excerpt">Despite sharing a name, hepatitis A, B, and C are different viruses with distinct histories.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">354M</span><span class="stat-label">Living with HBV/HCV</span></div>
+                        <div class="stat"><span class="stat-value">95%</span><span class="stat-label">HCV cure rate</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="hiv.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">12 min read</span>
+                    </div>
+                    <h2 class="post-title">HIV/AIDS: From Death Sentence to Chronic Condition</h2>
+                    <p class="post-excerpt">The story of humanity's confrontation with HIV—from mysterious deaths in 1981 to antiretroviral therapy.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">39M</span><span class="stat-label">Living with HIV</span></div>
+                        <div class="stat"><span class="stat-value">40M+</span><span class="stat-label">Deaths since 1981</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+            <a href="dna-sequencing.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 9, 2025</span>
+                        <span class="post-reading">12 min read</span>
+                    </div>
+                    <h2 class="post-title">DNA Sequencing: Reading the Book of Life</h2>
+                    <p class="post-excerpt">From Frederick Sanger's elegant chemistry to machines that sequence entire genomes in hours.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">$2.7B</span><span class="stat-label">Human Genome cost</span></div>
+                        <div class="stat"><span class="stat-value">~$200</span><span class="stat-label">Genome cost today</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Innovation</span></div>
+                </article>
+            </a>
+
+            <a href="covid19.html" class="post-card-link">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 8, 2025</span>
+                        <span class="post-reading">14 min read</span>
+                    </div>
+                    <h2 class="post-title">COVID-19: The Pandemic That Changed Everything</h2>
+                    <p class="post-excerpt">From a cluster of pneumonia cases in Wuhan to a global pandemic that reshaped society.</p>
+                    <div class="post-stats">
+                        <div class="stat"><span class="stat-value">7M+</span><span class="stat-label">Deaths reported</span></div>
+                        <div class="stat"><span class="stat-value">11 mo</span><span class="stat-label">To first vaccine</span></div>
+                    </div>
+                    <div class="post-tags"><span class="post-tag">Viral</span></div>
+                </article>
+            </a>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <span>Adi Desai 2025</span>
+        <span>All opinions are my own</span>
+    </footer>
+
+</body>
+</html>
