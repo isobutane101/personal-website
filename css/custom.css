@@ -2,9 +2,12 @@
    CUSTOM CSS - Styles Tailwind can't handle
    ============================================= */
 
-/* Smooth scrolling */
+/* Smooth scrolling and prevent zoom reset on navigation */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 /* =============================================
@@ -113,12 +116,6 @@ html {
     /* Prevent horizontal scroll */
     body {
         overflow-x: hidden;
-    }
-
-    /* Better text sizing on mobile */
-    html {
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
     }
 }
 
