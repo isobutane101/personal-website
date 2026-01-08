@@ -41,21 +41,21 @@
     <section class="tags-section">
         <div class="tags-container">
             <div class="filter-tags">
-                <a href="index.html" class="tag active">All</a>
-                <a href="viral.html" class="tag">Viral</a>
-                <a href="bacterial.html" class="tag">Bacterial</a>
-                <a href="parasitic.html" class="tag">Parasitic</a>
-                <a href="metabolic.html" class="tag">Metabolic</a>
-                <a href="neurodegenerative.html" class="tag">Neurodegenerative</a>
-                <a href="genetic.html" class="tag">Genetic</a>
-                <a href="innovation.html" class="tag">Innovation</a>
+                <button class="tag active" data-filter="all">All</button>
+                <button class="tag" data-filter="viral">Viral</button>
+                <button class="tag" data-filter="bacterial">Bacterial</button>
+                <button class="tag" data-filter="parasitic">Parasitic</button>
+                <button class="tag" data-filter="metabolic">Metabolic</button>
+                <button class="tag" data-filter="neurodegenerative">Neurodegenerative</button>
+                <button class="tag" data-filter="genetic">Genetic</button>
+                <button class="tag" data-filter="innovation">Innovation</button>
             </div>
             <div class="sort-container">
                 <span class="sort-label">Sort:</span>
-                <a href="index.html" class="sort-btn active">Newest</a>
-                <a href="oldest.html" class="sort-btn">Oldest</a>
-                <a href="shortest.html" class="sort-btn">Shortest</a>
-                <a href="longest.html" class="sort-btn">Longest</a>
+                <button class="sort-btn active" data-sort="newest">Newest</button>
+                <button class="sort-btn" data-sort="oldest">Oldest</button>
+                <button class="sort-btn" data-sort="shortest">Shortest</button>
+                <button class="sort-btn" data-sort="longest">Longest</button>
             </div>
         </div>
     </section>
@@ -67,7 +67,7 @@
             <!-- INNOVATIONS SECTION -->
 
             <!-- Post: AlphaFold -->
-            <a href="alphafold.html" class="post-card-link">
+            <a href="alphafold.html" class="post-card-link" data-category="innovation" data-date="2025-01-09" data-reading="11">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 9, 2025</span>
@@ -92,7 +92,7 @@
             </a>
 
             <!-- Post: PCR -->
-            <a href="pcr.html" class="post-card-link">
+            <a href="pcr.html" class="post-card-link" data-category="innovation" data-date="2025-01-09" data-reading="10">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 9, 2025</span>
@@ -117,7 +117,7 @@
             </a>
 
             <!-- Post: DNA Sequencing -->
-            <a href="dna-sequencing.html" class="post-card-link">
+            <a href="dna-sequencing.html" class="post-card-link" data-category="innovation" data-date="2025-01-09" data-reading="12">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 9, 2025</span>
@@ -144,7 +144,7 @@
             <!-- DISEASE POSTS -->
 
             <!-- Post: COVID-19 -->
-            <a href="covid19.html" class="post-card-link">
+            <a href="covid19.html" class="post-card-link" data-category="viral" data-date="2025-01-08" data-reading="14">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -169,7 +169,7 @@
             </a>
 
             <!-- Post: HIV -->
-            <a href="hiv.html" class="post-card-link">
+            <a href="hiv.html" class="post-card-link" data-category="viral" data-date="2025-01-08" data-reading="12">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -194,7 +194,7 @@
             </a>
 
             <!-- Post: Hepatitis -->
-            <a href="hepatitis.html" class="post-card-link">
+            <a href="hepatitis.html" class="post-card-link" data-category="viral" data-date="2025-01-08" data-reading="11">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -219,7 +219,7 @@
             </a>
 
             <!-- Post: Measles -->
-            <a href="measles.html" class="post-card-link">
+            <a href="measles.html" class="post-card-link" data-category="viral" data-date="2025-01-08" data-reading="8">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -244,7 +244,7 @@
             </a>
 
             <!-- Post: Cholera -->
-            <a href="cholera.html" class="post-card-link">
+            <a href="cholera.html" class="post-card-link" data-category="bacterial" data-date="2025-01-08" data-reading="9">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -269,7 +269,7 @@
             </a>
 
             <!-- Post: Alzheimer's -->
-            <a href="alzheimers.html" class="post-card-link">
+            <a href="alzheimers.html" class="post-card-link" data-category="neurodegenerative" data-date="2025-01-08" data-reading="11">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -294,7 +294,7 @@
             </a>
 
             <!-- Post: Parkinson's -->
-            <a href="parkinsons.html" class="post-card-link">
+            <a href="parkinsons.html" class="post-card-link" data-category="neurodegenerative" data-date="2025-01-08" data-reading="9">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -319,7 +319,7 @@
             </a>
 
             <!-- Post: Cystic Fibrosis -->
-            <a href="cystic-fibrosis.html" class="post-card-link">
+            <a href="cystic-fibrosis.html" class="post-card-link" data-category="genetic" data-date="2025-01-08" data-reading="10">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 8, 2025</span>
@@ -344,7 +344,7 @@
             </a>
 
             <!-- Post: Ozempic -->
-            <a href="ozempic.html" class="post-card-link">
+            <a href="ozempic.html" class="post-card-link" data-category="metabolic" data-date="2025-01-07" data-reading="9">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 7, 2025</span>
@@ -369,7 +369,7 @@
             </a>
 
             <!-- Post: Diabetes -->
-            <a href="diabetes.html" class="post-card-link">
+            <a href="diabetes.html" class="post-card-link" data-category="metabolic" data-date="2025-01-06" data-reading="10">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 6, 2025</span>
@@ -394,7 +394,7 @@
             </a>
 
             <!-- Post: Cardiac Disease -->
-            <a href="cardiac.html" class="post-card-link">
+            <a href="cardiac.html" class="post-card-link" data-category="metabolic" data-date="2025-01-05" data-reading="10">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 5, 2025</span>
@@ -419,7 +419,7 @@
             </a>
 
             <!-- Post: MASH -->
-            <a href="mash.html" class="post-card-link">
+            <a href="mash.html" class="post-card-link" data-category="metabolic" data-date="2025-01-04" data-reading="8">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 4, 2025</span>
@@ -444,7 +444,7 @@
             </a>
 
             <!-- Post: Polio -->
-            <a href="polio.html" class="post-card-link">
+            <a href="polio.html" class="post-card-link" data-category="viral" data-date="2025-01-03" data-reading="8">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">January 3, 2025</span>
@@ -469,7 +469,7 @@
             </a>
 
             <!-- Post: Smallpox -->
-            <a href="smallpox.html" class="post-card-link">
+            <a href="smallpox.html" class="post-card-link" data-category="viral" data-date="2024-12-20" data-reading="10">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">December 20, 2024</span>
@@ -494,7 +494,7 @@
             </a>
 
             <!-- Post: Malaria -->
-            <a href="malaria.html" class="post-card-link">
+            <a href="malaria.html" class="post-card-link" data-category="parasitic" data-date="2024-12-12" data-reading="9">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">December 12, 2024</span>
@@ -519,7 +519,7 @@
             </a>
 
             <!-- Post: Tuberculosis -->
-            <a href="tb.html" class="post-card-link">
+            <a href="tb.html" class="post-card-link" data-category="bacterial" data-date="2024-11-28" data-reading="8">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">November 28, 2024</span>
@@ -544,7 +544,7 @@
             </a>
 
             <!-- Post: Ebola -->
-            <a href="ebola.html" class="post-card-link">
+            <a href="ebola.html" class="post-card-link" data-category="viral" data-date="2024-11-15" data-reading="7">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">November 15, 2024</span>
@@ -569,7 +569,7 @@
             </a>
 
             <!-- Post: MRSA -->
-            <a href="mrsa.html" class="post-card-link">
+            <a href="mrsa.html" class="post-card-link" data-category="bacterial" data-date="2024-11-01" data-reading="6">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">November 1, 2024</span>
@@ -594,7 +594,7 @@
             </a>
 
             <!-- Post: Strep -->
-            <a href="strep.html" class="post-card-link">
+            <a href="strep.html" class="post-card-link" data-category="bacterial" data-date="2024-10-18" data-reading="6">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">October 18, 2024</span>
@@ -619,7 +619,7 @@
             </a>
 
             <!-- Post: Staph -->
-            <a href="staph.html" class="post-card-link">
+            <a href="staph.html" class="post-card-link" data-category="bacterial" data-date="2024-10-05" data-reading="5">
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">October 5, 2024</span>
@@ -652,5 +652,44 @@
         <span>All opinions are my own</span>
     </footer>
 
+    <script>
+    (function() {
+        var grid = document.querySelector('.posts-grid');
+        var posts = Array.from(grid.querySelectorAll('.post-card-link'));
+        var filter = 'all', sort = 'newest';
+
+        function update() {
+            var visible = posts.filter(function(p) {
+                return filter === 'all' || p.dataset.category === filter;
+            });
+            visible.sort(function(a, b) {
+                if (sort === 'newest') return b.dataset.date.localeCompare(a.dataset.date);
+                if (sort === 'oldest') return a.dataset.date.localeCompare(b.dataset.date);
+                if (sort === 'shortest') return a.dataset.reading - b.dataset.reading;
+                return b.dataset.reading - a.dataset.reading;
+            });
+            posts.forEach(function(p) { p.style.display = 'none'; });
+            visible.forEach(function(p) { grid.appendChild(p); p.style.display = ''; });
+        }
+
+        document.querySelectorAll('.tag').forEach(function(btn) {
+            btn.onclick = function() {
+                document.querySelectorAll('.tag').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                filter = btn.dataset.filter;
+                update();
+            };
+        });
+
+        document.querySelectorAll('.sort-btn').forEach(function(btn) {
+            btn.onclick = function() {
+                document.querySelectorAll('.sort-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                sort = btn.dataset.sort;
+                update();
+            };
+        });
+    })();
+    </script>
 </body>
 </html>
