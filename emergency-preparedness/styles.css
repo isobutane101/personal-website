@@ -393,9 +393,11 @@ body {
 }
 
 .resources-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .resource-card {
@@ -434,14 +436,23 @@ body {
 }
 
 .pdf-preview {
-    height: 350px;
+    height: 500px;
     background: var(--gray-100);
 }
 
-.pdf-preview embed {
+.pdf-preview embed,
+.pdf-preview iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+.resource-description {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    border-top: 1px solid var(--gray-200);
 }
 
 .resource-actions {
