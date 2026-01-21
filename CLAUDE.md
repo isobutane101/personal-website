@@ -1,16 +1,88 @@
-# Website Maintenance Notes
+# Personal Website - Session Notes
 
-This file documents recurring issues and their fixes for Claude Code to reference.
+## Current State
+
+The website at **adidesai.org** now uses the alternate website design with password protection.
+
+### Password
+- Password: `summer`
+- Stored as SHA-256 hash in `secrets.js`
+- Uses sessionStorage (clears when browser tab closes)
 
 ---
 
-## Issue #1: Zoom Reset When Navigating Between Pages
+## File Structure
 
-**Symptom:** When navigating from one page to another (e.g., landing page to blog, blog to post), the browser zoom resets or the page appears to zoom out.
+```
+/Users/Adi/projects/personal-website/
+├── index.html          # About me (main page)
+├── projects.html       # Projects page
+├── interests.html      # Interests page
+├── awards.html         # Awards & Publications
+├── blog.html           # Blog listing
+├── photos.html         # Photography portfolio (masonry layout)
+├── invision.html       # INVISION project detail
+├── quorum-sensing.html # Quorum sensing research detail
+├── clinical-trials.html# Clinical trials research detail
+├── comp-bio.html       # Computational biology detail
+├── login.html          # Password entry page
+├── secrets.js          # Password hash verification
+├── styles.css          # Main stylesheet
+├── CNAME               # adidesai.org
+├── blog/               # Blog posts (flat .html files)
+│   ├── post.css
+│   ├── gold.html
+│   ├── hiv.html
+│   └── ... (12 posts total)
+└── CLAUDE.md           # This file
+```
 
-**Root Cause:** Inconsistent CSS `text-size-adjust` and `font-size` settings across different stylesheets.
+---
 
-**Fix:** ALL CSS files must have this exact rule on the `html` selector:
+## GitHub Repos
+
+### personal-website
+- **Repo:** github.com/isobutane101/personal-website
+- **Domain:** adidesai.org
+- **Branch:** main
+- **Backup branch:** backup-before-alternate (contains old site)
+
+### just-a-call-away
+- **Repo:** github.com/isobutane101/just-a-call-away
+- **Domain:** justacallaway.org (pending DNS propagation for HTTPS)
+- **Content:** Emergency preparedness resources for elderly immigrant communities
+- **Location:** /Users/Adi/projects/just-a-call-away/
+
+---
+
+## Photos Page Features
+
+The photography page (`photos.html`) has custom features:
+
+### Masonry Layout
+- CSS columns (3 on desktop, 2 on tablet, 1 on mobile)
+- Natural aspect ratios, no cropping
+
+### Award Frames
+- Gold Key: Gold gradient border + glow
+- Silver Key: Silver gradient border + glow
+- Honorable Mention: Bronze gradient border + glow
+- Frames use `::before` pseudo-element with `inset: -4px` and `border-radius: 16px`
+
+### Lightbox
+- Dark theme with frosted glass UI
+- Image: `border-radius: 20px`
+- Info box: Fixed width 320px on desktop
+- Close button: Frosted glass style, top-right
+- Navigation: Left/right arrows with frosted glass
+- Scroll preservation: JavaScript saves/restores scroll position on close
+- Escape key closes lightbox
+
+---
+
+## CSS Zoom Fix
+
+All pages must have this in their CSS to prevent zoom issues:
 
 ```css
 html {
@@ -22,134 +94,31 @@ html {
 }
 ```
 
-**Files that need this rule:**
-- `css/custom.css`
-- `css/theme.css`
-- `css/styles.css`
-- `blog/styles.css`
-- `blog/post.css`
-- `photos/styles.css`
-- `invision/styles.css`
-- `emergency-preparedness/styles.css`
-
-**Prevention:** When creating new pages with their own CSS, always include this rule.
+Files with this fix:
+- styles.css
+- login.html (inline)
+- blog/post.css
 
 ---
 
-## Issue #2: Broken Internal Links (.html extensions)
+## Old Website
 
-**Symptom:** Links don't work, return 404, or show .html in the URL.
-
-**Root Cause:** The site uses clean URLs with folder structure (`page/index.html`) but links still use `.html` extensions.
-
-**Correct URL patterns:**
-
-| From Location | To Location | Correct href |
-|---------------|-------------|--------------|
-| Root (`index.html`) | Subpage folder | `folder/` |
-| Subpage (`folder/index.html`) | Root | `../` |
-| Subpage | Root with anchor | `../#anchor` |
-| Blog post (`blog/post/index.html`) | Blog index | `../` |
-| Blog post | Root | `../../` |
-| Blog post | Root with anchor | `../../#anchor` |
-
-**NEVER use:**
-- `index.html` (use `./` or just omit)
-- `../index.html` (use `../`)
-- `folder/index.html` (use `folder/`)
-- `page.html` (use `page/` after converting to folder structure)
-
-**Check command:**
-```bash
-grep -r '\.html["'"'"']' --include="*.html" . | grep -v 'http'
-```
-This finds .html in href/src that aren't external URLs. External links (https://) with .html are fine.
+Backed up to: `/Users/Adi/projects/old-website/`
+- index.html
+- css/ folder
+- invision/ folder
+- photos/ folder
 
 ---
 
-## Issue #3: New Blog Post Template
+## Git Credentials
 
-When creating a new blog post:
-
-1. Create folder: `blog/post-name/index.html`
-
-2. Use these navigation links:
-```html
-<nav class="nav">
-    <a href="../" class="nav-back">Blog</a>
-    <a href="https://adidesai.org" class="logo">A</a>
-    <div class="nav-right">
-        <a href="../../">Home</a>
-        <a href="../">Blog</a>
-        <a href="../../#contact" class="nav-cta">Contact</a>
-    </div>
-</nav>
-```
-
-3. Back link in header:
-```html
-<a href="../" class="back-link">← Back to Blog</a>
-```
-
-4. CSS reference:
-```html
-<link rel="stylesheet" href="../post.css">
-```
-
-5. Add post card to `blog/index.html` with:
-   - `data-category` matching a filter tag
-   - `data-date` in YYYY-MM-DD format
-   - `data-reading` as number of minutes
-   - `href="post-name/"` (trailing slash, no .html)
+Stored in `~/.git-credentials` using credential.helper store.
+Token should be regenerated as it was exposed in chat.
 
 ---
 
-## Issue #4: Adding New Filter Categories
+## Pending Tasks
 
-When adding a new category (like "Finance"):
-
-1. Add filter button to `blog/index.html`:
-```html
-<button class="tag" data-filter="newcategory">Category Name</button>
-```
-
-2. Use lowercase for `data-filter` value
-3. Match exactly in post card's `data-category`
-4. Update blog description in meta and header if needed
-
----
-
-## Directory Structure Reference
-
-```
-/
-├── index.html              # Landing page
-├── css/
-│   ├── custom.css
-│   ├── theme.css
-│   └── styles.css
-├── blog/
-│   ├── index.html          # Blog listing
-│   ├── styles.css          # Blog listing styles
-│   ├── post.css            # Individual post styles
-│   └── post-name/
-│       └── index.html      # Individual posts
-├── photos/
-│   ├── index.html
-│   └── styles.css
-├── invision/
-│   ├── index.html
-│   └── styles.css
-└── emergency-preparedness/
-    ├── index.html
-    └── styles.css
-```
-
----
-
-## Quick Checks Before Committing
-
-1. **Zoom consistency:** Verify all CSS files have `text-size-adjust: 100%`
-2. **No .html links:** Run grep check above
-3. **New posts:** Verify correct relative paths (`../`, `../../`)
-4. **Filter categories:** Ensure `data-category` matches filter buttons
+1. **HTTPS for justacallaway.org** - Waiting for DNS propagation, then enable "Enforce HTTPS" in GitHub Pages settings
+2. **Profile photo** - `./photos/profile.jpg` referenced in index.html but file doesn't exist (has fallback)
