@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVISION — Adi Desai</title>
+    <meta name="description" content="INVISION - A low-cost, wearable multi-modal biosensor system for continuous health monitoring and early detection of vital sign anomalies.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INVISION Page - Alternate Theme Overrides */
+        .project-hero {
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #c9a227;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-meta span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+        }
+
+        .project-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tagline {
+            font-size: 1.125rem;
+            color: #555;
+            max-width: 700px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: #666;
+        }
+
+        /* Content Sections */
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            font-size: 0.75rem;
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .section-body p {
+            font-size: 1.0625rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body p.lead {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: #1a1a1a;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.625rem;
+        }
+
+        .feature {
+            font-size: 0.875rem;
+            padding: 8px 16px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: #666;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: #c9a227;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9375rem;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-detail {
+            font-size: 0.8125rem;
+            color: #888;
+        }
+
+        /* Gap Analysis */
+        .gap-analysis {
+            margin-top: 3rem;
+        }
+
+        .gap-analysis h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: #1a1a1a;
+        }
+
+        .gap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gap-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .gap-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .gap-card p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Sensor Grid */
+        .sensor-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .sensor-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .sensor-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .sensor-card:hover {
+            border-color: #c9a227;
+        }
+
+        .sensor-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .sensor-toggle {
+            display: none;
+        }
+
+        .sensor-header {
+            padding: 1.75rem;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .sensor-header::after {
+            content: '+';
+            position: absolute;
+            top: 1.75rem;
+            right: 1.75rem;
+            font-size: 1.5rem;
+            color: #c9a227;
+            transition: all 0.3s;
+            font-weight: 300;
+        }
+
+        .sensor-toggle:checked + .sensor-header::after {
+            content: '−';
+        }
+
+        .sensor-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1rem;
+            color: #c9a227;
+        }
+
+        .sensor-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sensor-header h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            padding-right: 40px;
+        }
+
+        .sensor-tech {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c9a227;
+            margin-bottom: 0.75rem;
+        }
+
+        .sensor-summary {
+            font-size: 0.875rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .sensor-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #fff;
+            border-top: 1px solid transparent;
+        }
+
+        .sensor-toggle:checked ~ .sensor-details {
+            max-height: 500px;
+            border-top-color: #e0e0e0;
+        }
+
+        .sensor-details-inner {
+            padding: 1.5rem 1.75rem;
+        }
+
+        .sensor-details h5 {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #c9a227;
+            margin-bottom: 0.75rem;
+        }
+
+        .sensor-details p {
+            font-size: 0.9375rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .sensor-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sensor-details ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sensor-details li {
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.5rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sensor-details li:last-child {
+            border-bottom: none;
+        }
+
+        .sensor-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #c9a227;
+        }
+
+        .architecture-note {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .architecture-note h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .architecture-note p {
+            font-size: 0.875rem !important;
+            color: #c9a227;
+            font-family: monospace;
+            margin-bottom: 0 !important;
+        }
+
+        /* Research Questions */
+        .research-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .question-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #ddd;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .question-card.primary::before {
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+        }
+
+        .question-label {
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-card.primary .question-label {
+            color: #c9a227;
+        }
+
+        .question-card p {
+            font-size: 1rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        .question-card.primary p {
+            color: #1a1a1a;
+        }
+
+        /* Applications Grid */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .app-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .app-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .app-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .app-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .app-card p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.5 !important;
+        }
+
+        /* Future Work */
+        .future-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .future-item {
+            display: flex;
+            gap: 1.25rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .future-item:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .future-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .future-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: #c9a227;
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .future-content h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.375rem;
+            color: #1a1a1a;
+        }
+
+        .future-content p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+        }
+
+        /* Team */
+        .team-grid {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .team-member {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 1.5rem 1.75rem;
+            flex: 1;
+        }
+
+        .team-member h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            color: #1a1a1a;
+        }
+
+        .team-member p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sensor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .project-content {
+                padding: 0 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .gap-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="project-hero">
+        <div class="hero-content">
+            <a href="./projects.html" class="back-link">← Back to Projects</a>
+            <div class="project-meta">
+                <span>2024</span>
+                <span>Science Fair Project</span>
+            </div>
+            <h1>INVISION</h1>
+            <p class="project-subtitle">INtegrated VItal SIgns mONitor</p>
+            <p class="project-tagline">A low-cost, wearable multi-modal biosensor system for continuous health monitoring and early detection of vital sign anomalies.</p>
+            <div class="project-tags">
+                <span>Biomedical Engineering</span>
+                <span>Wearable Tech</span>
+                <span>ESP32</span>
+                <span>Health Monitoring</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="project-content">
+
+        <!-- Overview Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Overview</h2>
+            </div>
+            <div class="section-body">
+                <p class="lead">INVISION is a wearable armband that combines optical, acoustic, electrical, and temperature sensors to provide comprehensive vital signs monitoring for under $10.</p>
+                <p>Designed for at-risk individuals such as the elderly and those with chronic conditions, INVISION enables continuous health monitoring, early anomaly detection, and remote caregiver alerts.</p>
+
+                <div class="highlight-box">
+                    <h3>Key Characteristics</h3>
+                    <div class="feature-grid">
+                        <div class="feature">Wearable</div>
+                        <div class="feature">Non-invasive</div>
+                        <div class="feature">Multi-sensor</div>
+                        <div class="feature">Anomaly Detection</div>
+                        <div class="feature">Remote Monitoring</div>
+                        <div class="feature">Predictive AI</div>
+                        <div class="feature">Alert System</div>
+                        <div class="feature">Under $10 Cost</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>The Problem</h2>
+            </div>
+            <div class="section-body">
+                <p>This project was inspired by personal experience with elderly family members needing continuous health monitoring.</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">28%</span>
+                        <span class="stat-label">of adults 65+ live alone</span>
+                        <span class="stat-detail">~16.2 million individuals in the US</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">80%</span>
+                        <span class="stat-label">of seniors 65+ have chronic conditions</span>
+                        <span class="stat-detail">Requiring continuous monitoring</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">14M+</span>
+                        <span class="stat-label">falls annually among seniors</span>
+                        <span class="stat-detail">1 in 4 adults 65+ fall each year</span>
+                    </div>
+                </div>
+
+                <div class="gap-analysis">
+                    <h3>Market Gap</h3>
+                    <div class="gap-grid">
+                        <div class="gap-card">
+                            <h4>Fitness Wearables</h4>
+                            <p>Track basic vitals (heart rate, steps) but limited functionality, not designed for early anomaly detection, fitness-focused only.</p>
+                        </div>
+                        <div class="gap-card">
+                            <h4>Clinical Equipment</h4>
+                            <p>Monitor critical vitals but high cost, mobility issues, continuous power needs, requires expert interpretation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Technical Implementation</h2>
+            </div>
+            <div class="section-body">
+                <p>INVISION uses an ESP32 microcontroller connected to four sensor modules, powered by a 3.3V battery. Data flows to cloud storage for processing, a mobile app for the user interface, and an alert system for notifications.</p>
+
+                <div class="sensor-grid">
+                    <!-- Optical Unit -->
+                    <div class="sensor-card">
+                        <input type="checkbox" id="sensor-optical" class="sensor-toggle">
+                        <label for="sensor-optical" class="sensor-header">
+                            <div class="sensor-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                            <h4>Optical Unit</h4>
+                            <span class="sensor-tech">Photoplethysmography (PPG)</span>
+                            <p class="sensor-summary">Analyzes light absorbance to derive pulse rate, glucose, and SpO2.</p>
+                        </label>
+                        <div class="sensor-details">
+                            <div class="sensor-details-inner">
+                                <h5>How It Works</h5>
+                                <p>Uses the Beer-Lambert Law to analyze absorbance across different wavelengths of light as they pass through the skin. Different wavelengths are absorbed differently by oxygenated vs deoxygenated blood.</p>
+                                <h5>Key Measurements</h5>
+                                <ul>
+                                    <li>Pulse rate from green light absorption patterns</li>
+                                    <li>Blood oxygen saturation (SpO2) from red/infrared ratio</li>
+                                    <li>Potential glucose estimation from NIR wavelengths</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Temperature Unit -->
+                    <div class="sensor-card">
+                        <input type="checkbox" id="sensor-temp" class="sensor-toggle">
+                        <label for="sensor-temp" class="sensor-header">
+                            <div class="sensor-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/>
+                                </svg>
+                            </div>
+                            <h4>Temperature Unit</h4>
+                            <span class="sensor-tech">Thermistor Voltage Divider</span>
+                            <p class="sensor-summary">Measures skin and ambient temperature using voltage divider principles.</p>
+                        </label>
+                        <div class="sensor-details">
+                            <div class="sensor-details-inner">
+                                <h5>How It Works</h5>
+                                <p>A thermistor changes resistance based on temperature. Using a voltage divider circuit with a known resistor and input voltage, we measure the thermistor voltage and calculate temperature.</p>
+                                <h5>Key Measurements</h5>
+                                <ul>
+                                    <li>Skin temperature (contact sensor)</li>
+                                    <li>Ambient temperature (reference sensor)</li>
+                                    <li>Temperature trends over time</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acoustic Unit -->
+                    <div class="sensor-card">
+                        <input type="checkbox" id="sensor-acoustic" class="sensor-toggle">
+                        <label for="sensor-acoustic" class="sensor-header">
+                            <div class="sensor-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 12h4l3-9 6 18 3-9h4"/>
+                                </svg>
+                            </div>
+                            <h4>Acoustic Unit</h4>
+                            <span class="sensor-tech">Phonocardiogram (PCG)</span>
+                            <p class="sensor-summary">Captures heart sounds through skin vibrations for cardiac analysis.</p>
+                        </label>
+                        <div class="sensor-details">
+                            <div class="sensor-details-inner">
+                                <h5>How It Works</h5>
+                                <p>The ESP32 drives a small speaker to generate discrete sensing signals. A microphone captures vibrations transmitted through the skin, detecting the characteristic "lub-dub" heart sounds.</p>
+                                <h5>Key Measurements</h5>
+                                <ul>
+                                    <li>Heart rate from sound interval timing</li>
+                                    <li>Heart sound patterns (S1, S2 detection)</li>
+                                    <li>Potential murmur or arrhythmia detection</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Electrical Unit -->
+                    <div class="sensor-card">
+                        <input type="checkbox" id="sensor-electrical" class="sensor-toggle">
+                        <label for="sensor-electrical" class="sensor-header">
+                            <div class="sensor-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9-6-18-3 9H2"/>
+                                </svg>
+                            </div>
+                            <h4>Electrical Unit</h4>
+                            <span class="sensor-tech">4-Lead EKG Equivalent</span>
+                            <p class="sensor-summary">Closely spaced electrodes enable EKG-equivalent cardiac measurements.</p>
+                        </label>
+                        <div class="sensor-details">
+                            <div class="sensor-details-inner">
+                                <h5>How It Works</h5>
+                                <p>Multiple closely-spaced electrodes detect the electrical signals generated by the heart. The configuration allows 4-lead EKG-equivalent measurements from a single wearable location.</p>
+                                <h5>Key Measurements</h5>
+                                <ul>
+                                    <li>Heart rate and rhythm</li>
+                                    <li>QRS complex detection</li>
+                                    <li>Arrhythmia indicators</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="architecture-note">
+                    <h3>System Architecture</h3>
+                    <p>ESP32 Microcontroller → Four Sensor Modules → Cloud Processing → Mobile App + Alert System → Healthcare Provider</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Questions Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Research Questions</h2>
+            </div>
+            <div class="section-body">
+                <div class="research-questions">
+                    <div class="question-card primary">
+                        <span class="question-label">Primary</span>
+                        <p>Can a low-cost, multi-modal biosensor system detect physiological deviations from baseline using optical, acoustic, and electrical sensors?</p>
+                    </div>
+                    <div class="question-card primary">
+                        <span class="question-label">Primary</span>
+                        <p>How can a wearable multi-modal biosensor suite effectively detect early vital sign anomalies to improve health outcomes?</p>
+                    </div>
+                    <div class="question-card">
+                        <span class="question-label">Secondary</span>
+                        <p>What is the optimal method for integrating multiple sensing modalities in a compact, wearable design?</p>
+                    </div>
+                    <div class="question-card">
+                        <span class="question-label">Secondary</span>
+                        <p>How can real-time signal processing be achieved with minimal power consumption?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Applications Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Applications</h2>
+            </div>
+            <div class="section-body">
+                <div class="applications-grid">
+                    <div class="app-card">
+                        <h4>Remote Home Monitoring</h4>
+                        <p>For elderly, immunocompromised individuals, and people with disabilities</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Chronic Disease Management</h4>
+                        <p>Continuous monitoring for diabetes, heart disease, and other conditions</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Post-Surgery Recovery</h4>
+                        <p>Track vital signs during recovery at home</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Rural Healthcare</h4>
+                        <p>Remote patient monitoring for underserved communities</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Workplace Safety</h4>
+                        <p>Monitoring for high-risk occupations</p>
+                    </div>
+                    <div class="app-card">
+                        <h4>Fall Detection</h4>
+                        <p>Emergency detection and automatic alerts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Work Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Future Work</h2>
+            </div>
+            <div class="section-body">
+                <div class="future-list">
+                    <div class="future-item">
+                        <span class="future-number">1</span>
+                        <div class="future-content">
+                            <h4>Multi-channel Alerting</h4>
+                            <p>Develop multiple forms of alerting users and healthcare providers</p>
+                        </div>
+                    </div>
+                    <div class="future-item">
+                        <span class="future-number">2</span>
+                        <div class="future-content">
+                            <h4>Improved Form Factor</h4>
+                            <p>Make the device less obtrusive using flexible printed circuit boards (PCB)</p>
+                        </div>
+                    </div>
+                    <div class="future-item">
+                        <span class="future-number">3</span>
+                        <div class="future-content">
+                            <h4>Health App Integration</h4>
+                            <p>Connect with Apple Health, Google Health, and other platforms</p>
+                        </div>
+                    </div>
+                    <div class="future-item">
+                        <span class="future-number">4</span>
+                        <div class="future-content">
+                            <h4>Intelligent Data Collection</h4>
+                            <p>Optimize battery life with smart sampling algorithms</p>
+                        </div>
+                    </div>
+                    <div class="future-item">
+                        <span class="future-number">5</span>
+                        <div class="future-content">
+                            <h4>ML-Based Predictions</h4>
+                            <p>User clustering and predictive models for early intervention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Team</h2>
+            </div>
+            <div class="section-body">
+                <div class="team-grid">
+                    <div class="team-member">
+                        <h4>Adi Desai</h4>
+                        <p>Co-developer</p>
+                    </div>
+                    <div class="team-member">
+                        <h4>Anika Shah</h4>
+                        <p>Co-developer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentorship Section -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Mentorship</h2>
+            </div>
+            <div class="section-body">
+                <div class="team-member" style="max-width: 500px;">
+                    <h4>Dr. Abizar Lakdawalla</h4>
+                    <p>Project Mentor</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>

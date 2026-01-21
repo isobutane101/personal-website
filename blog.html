@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Adi Desai</title>
+    <meta name="description" content="Deep dives into diseases, medical breakthroughs, scientific innovations, finance, and the stories shaping our world.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Blog-specific styles */
+        .blog-header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .blog-header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .blog-header p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .filter-section {
+            max-width: 1000px;
+            margin: 0 auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 20px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-tag:hover {
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+
+        .filter-tag.active {
+            background: #c9a227;
+            border-color: #c9a227;
+            color: #fff;
+        }
+
+        .sort-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sort-label {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .sort-btn {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            background: none;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.85rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .sort-btn:hover {
+            color: #c9a227;
+        }
+
+        .sort-btn.active {
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .posts-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .post-card {
+            display: block;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+        }
+
+        .post-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.75rem;
+        }
+
+        .post-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .post-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #c9a227;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .post-tag {
+            padding: 0.25rem 0.75rem;
+            background: #f0f0f0;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            .post-card {
+                padding: 1.5rem;
+            }
+
+            .post-title {
+                font-size: 1.25rem;
+            }
+
+            .post-stats {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <h1>blog</h1>
+        <p>Deep dives into diseases, medical breakthroughs, scientific innovations, finance, and the stories shaping our world.</p>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-tags">
+            <button class="filter-tag active" data-filter="all">All</button>
+            <button class="filter-tag" data-filter="viral">Viral</button>
+            <button class="filter-tag" data-filter="bacterial">Bacterial</button>
+            <button class="filter-tag" data-filter="metabolic">Metabolic</button>
+            <button class="filter-tag" data-filter="neurodegenerative">Neurodegenerative</button>
+            <button class="filter-tag" data-filter="genetic">Genetic</button>
+            <button class="filter-tag" data-filter="innovation">Innovation</button>
+            <button class="filter-tag" data-filter="finance">Finance</button>
+            <button class="filter-tag" data-filter="tech">Tech</button>
+        </div>
+        <div class="sort-container">
+            <span class="sort-label">Sort:</span>
+            <button class="sort-btn active" data-sort="newest">Newest</button>
+            <button class="sort-btn" data-sort="oldest">Oldest</button>
+            <button class="sort-btn" data-sort="shortest">Shortest</button>
+            <button class="sort-btn" data-sort="longest">Longest</button>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <main class="posts-grid">
+
+        <!-- Post: Gold -->
+        <a href="./blog/gold.html" class="post-card" data-category="finance" data-date="2025-12-01" data-reading="10">
+            <div class="post-meta">
+                <span class="post-date">December 01, 2025</span>
+                <span class="post-reading">10 min read</span>
+            </div>
+            <h2 class="post-title">Gold: Why Is It So Expensive Right Now?</h2>
+            <p class="post-excerpt">Gold has shattered all-time records in 2024-2025, surpassing $4,000 per ounce. What's driving the surge, and what does history tell us about where it might go next?</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">$4,058</span>
+                    <span class="stat-label">All-time high (Oct 2025)</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">27%+</span>
+                    <span class="stat-label">2025 gains</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Finance</span>
+            </div>
+        </a>
+
+        <!-- Post: Drug Development Economics -->
+        <a href="./blog/drug-development.html" class="post-card" data-category="finance" data-date="2025-11-03" data-reading="12">
+            <div class="post-meta">
+                <span class="post-date">November 03, 2025</span>
+                <span class="post-reading">12 min read</span>
+            </div>
+            <h2 class="post-title">The Economics of Drug Development: Why Your Medications Cost So Much</h2>
+            <p class="post-excerpt">It costs $2 billion and 10-15 years to bring a drug to market. Only 12% of drugs that enter trials succeed. Here's why pharmaceutical economics is so brutal.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">$2.3B</span>
+                    <span class="stat-label">Average dev cost</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">12%</span>
+                    <span class="stat-label">Success rate</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Finance</span>
+            </div>
+        </a>
+
+        <!-- Post: mRNA Vaccines -->
+        <a href="./blog/mrna-vaccines.html" class="post-card" data-category="innovation" data-date="2025-10-06" data-reading="11">
+            <div class="post-meta">
+                <span class="post-date">October 06, 2025</span>
+                <span class="post-reading">11 min read</span>
+            </div>
+            <h2 class="post-title">mRNA Vaccines: From Decades of Rejection to Saving Millions</h2>
+            <p class="post-excerpt">How two scientists spent decades developing a technology no one believed in, then used it to create COVID-19 vaccines in record time.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">2023</span>
+                    <span class="stat-label">Nobel Prize</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">95%</span>
+                    <span class="stat-label">Initial efficacy</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Innovation</span>
+            </div>
+        </a>
+
+        <!-- Post: History of the Internet -->
+        <a href="./blog/internet.html" class="post-card" data-category="tech" data-date="2025-09-01" data-reading="12">
+            <div class="post-meta">
+                <span class="post-date">September 01, 2025</span>
+                <span class="post-reading">12 min read</span>
+            </div>
+            <h2 class="post-title">The History of the Internet: From ARPANET to the World Wide Web</h2>
+            <p class="post-excerpt">How a Cold War defense project became the backbone of modern civilization, connecting billions of people and reshaping every aspect of human life.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">1969</span>
+                    <span class="stat-label">First message sent</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">5.4B+</span>
+                    <span class="stat-label">Users today</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Tech</span>
+            </div>
+        </a>
+
+        <!-- Post: AlphaFold -->
+        <a href="./blog/alphafold.html" class="post-card" data-category="innovation" data-date="2025-08-04" data-reading="11">
+            <div class="post-meta">
+                <span class="post-date">August 04, 2025</span>
+                <span class="post-reading">11 min read</span>
+            </div>
+            <h2 class="post-title">AlphaFold: The AI That Solved Biology's Grand Challenge</h2>
+            <p class="post-excerpt">How DeepMind cracked the 50-year-old protein folding problem, transforming structural biology and earning the 2024 Nobel Prize in Chemistry.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">200M+</span>
+                    <span class="stat-label">Proteins predicted</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">2024</span>
+                    <span class="stat-label">Nobel Prize</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Innovation</span>
+            </div>
+        </a>
+
+        <!-- Post: PCR -->
+        <a href="./blog/pcr.html" class="post-card" data-category="innovation" data-date="2025-07-07" data-reading="10">
+            <div class="post-meta">
+                <span class="post-date">July 07, 2025</span>
+                <span class="post-reading">10 min read</span>
+            </div>
+            <h2 class="post-title">PCR: The Invention That Changed Biology</h2>
+            <p class="post-excerpt">How Kary Mullis's late-night brainstorm led to polymerase chain reaction: the technique that revolutionized molecular biology, forensics, and medicine.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">1983</span>
+                    <span class="stat-label">Invented</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">1993</span>
+                    <span class="stat-label">Nobel Prize</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Innovation</span>
+            </div>
+        </a>
+
+        <!-- Post: Cystic Fibrosis -->
+        <a href="./blog/cystic-fibrosis.html" class="post-card" data-category="genetic" data-date="2025-06-02" data-reading="10">
+            <div class="post-meta">
+                <span class="post-date">June 02, 2025</span>
+                <span class="post-reading">10 min read</span>
+            </div>
+            <h2 class="post-title">Cystic Fibrosis: From Fatal Childhood Disease to Treatable Condition</h2>
+            <p class="post-excerpt">How the discovery of a single gene led to breakthrough therapies that are transforming life for people with CF: a triumph of molecular medicine.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">1989</span>
+                    <span class="stat-label">Gene discovered</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">90%</span>
+                    <span class="stat-label">Eligible for modulators</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Genetic</span>
+            </div>
+        </a>
+
+        <!-- Post: Diabetes -->
+        <a href="./blog/diabetes.html" class="post-card" data-category="metabolic" data-date="2025-05-05" data-reading="10">
+            <div class="post-meta">
+                <span class="post-date">May 05, 2025</span>
+                <span class="post-reading">10 min read</span>
+            </div>
+            <h2 class="post-title">Diabetes: The Epidemic of Our Time</h2>
+            <p class="post-excerpt">From a death sentence to a manageable condition: the history, science, and future of one of humanity's most common chronic diseases.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">537M</span>
+                    <span class="stat-label">Adults with diabetes</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">6.7M</span>
+                    <span class="stat-label">Deaths annually</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Metabolic</span>
+            </div>
+        </a>
+
+        <!-- Post: Alzheimer's -->
+        <a href="./blog/alzheimers.html" class="post-card" data-category="neurodegenerative" data-date="2025-04-07" data-reading="11">
+            <div class="post-meta">
+                <span class="post-date">April 07, 2025</span>
+                <span class="post-reading">11 min read</span>
+            </div>
+            <h2 class="post-title">Alzheimer's Disease: The Long Goodbye</h2>
+            <p class="post-excerpt">From Alois Alzheimer's first patient to the controversial new treatments: understanding the most common cause of dementia.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">55M</span>
+                    <span class="stat-label">People with dementia</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">$1.3T</span>
+                    <span class="stat-label">Global cost</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Neurodegenerative</span>
+            </div>
+        </a>
+
+        <!-- Post: HIV -->
+        <a href="./blog/hiv.html" class="post-card" data-category="viral" data-date="2025-03-03" data-reading="12">
+            <div class="post-meta">
+                <span class="post-date">March 03, 2025</span>
+                <span class="post-reading">12 min read</span>
+            </div>
+            <h2 class="post-title">HIV/AIDS: From Death Sentence to Chronic Condition</h2>
+            <p class="post-excerpt">The story of humanity's confrontation with HIV: from mysterious deaths in 1981 to antiretroviral therapy that now allows people to live normal lifespans.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">39M</span>
+                    <span class="stat-label">Living with HIV</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">40M+</span>
+                    <span class="stat-label">Deaths since 1981</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Viral</span>
+            </div>
+        </a>
+
+        <!-- Post: Smallpox -->
+        <a href="./blog/smallpox.html" class="post-card" data-category="viral" data-date="2025-02-03" data-reading="10">
+            <div class="post-meta">
+                <span class="post-date">February 03, 2025</span>
+                <span class="post-reading">10 min read</span>
+            </div>
+            <h2 class="post-title">Smallpox: Humanity's Greatest Victory Over Disease</h2>
+            <p class="post-excerpt">The only human disease ever eradicated, smallpox killed an estimated 300 million people in the 20th century. The story of how we defeated it.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">1980</span>
+                    <span class="stat-label">Declared eradicated</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">300M+</span>
+                    <span class="stat-label">20th century deaths</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Viral</span>
+            </div>
+        </a>
+
+        <!-- Post: Cholera -->
+        <a href="./blog/cholera.html" class="post-card" data-category="bacterial" data-date="2025-01-06" data-reading="9">
+            <div class="post-meta">
+                <span class="post-date">January 06, 2025</span>
+                <span class="post-reading">9 min read</span>
+            </div>
+            <h2 class="post-title">Cholera: The Disease That Built Public Health</h2>
+            <p class="post-excerpt">How a devastating waterborne disease led to the birth of epidemiology, the germ theory of disease, and modern sanitation.</p>
+            <div class="post-stats">
+                <div class="stat">
+                    <span class="stat-value">1854</span>
+                    <span class="stat-label">John Snow's breakthrough</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">&lt;1%</span>
+                    <span class="stat-label">Fatality with treatment</span>
+                </div>
+            </div>
+            <div class="post-tags">
+                <span class="post-tag">Bacterial</span>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+
+    <script>
+    (function() {
+        var grid = document.querySelector('.posts-grid');
+        var posts = Array.from(grid.querySelectorAll('.post-card'));
+        var filter = 'all', sort = 'newest';
+
+        function update() {
+            var visible = posts.filter(function(p) {
+                return filter === 'all' || p.dataset.category === filter;
+            });
+            visible.sort(function(a, b) {
+                if (sort === 'newest') return b.dataset.date.localeCompare(a.dataset.date);
+                if (sort === 'oldest') return a.dataset.date.localeCompare(b.dataset.date);
+                if (sort === 'shortest') return a.dataset.reading - b.dataset.reading;
+                return b.dataset.reading - a.dataset.reading;
+            });
+            posts.forEach(function(p) { p.style.display = 'none'; });
+            visible.forEach(function(p) { grid.appendChild(p); p.style.display = ''; });
+        }
+
+        document.querySelectorAll('.filter-tag').forEach(function(btn) {
+            btn.onclick = function() {
+                document.querySelectorAll('.filter-tag').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                filter = btn.dataset.filter;
+                update();
+            };
+        });
+
+        document.querySelectorAll('.sort-btn').forEach(function(btn) {
+            btn.onclick = function() {
+                document.querySelectorAll('.sort-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                sort = btn.dataset.sort;
+                update();
+            };
+        });
+    })();
+    </script>
+</body>
+</html>

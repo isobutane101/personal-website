@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The History of the Internet: From ARPANET to the World Wide Web | Adi Desai</title>
+    <meta name="description" content="How a Cold War defense project became the backbone of modern civilization, connecting billions of people and reshaping every aspect of human life.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./post.css">
+</head>
+<body id="top">
+
+    <nav class="nav">
+        <a href="../index.html">about me</a>
+        <a href="../projects.html">projects</a>
+        <a href="../interests.html">interests</a>
+        <a href="../awards.html">awards & publications</a>
+    </nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <a href="../blog.html" class="back-link">← Back to Blog</a>
+            <div class="article-meta">
+                <span class="article-date">September 01, 2025</span>
+                <span class="article-reading">12 min read</span>
+            </div>
+            <h1 class="article-title">The History of the Internet: From ARPANET to the World Wide Web</h1>
+            <p class="article-subtitle">How a Cold War defense project became the backbone of modern civilization, connecting billions of people and reshaping every aspect of human life.</p>
+            <div class="article-tags">
+                <span class="article-tag">Tech</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="key-stats">
+        <div class="key-stats-content">
+            <div class="key-stat">
+                <div class="key-stat-value">1969</div>
+                <div class="key-stat-label">First ARPANET message</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">1983</div>
+                <div class="key-stat-label">TCP/IP adopted ("Birthday")</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">1989</div>
+                <div class="key-stat-label">World Wide Web invented</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">5.4B+</div>
+                <div class="key-stat-label">Internet users today</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="article-content">
+        <article class="article-body">
+            <h2>Before the Internet</h2>
+            <p>In 1957, the Soviet Union launched Sputnik, the first artificial satellite. The event sent shockwaves through the American defense establishment. If the Soviets could put a satellite in orbit, what else could they do? The U.S. government began pouring resources into science and technology, determined not to fall behind.</p>
+
+            <p>One year later, President Eisenhower formed the <strong>Advanced Research Projects Agency (ARPA)</strong>, later renamed DARPA, within the Department of Defense. Its mission was to pursue high-risk, high-reward research that might give the U.S. a technological edge. Among ARPA's concerns was a troubling vulnerability: the nation's communication systems depended on centralized hubs. A single nuclear strike could sever command and control entirely.</p>
+
+            <p>Researchers began exploring a radical idea: what if information could be broken into pieces, sent through multiple paths, and reassembled at the destination? Even if parts of the network were destroyed, messages could route around the damage. This concept, called <strong>packet switching</strong>, would become the foundation of the internet.</p>
+
+            <h2>ARPANET: The First Network</h2>
+            <p>In 1966, Bob Taylor, a director at ARPA, secured funding to build an experimental network connecting research computers at universities. The goal was practical: researchers at different institutions were duplicating expensive computing resources. If computers could share data and processing power remotely, it would save money and accelerate science.</p>
+
+            <p>Building the network required solving problems no one had tackled before. How do you get computers from different manufacturers, running different operating systems, to communicate? The answer was to create a common language, or protocol, that all machines could speak.</p>
+
+            <div class="info-box">
+                <div class="info-box-title">The First ARPANET Nodes (1969)</div>
+                <ul>
+                    <li><strong>UCLA:</strong> University of California, Los Angeles</li>
+                    <li><strong>SRI:</strong> Stanford Research Institute</li>
+                    <li><strong>UCSB:</strong> University of California, Santa Barbara</li>
+                    <li><strong>Utah:</strong> University of Utah</li>
+                </ul>
+            </div>
+
+            <p>On October 29, 1969, a UCLA student named Charley Kline attempted to send the first message over ARPANET to Stanford Research Institute. He typed "LOGIN." The system crashed after "LO." An hour later, the full message went through. It was an inauspicious start to a revolution.</p>
+
+            <p>By the end of 1969, four nodes were connected. By 1971, there were 15. By 1973, ARPANET had its first international connections, linking to University College London and a Norwegian seismic research center. The network was growing, but it was still a tool for academics and military researchers. The general public had no idea it existed.</p>
+
+            <h2>Email: The Killer App</h2>
+            <p>In 1971, Ray Tomlinson, an engineer working on ARPANET, created a program that could send messages between users on different computers. He chose the @ symbol to separate the user name from the computer name, a convention we still use today. The first email was a test message Tomlinson sent to himself. He later admitted he couldn't remember what it said, probably "QWERTYUIOP" or something similar.</p>
+
+            <p>Email wasn't part of ARPANET's original plan. The network was supposed to be about sharing computing resources, not exchanging messages. But researchers quickly discovered that email was far more useful than anything else the network offered. By 1973, email accounted for 75% of all ARPANET traffic. The pattern would repeat throughout internet history: the technology people actually want often surprises its creators.</p>
+
+            <h2>TCP/IP: The Internet's Birthday</h2>
+            <p>ARPANET worked, but it had a problem. It was one network among many. Other networks were emerging: CSNET for computer scientists, BITNET for academics, various corporate networks. Each used different protocols and couldn't communicate with the others. It was like having phone systems where AT&T customers couldn't call Verizon customers.</p>
+
+            <p>In 1974, Vint Cerf and Bob Kahn published a paper proposing a solution: a universal protocol that could connect any network to any other network. They called it <strong>TCP/IP</strong> (Transmission Control Protocol/Internet Protocol). The key insight was separating responsibilities. IP handles addressing and routing (getting packets to the right destination), while TCP handles reliability (making sure all packets arrive and reassemble correctly).</p>
+
+            <p>The elegance of TCP/IP is that it doesn't care what's underneath. Ethernet, fiber optics, radio waves, carrier pigeons (yes, someone actually tested this) can all carry IP packets. This flexibility allowed the internet to absorb every new networking technology without breaking.</p>
+
+            <blockquote>
+                <p>"We didn't have a clear vision that it would turn into what it has turned into. We thought we were building a technology that would be useful to a relatively small number of people."</p>
+                <cite>Vint Cerf, co-inventor of TCP/IP</cite>
+            </blockquote>
+
+            <p>On <strong>January 1, 1983</strong>, ARPANET officially switched to TCP/IP. This date is often called the "birthday of the internet" because it marked the moment when different networks could truly interconnect. The internet, in the technical sense, was born.</p>
+
+            <h2>The Domain Name System</h2>
+            <p>Early internet addresses were numbers, like 192.168.1.1. Humans are terrible at remembering numbers. In 1984, Paul Mockapetris invented the <strong>Domain Name System (DNS)</strong>, which translates human-readable names (like google.com) into IP addresses. The familiar extensions were born: .com for commercial, .edu for education, .gov for government, .org for organizations.</p>
+
+            <p>On March 15, 1985, Symbolics.com became the first registered .com domain. It belonged to a computer manufacturer that no longer exists. The domain itself became a piece of internet history, eventually selling at auction. By the early 1990s, domain names were being registered by the thousands. Today, there are over 350 million registered domains.</p>
+
+            <h2>Tim Berners-Lee and the World Wide Web</h2>
+            <p>The internet existed by the late 1980s, but using it required technical expertise. There were different protocols for different services: FTP for file transfers, Gopher for menus of content, Telnet for remote access. Finding information meant knowing exactly where to look and how to get there.</p>
+
+            <p>In 1989, a British scientist named <strong>Tim Berners-Lee</strong> was working at CERN, the European physics laboratory in Geneva. CERN had thousands of researchers using different computers and systems. Information was scattered everywhere, and finding it was a nightmare. Berners-Lee wrote a proposal titled "Information Management: A Proposal." His boss scribbled "Vague but exciting" on the cover.</p>
+
+            <p>By Christmas 1990, Berners-Lee had built the foundational pieces of what he called the <strong>World Wide Web</strong>:</p>
+
+            <div class="info-box">
+                <div class="info-box-title">The Three Pillars of the Web</div>
+                <ul>
+                    <li><strong>HTML (HyperText Markup Language):</strong> A simple language for creating documents with links to other documents</li>
+                    <li><strong>HTTP (HyperText Transfer Protocol):</strong> The rules for how web browsers request and receive pages from servers</li>
+                    <li><strong>URLs (Uniform Resource Locators):</strong> Addresses that uniquely identify every resource on the web</li>
+                </ul>
+            </div>
+
+            <p>He also built the first web browser (which was also an editor) and the first web server. The first website, info.cern.ch, went live in August 1991. It explained what the World Wide Web was and how to use it.</p>
+
+            <p>Crucially, Berners-Lee convinced CERN to release the web's underlying code royalty-free in April 1993. Anyone could build on it without paying licensing fees. This decision, more than any technical innovation, enabled the web's explosive growth. Had CERN charged for the technology, the web might have remained a niche tool for academics.</p>
+
+            <h2>Mosaic and the Browser Wars</h2>
+            <p>The early web was text-based and ugly. In 1993, Marc Andreessen and Eric Bina at the University of Illinois created <strong>Mosaic</strong>, the first web browser that could display images inline with text. It had a graphical interface that non-technical people could actually use. Mosaic made the web accessible to everyone.</p>
+
+            <p>Andreessen left to co-found Netscape, which released Netscape Navigator in 1994. It became the dominant browser almost overnight. Then Microsoft noticed. In 1995, Microsoft released Internet Explorer and bundled it free with Windows. The "browser wars" had begun.</p>
+
+            <p>By 1994, the web had 10,000 servers, 2,000 of them commercial. Traffic was equivalent to transmitting the complete works of Shakespeare every second. By 1996, "surfing the web" had entered everyday language. Companies rushed to establish websites. The dot-com boom was beginning.</p>
+
+            <h2>The Commercial Internet</h2>
+            <p>ARPANET was officially decommissioned in 1990, its mission complete. The NSFNET backbone, which had carried most internet traffic through the late 1980s, was privatized in 1995. The internet was no longer a government project; it was a commercial platform.</p>
+
+            <p>What followed was an explosion. Amazon launched in 1994, selling books online. eBay started in 1995, proving that strangers would buy from strangers over the internet. Google arrived in 1998, solving the problem of finding things on an increasingly vast web. Each of these companies would eventually be worth hundreds of billions of dollars.</p>
+
+            <p>The dot-com bubble inflated through the late 1990s as investors poured money into any company with ".com" in its name. It burst spectacularly in 2000, wiping out trillions in market value. Many companies disappeared. But the underlying technology kept advancing, and the survivors (Amazon, eBay, Google) emerged stronger than ever.</p>
+
+            <h2>Web 2.0 and Social Media</h2>
+            <p>The early web was mostly read-only. You visited websites and consumed content created by someone else. Around 2004, a shift began. New platforms made it easy for anyone to create and share content. The term "Web 2.0" emerged to describe this participatory web.</p>
+
+            <p>Facebook launched from a Harvard dorm room in 2004. YouTube made video sharing trivial in 2005. Twitter introduced microblogging in 2006. The iPhone arrived in 2007, putting the internet in everyone's pocket. Instagram (2010), Snapchat (2011), and TikTok (2016) followed, each capturing attention in new ways.</p>
+
+            <p>Social media connected billions of people, enabled movements, and toppled governments. It also spread misinformation, enabled surveillance, and raised profound questions about privacy and mental health. The internet's creators never anticipated that their communication tool would reshape politics, relationships, and human psychology.</p>
+
+            <h2>The Internet Today</h2>
+            <p>As of 2025, over <strong>5.4 billion people</strong> use the internet, roughly 67% of the world's population. The average person spends nearly 7 hours online daily. The internet carries email, video calls, streaming entertainment, banking, shopping, work, education, and countless other activities that would have seemed like science fiction in 1969.</p>
+
+            <p>The infrastructure has grown beyond anything the original architects imagined. Undersea cables span oceans. Data centers consume as much electricity as small countries. Satellites beam internet to remote areas. The "cloud" is really just other people's computers, millions of them, distributed around the world.</p>
+
+            <p>Yet the fundamental protocols remain remarkably similar to what Cerf and Kahn designed in the 1970s. TCP/IP still routes packets. DNS still translates names to addresses. The web still runs on HTTP and HTML, though both have evolved considerably. The internet's original design was so robust that it has scaled from four nodes to billions of devices without fundamental changes to its architecture.</p>
+
+            <h2>What Comes Next?</h2>
+            <p>The internet continues evolving. IPv6 is slowly replacing IPv4, providing enough addresses for every grain of sand on Earth to have its own IP. Encryption has become standard, protecting (most) traffic from surveillance. New protocols like HTTP/3 improve performance. Decentralized technologies promise to reduce reliance on giant platforms, though whether they'll succeed remains uncertain.</p>
+
+            <p>Artificial intelligence is transforming how we interact with information. Search engines increasingly provide answers rather than links. Chatbots handle customer service. Algorithms decide what content we see. The internet is becoming less a place we visit and more an invisible layer underlying everything we do.</p>
+
+            <p>The story of the internet is ultimately a story about connection. A Cold War project to survive nuclear war became a tool for scientists to share research, then a platform for commerce, then a global social network. What started with a crashed "LOGIN" message between two California universities now carries the hopes, fears, creativity, and conflicts of humanity itself.</p>
+
+            <blockquote>
+                <p>"The internet is not a thing, a place, a single technology, or a mode of governance. It is an agreement."</p>
+                <cite>John Perry Barlow</cite>
+            </blockquote>
+
+            <div class="sources">
+                <h2>Sources</h2>
+                <ol>
+                    <li id="ref1">CERN. (2024). The Birth of the Web. <a href="https://home.cern/science/computing/birth-web" target="_blank">home.cern</a></li>
+                    <li id="ref2">Internet Society. (2016). Final Report on TCP/IP Migration in 1983. <a href="https://www.internetsociety.org/blog/2016/09/final-report-on-tcpip-migration-in-1983/" target="_blank">internetsociety.org</a></li>
+                    <li id="ref3">Computer History Museum. (2024). Internet History Timeline.</li>
+                    <li id="ref4">Leiner, B. M., et al. (2009). A Brief History of the Internet. ACM SIGCOMM Computer Communication Review.</li>
+                    <li id="ref5">World Wide Web Foundation. (2024). History of the Web. <a href="https://webfoundation.org/about/vision/history-of-the-web/" target="_blank">webfoundation.org</a></li>
+                </ol>
+            </div>
+        </article>
+    </main>
+
+    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>
