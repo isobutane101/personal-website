@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = '../login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaFold: The AI That Solved Biology's 50-Year Grand Challenge | Adi Desai</title>
+    <meta name="description" content="How DeepMind's AlphaFold cracked the protein folding problem and revolutionized structural biology, earning the 2024 Nobel Prize.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./post.css">
+</head>
+<body id="top">
+
+    <nav class="nav">
+        <a href="../index.html">about me</a>
+        <a href="../projects.html">projects</a>
+        <a href="../interests.html">interests</a>
+        <a href="../awards.html">awards & publications</a>
+    </nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <a href="../blog.html" class="back-link">← Back to Blog</a>
+            <div class="article-meta">
+                <span class="article-date">August 04, 2025</span>
+                <span class="article-reading">11 min read</span>
+            </div>
+            <h1 class="article-title">AlphaFold: The AI That Solved Biology's Grand Challenge</h1>
+            <p class="article-subtitle">How DeepMind cracked the 50-year-old protein folding problem in just four years, transforming structural biology and earning the 2024 Nobel Prize in Chemistry.</p>
+            <div class="article-tags">
+                <span class="article-tag">Innovation</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="key-stats">
+        <div class="key-stats-content">
+            <div class="key-stat">
+                <div class="key-stat-value">200M+</div>
+                <div class="key-stat-label">Proteins predicted</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">50 years</div>
+                <div class="key-stat-label">Problem age</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">2024</div>
+                <div class="key-stat-label">Nobel Prize</div>
+            </div>
+            <div class="key-stat">
+                <div class="key-stat-value">&lt;1 Å</div>
+                <div class="key-stat-label">Median accuracy (RMSD)</div>
+            </div>
+        </div>
+    </section>
+
+    <main class="article-content">
+        <article class="article-body">
+            <h2>What is the Protein Folding Problem?</h2>
+            <p>Proteins are the molecular machines of life: enzymes, antibodies, receptors, structural components. They're made of chains of amino acids, but a protein's function depends on its <strong>three-dimensional structure</strong>: how that chain folds into a precise 3D shape.</p>
+
+            <p>The <strong>protein folding problem</strong>: given just the sequence of amino acids (determined from the gene), can we predict the protein's 3D structure? The amino acid sequence is the "instructions"; the 3D structure is the "result" of those instructions. But the folding process is incredibly complex.</p>
+
+            <div class="info-box">
+                <div class="info-box-title">Why Folding Is Hard</div>
+                <ul>
+                    <li><strong>Combinatorial explosion:</strong> A 100-amino-acid protein has ~10^100 possible conformations</li>
+                    <li><strong>Levinthal's paradox:</strong> Random sampling would take longer than the age of the universe</li>
+                    <li><strong>Complex physics:</strong> Hydrogen bonds, electrostatics, van der Waals forces, hydrophobic effects</li>
+                    <li><strong>Subtle effects:</strong> Tiny sequence changes can dramatically alter structure</li>
+                </ul>
+            </div>
+
+            <h2>Why It Matters</h2>
+            <p>Knowing a protein's structure reveals how it works, and how to intervene when it malfunctions:</p>
+
+            <ul>
+                <li><strong>Drug design:</strong> Design molecules that fit into protein active sites</li>
+                <li><strong>Disease understanding:</strong> Many diseases involve misfolded proteins (Alzheimer's, Parkinson's)</li>
+                <li><strong>Enzyme engineering:</strong> Modify enzymes for industrial applications</li>
+                <li><strong>Vaccine development:</strong> Understand viral proteins to design better vaccines</li>
+            </ul>
+
+            <p>Experimentally determining structures (by X-ray crystallography, NMR, or cryo-EM) is slow, expensive, and doesn't work for all proteins. Only about 170,000 structures had been experimentally solved, out of hundreds of millions of known protein sequences.</p>
+
+            <h2>50 Years of Attempts</h2>
+            <p>In 1972, <strong>Christian Anfinsen</strong> won the Nobel Prize for showing that a protein's structure is determined by its amino acid sequence; the folding information is encoded in the sequence itself.<a href="#ref5" class="cite">[5]</a> This implied prediction should be possible.</p>
+
+            <p>For 50 years, researchers tried various approaches:</p>
+            <ul>
+                <li><strong>Homology modeling:</strong> If a protein resembles one with known structure, use that as a template</li>
+                <li><strong>Physics-based simulation:</strong> Model the physical forces and let the protein "fold" computationally</li>
+                <li><strong>Fragment assembly:</strong> Assemble structures from known structural fragments</li>
+                <li><strong>Machine learning:</strong> Train models to predict aspects of structure</li>
+            </ul>
+
+            <p>Progress was made, but accuracy remained limited, especially for proteins unlike any with known structures.</p>
+
+            <h2>CASP: The Critical Competition</h2>
+            <p>In 1994, <strong>John Moult</strong> organized the first <strong>CASP</strong> (Critical Assessment of protein Structure Prediction), a blind competition where researchers predict structures of proteins whose structures are known but not yet public.</p>
+
+            <p>CASP became the field's benchmark. For years, scores plateaued around 40-60 on the GDT (Global Distance Test) scale, where 100 means perfect prediction. The problem seemed intractable.</p>
+
+            <h2>DeepMind Enters (2016-2018)</h2>
+            <p><strong>DeepMind</strong>, the London-based AI company (owned by Alphabet/Google), had made headlines with AlphaGo defeating the world champion at Go. In 2016, they turned their attention to protein folding.</p>
+
+            <p>Led by <strong>Demis Hassabis</strong> (DeepMind co-founder and CEO) and <strong>John Jumper</strong> (senior researcher), a team began developing AlphaFold.</p>
+
+            <h3>AlphaFold 1 (CASP13, 2018)</h3>
+            <p>The first version competed in CASP13 and won decisively, achieving GDT scores around 60, well above competitors. It used deep learning to predict distances between amino acid pairs, then optimized structures to match those predictions.</p>
+
+            <p>It was impressive but not yet transformative. The structures weren't accurate enough for many applications.</p>
+
+            <h2>AlphaFold 2: The Breakthrough (CASP14, 2020)</h2>
+            <p>In November 2020, AlphaFold 2 competed in CASP14. The results stunned the field:<a href="#ref1" class="cite">[1]</a></p>
+
+            <ul>
+                <li><strong>Median GDT score: ~92</strong> (competitors around 60-70)</li>
+                <li><strong>Many predictions indistinguishable from experimental structures</strong></li>
+                <li><strong>Accuracy at atomic level</strong>, often &lt;1 Angstrom error</li>
+            </ul>
+
+            <blockquote>
+                <p>"This is a problem that I was beginning to think would not get solved in my lifetime."</p>
+                <cite>- John Moult, CASP founder<a href="#ref4" class="cite">[4]</a></cite>
+            </blockquote>
+
+            <h3>How It Works</h3>
+            <p>AlphaFold 2 introduced several innovations:</p>
+
+            <ol>
+                <li><strong>Attention mechanisms:</strong> Uses "Evoformer" blocks that let distant parts of the sequence influence each other, capturing long-range interactions crucial for folding</li>
+                <li><strong>Multiple sequence alignments:</strong> Analyzes evolutionary relatives of the target protein, extracting co-evolution information that constrains structure</li>
+                <li><strong>Iterative refinement:</strong> Predicts structure, then feeds that prediction back to improve it</li>
+                <li><strong>End-to-end learning:</strong> Trained directly on protein structures, learning features automatically</li>
+            </ol>
+
+            <h2>The Key People</h2>
+
+            <h3>Demis Hassabis</h3>
+            <p>Co-founder and CEO of DeepMind. A former chess prodigy and game designer, Hassabis pursued the goal of "solving intelligence, and then using that to solve everything else." Protein folding was a test case.</p>
+
+            <h3>John Jumper</h3>
+            <p>Lead researcher on AlphaFold 2. A physicist by training, Jumper brought deep understanding of both machine learning and protein biophysics. He architected the technical approach that achieved the breakthrough.</p>
+
+            <p>Hassabis and Jumper shared the <strong>2024 Nobel Prize in Chemistry</strong> for AlphaFold, along with <strong>David Baker</strong> for related work on computational protein design.<a href="#ref3" class="cite">[3]</a></p>
+
+            <h2>Impact: Revolutionizing Biology</h2>
+
+            <h3>The AlphaFold Database</h3>
+            <p>In 2021, DeepMind released predicted structures for 98.5% of human proteins, then expanded to <strong>over 200 million proteins</strong> from across the tree of life.<a href="#ref2" class="cite">[2]</a> This free database contains more structures than had been experimentally determined in the entire history of structural biology.</p>
+
+            <h3>Applications</h3>
+            <ul>
+                <li><strong>Drug discovery:</strong> Understanding targets, designing better drugs faster</li>
+                <li><strong>Understanding disease:</strong> Predicting effects of mutations</li>
+                <li><strong>Vaccine development:</strong> Designing antigens for vaccines</li>
+                <li><strong>Enzyme engineering:</strong> Creating enzymes for plastics degradation, biofuels, etc.</li>
+                <li><strong>Basic research:</strong> Hypothesis generation for protein function</li>
+            </ul>
+
+            <p>COVID-19 research benefited immediately. AlphaFold was used to study SARS-CoV-2 proteins and potential drug targets.</p>
+
+            <h2>Limitations and Future</h2>
+            <p>AlphaFold isn't perfect:</p>
+
+            <ul>
+                <li><strong>Disordered regions:</strong> Some proteins lack fixed structures; AlphaFold flags low confidence</li>
+                <li><strong>Protein complexes:</strong> Predicting how multiple proteins interact is harder; AlphaFold-Multimer addresses this</li>
+                <li><strong>Dynamics:</strong> Proteins move; AlphaFold gives static structures</li>
+                <li><strong>Novel folds:</strong> Very unusual proteins with no evolutionary relatives remain challenging</li>
+            </ul>
+
+            <p>The next frontier includes protein design (creating proteins with desired functions), understanding dynamics, and predicting effects of drugs and mutations.</p>
+
+            <h2>Legacy</h2>
+            <p>AlphaFold represents a paradigm shift:</p>
+
+            <ul>
+                <li><strong>AI can solve fundamental science problems</strong> previously thought intractable</li>
+                <li><strong>50 years of work solved in 4 years</strong>, once the right approach was found</li>
+                <li><strong>Open science:</strong> DeepMind released code and predictions freely</li>
+            </ul>
+
+            <p>The protein folding problem, once the "holy grail" of computational biology, has been essentially solved. AlphaFold is already one of the most impactful AI applications in science, with ripples that will be felt for decades.</p>
+
+            <div class="sources">
+                <h2>Sources</h2>
+                <ol>
+                    <li id="ref1">Jumper, J., et al. (2021). Highly accurate protein structure prediction with AlphaFold. Nature, 596(7873), 583-589.</li>
+                    <li id="ref2">Varadi, M., et al. (2022). AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space. Nucleic Acids Research, 50(D1), D419-D426.</li>
+                    <li id="ref3">NobelPrize.org. (2024). The Nobel Prize in Chemistry 2024. <a href="https://www.nobelprize.org/prizes/chemistry/2024/summary/" target="_blank">nobelprize.org</a></li>
+                    <li id="ref4">Service, R. F. (2020). 'The game has changed.' AI triumphs at solving protein structures. Science, 370(6521), 1144-1145.</li>
+                    <li id="ref5">Anfinsen, C. B. (1973). Principles that govern the folding of protein chains. Science, 181(4096), 223-230.</li>
+                </ol>
+            </div>
+        </article>
+    </main>
+
+    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>

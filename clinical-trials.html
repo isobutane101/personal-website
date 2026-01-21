@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Representation in Clinical Trials — Adi Desai</title>
+    <meta name="description" content="Research examining global representation in cancer clinical trials, presented at ESMO Congress 2025 in Berlin, Germany.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Project Page - Alternate Theme */
+        .project-hero {
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #c9a227;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+        }
+
+        .project-meta span.highlight {
+            background: #c9a227;
+            color: #fff;
+            border-color: #c9a227;
+        }
+
+        .project-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tagline {
+            font-size: 1.125rem;
+            color: #555;
+            max-width: 750px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: #666;
+        }
+
+        /* Content Sections */
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            font-size: 0.75rem;
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .section-body p {
+            font-size: 1.0625rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body p.lead {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        /* Key Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #c9a227;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-detail {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .highlight-box p {
+            font-size: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Question Box */
+        .question-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .question-box p {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem !important;
+            color: #1a1a1a;
+            margin-bottom: 0 !important;
+            font-style: italic;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: #fafafa;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .data-table th {
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            font-size: 0.9375rem;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: #fff;
+        }
+
+        .data-table .highlight-cell {
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .data-table .negative {
+            color: #d9534f;
+        }
+
+        /* Findings Cards */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .finding-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .finding-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .finding-card:hover {
+            border-color: #c9a227;
+        }
+
+        .finding-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .finding-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .finding-card p {
+            font-size: 0.9375rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        .finding-card .stat {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            color: #c9a227;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Methods List */
+        .methods-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .method-item {
+            display: flex;
+            gap: 1.25rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .method-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .method-item:hover {
+            border-color: #c9a227;
+        }
+
+        .method-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .method-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: #c9a227;
+            opacity: 0.5;
+            line-height: 1;
+            min-width: 30px;
+        }
+
+        .method-content h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .method-content p {
+            font-size: 0.9375rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Implications */
+        .implications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .implication-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .implication-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .implication-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .implication-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .implication-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .implication-card p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Mentor Card */
+        .mentor-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+            max-width: 500px;
+        }
+
+        .mentor-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            color: #1a1a1a;
+        }
+
+        .mentor-card .title {
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-bottom: 0.75rem;
+        }
+
+        .mentor-card p {
+            font-size: 0.9rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+        }
+
+        /* Presentation Badge */
+        .presentation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .presentation-badge .icon {
+            font-size: 1.5rem;
+        }
+
+        .presentation-badge .text {
+            font-size: 0.9rem;
+        }
+
+        .presentation-badge .venue {
+            font-weight: 600;
+            color: #c9a227;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .project-content {
+                padding: 0 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .implications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .method-item {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .data-table {
+                font-size: 0.875rem;
+            }
+
+            .data-table th, .data-table td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="project-hero">
+        <div class="hero-content">
+            <a href="./projects.html" class="back-link">← Back to Projects</a>
+            <div class="project-meta">
+                <span>March 2025 — Present</span>
+                <span>Clinical Research</span>
+                <span class="highlight">ESMO 2025</span>
+            </div>
+            <h1>Global Representation in Cancer Clinical Trials</h1>
+            <p class="project-subtitle">MD Anderson Cancer Center</p>
+            <p class="project-tagline">First author on research examining how globalization has altered geographic representation in pivotal hematology/oncology trials. Presented at the European Society of Medical Oncology (ESMO) Congress 2025 in Berlin, Germany.</p>
+            <div class="project-tags">
+                <span>Clinical Research</span>
+                <span>Data Analysis</span>
+                <span>FDA Drug Approvals</span>
+                <span>Health Equity</span>
+                <span>Systematic Review</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="project-content">
+
+        <!-- Overview -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Overview</h2>
+            </div>
+            <div class="section-body">
+                <p class="lead">Hematology and oncology trials have undergone rapid globalization, shifting from academic centers in high-income countries to hundreds of sites across diverse regions worldwide.</p>
+
+                <p>While globalization potentially accelerates enrollment, increases accessibility, and broadens market access, it can paradoxically alter relative participation among different regions. Underrepresentation of populations in clinical trials based on race and regional imbalances can mar the generalizability of findings.</p>
+
+                <div class="question-box">
+                    <p>How has globalization altered geographic representation in pivotal cancer trials, and is North America's patient contribution disproportionately less relative to its site representation?</p>
+                </div>
+
+                <div class="presentation-badge">
+                    <span class="icon">📍</span>
+                    <span class="text">Poster Presentation <span class="venue">2310P</span> at ESMO Congress 2025, Berlin, Germany</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Key Findings</h2>
+            </div>
+            <div class="section-body">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">147</span>
+                        <span class="stat-label">Drugs Analyzed</span>
+                        <span class="stat-detail">FDA approvals 2022-2025</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">155</span>
+                        <span class="stat-label">Clinical Trials</span>
+                        <span class="stat-detail">Pivotal registrational studies</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">51%</span>
+                        <span class="stat-label">No Geographic Data</span>
+                        <span class="stat-detail">Trials not reporting contribution</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">90%</span>
+                        <span class="stat-label">Global Trials</span>
+                        <span class="stat-detail">Run across multiple countries</span>
+                    </div>
+                </div>
+
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <span class="stat">77% → 65%</span>
+                        <h4>High-Income Countries</h4>
+                        <p>HICs comprised 77% of all trial sites but enrolled only 65% of patients (P < 0.0001). Contribution was disproportionately low relative to site representation.</p>
+                    </div>
+                    <div class="finding-card">
+                        <span class="stat">24% → 16%</span>
+                        <h4>US/Canada Specifically</h4>
+                        <p>US/Canada constituted 24.3% of all sites but contributed only 15.6% of patients—the largest disparity of any region (P < 0.0001).</p>
+                    </div>
+                    <div class="finding-card">
+                        <span class="stat">24% → 35%</span>
+                        <h4>Asia Over-Contributing</h4>
+                        <p>Asia comprised 24% of sites but enrolled 35% of patients—contributing more patients relative to their site representation.</p>
+                    </div>
+                    <div class="finding-card">
+                        <span class="stat">36%</span>
+                        <h4>Subgroup Analysis</h4>
+                        <p>Only 36% of global trials that reported geographic distribution performed subgroup analysis of primary endpoint based on region.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regional Breakdown -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Regional Breakdown</h2>
+            </div>
+            <div class="section-body">
+                <p>Analysis of site representation versus patient contribution across major regions:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country/Region</th>
+                            <th>Sites</th>
+                            <th>Patients</th>
+                            <th>Disparity</th>
+                            <th>P-value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>North America (US/Canada)</td>
+                            <td>23.5%</td>
+                            <td>15.9%</td>
+                            <td class="negative">-7.6%</td>
+                            <td class="highlight-cell">< 0.001</td>
+                        </tr>
+                        <tr>
+                            <td>Europe</td>
+                            <td>49.3%</td>
+                            <td>47.0%</td>
+                            <td class="negative">-2.3%</td>
+                            <td class="highlight-cell">0.010</td>
+                        </tr>
+                        <tr>
+                            <td>Australia</td>
+                            <td>3.2%</td>
+                            <td>2.2%</td>
+                            <td class="negative">-1.0%</td>
+                            <td class="highlight-cell">< 0.001</td>
+                        </tr>
+                        <tr>
+                            <td>Asia</td>
+                            <td>24.0%</td>
+                            <td>35.0%</td>
+                            <td style="color: #5cb85c; font-weight: 600;">+11.0%</td>
+                            <td class="highlight-cell">< 0.001</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <h3>Trial Characteristics</h3>
+                    <p>90% of trials were global in nature, run across a median of 16 countries (range: 2-38) involving a median of 114 sites (range: 1-597). The number of sites in participating HICs was significantly higher than others (median: 25 vs 16; P = 0.008).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methods -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Methods</h2>
+            </div>
+            <div class="section-body">
+                <p>I conducted a systematic review of all Hematology and Oncology FDA drug approvals between June 2022 and June 2025:</p>
+
+                <div class="methods-list">
+                    <div class="method-item">
+                        <span class="method-number">1</span>
+                        <div class="method-content">
+                            <h4>Data Source Identification</h4>
+                            <p>FDA approvals were identified using the publicly available Hematology/Oncology Approvals and Safety Notifications archive. Primary reports obtained from PubMed and ClinicalTrials.gov.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">2</span>
+                        <div class="method-content">
+                            <h4>Variable Extraction</h4>
+                            <p>Extracted key variables including drug name, approval type, phase, sponsor, trial design, duration, number of sites, participating countries, total enrollment, and patient demographics by race and country.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">3</span>
+                        <div class="method-content">
+                            <h4>Income Classification</h4>
+                            <p>Global enrollment was analyzed by country income classification per World Bank classification and region to assess trial diversity and representation.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">4</span>
+                        <div class="method-content">
+                            <h4>Statistical Analysis</h4>
+                            <p>Used descriptive statistics and Fisher exact test to evaluate proportional global representation and identify disproportionate participation between income groups.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Standardized Methodology</h3>
+                    <p>Developed standardized methodology using ClinicalTrials.gov to ensure data consistency. Trials without full publications or clinical registry entries were excluded from analysis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why This Matters -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Why This Matters</h2>
+            </div>
+            <div class="section-body">
+                <p>The FDA has recently emphasized US representation in clinical trials. Drug applications have had unfavorable outcomes for failing to meet this standard. Understanding these trends is critical for ensuring equity and generalizability of research.</p>
+
+                <div class="implications-grid">
+                    <div class="implication-card">
+                        <h4>Generalizability of Results</h4>
+                        <p>When populations are underrepresented in clinical trials, findings may not be generalizable to the broader patient population who will ultimately receive these treatments.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Regulatory Implications</h4>
+                        <p>The FDA's emphasis on US representation means trials with disproportionate enrollment may face regulatory challenges during the approval process.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Health Equity</h4>
+                        <p>Systematic exclusion of certain populations from cutting-edge treatments perpetuates health disparities and limits access to innovative therapies.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Scientific Efficiency</h4>
+                        <p>Missing genetic diversity that could reveal important treatment variations reduces the scientific value of trials and may miss population-specific effects.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    <h3>Plain Language Summary</h3>
+                    <p>Clinical trials for cancer drugs are performed worldwide. While this increases accessibility to research globally, it's not clear how this has affected participation of individual countries. We found that nearly half of trials don't report patient contribution by region, and high-income countries like US/Canada contribute fewer patients than expected based on their number of trial sites. With globalization, it's important to ensure patients across the world are well represented so that results are generalizable to the population.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentorship -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Mentorship</h2>
+            </div>
+            <div class="section-body">
+                <div class="mentor-card">
+                    <h4>Dr. Kanwal Raghav, MD</h4>
+                    <p class="title">Gastrointestinal Medical Oncology, MD Anderson Cancer Center</p>
+                    <p>Dr. Raghav's guidance was instrumental in developing the research methodology and interpreting the clinical significance of our findings. His expertise in oncology clinical trials provided essential context for understanding global trial dynamics.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>

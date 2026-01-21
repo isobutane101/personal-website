@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quorum-Sensing Research — Adi Desai</title>
+    <meta name="description" content="Investigating evolutionary trade-offs in Pseudomonas aeruginosa quorum-sensing mutations from cystic fibrosis patients at the Dandekar Lab, University of Washington.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Project Page - Alternate Theme */
+        .project-hero {
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #c9a227;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+        }
+
+        .project-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tagline {
+            font-size: 1.125rem;
+            color: #555;
+            max-width: 750px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: #666;
+        }
+
+        /* Content Sections */
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            font-size: 0.75rem;
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .section-body p {
+            font-size: 1.0625rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body p.lead {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        .section-body p em {
+            font-style: italic;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: #1a1a1a;
+        }
+
+        .highlight-box p {
+            font-size: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Question Box */
+        .question-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .question-box p {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.375rem !important;
+            color: #1a1a1a;
+            margin-bottom: 0 !important;
+            font-style: italic;
+        }
+
+        /* Mutations Grid */
+        .mutations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .mutation-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .mutation-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .mutation-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .mutation-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .mutation-name {
+            font-family: monospace;
+            font-size: 1.25rem;
+            color: #c9a227;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .mutation-location {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .mutation-desc {
+            font-size: 0.875rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Experiment Steps */
+        .experiment-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .experiment-step {
+            display: flex;
+            gap: 1.5rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .experiment-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .experiment-step:hover {
+            border-color: #c9a227;
+        }
+
+        .experiment-step:hover::before {
+            transform: scaleY(1);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            color: #c9a227;
+            opacity: 0.5;
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .step-content h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .step-content p {
+            font-size: 0.9375rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Techniques Grid */
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .technique-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .technique-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .technique-card:hover {
+            border-color: #c9a227;
+        }
+
+        .technique-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .technique-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: #1a1a1a;
+        }
+
+        .technique-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .technique-card li {
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.4rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            border-bottom: 1px solid #eee;
+        }
+
+        .technique-card li:last-child {
+            border-bottom: none;
+        }
+
+        .technique-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #c9a227;
+        }
+
+        /* Findings */
+        .finding-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .finding-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .finding-card p {
+            font-size: 1rem !important;
+            line-height: 1.7 !important;
+        }
+
+        /* Implications Grid */
+        .implications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .implication-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .implication-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .implication-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .implication-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .implication-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .implication-card p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Team/Mentor */
+        .mentor-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 1.75rem 2rem;
+            max-width: 500px;
+        }
+
+        .mentor-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+            color: #1a1a1a;
+        }
+
+        .mentor-card .title {
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-bottom: 0.75rem;
+        }
+
+        .mentor-card p {
+            font-size: 0.9rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .mutations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .techniques-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .project-content {
+                padding: 0 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .implications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experiment-step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .step-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="project-hero">
+        <div class="hero-content">
+            <a href="./projects.html" class="back-link">← Back to Projects</a>
+            <div class="project-meta">
+                <span>June 2025 — Present</span>
+                <span>Research Internship</span>
+            </div>
+            <h1>Quorum-Sensing Mutations in <em>Pseudomonas aeruginosa</em></h1>
+            <p class="project-subtitle">Dandekar Lab, University of Washington</p>
+            <p class="project-tagline">Investigating evolutionary trade-offs in bacterial communication mutations from cystic fibrosis patients. Understanding why bacteria evolve to lose seemingly essential functions—and how this becomes advantageous.</p>
+            <div class="project-tags">
+                <span>Molecular Biology</span>
+                <span>Microbial Evolution</span>
+                <span>Flow Cytometry</span>
+                <span>Allelic Exchange</span>
+                <span>Benchling</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="project-content">
+
+        <!-- The Observation -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>The Observation</h2>
+            </div>
+            <div class="section-body">
+                <p class="lead">When I sequenced <em>Pseudomonas aeruginosa</em> isolates from cystic fibrosis patients, I found that <em>lasR</em> mutations—which seemingly cripple quorum sensing and bacterial communication—were remarkably common.</p>
+
+                <p>This seems paradoxical. Quorum sensing coordinates virulence, biofilm formation, and resource acquisition. These are essential functions for bacterial survival and infection. Yet these "defective" mutants thrive in the CF lung environment.</p>
+
+                <div class="question-box">
+                    <p>Do these mutations confer an advantage of some sort?</p>
+                </div>
+
+                <p>My hypothesis is that these mutants become <strong>metabolic cheaters</strong>, exploiting public goods produced by cooperative neighbors without paying the production costs. Some mutations might also help bacteria evade immune detection by reducing virulence factor expression.</p>
+            </div>
+        </section>
+
+        <!-- Research Questions -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Research Questions</h2>
+            </div>
+            <div class="section-body">
+                <div class="highlight-box">
+                    <h3>Primary Question</h3>
+                    <p>Why do bacteria evolve to lose seemingly essential functions, and how does this become advantageous in the cystic fibrosis lung environment?</p>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 1rem;">
+                    <h3>Secondary Question</h3>
+                    <p>How do different clinically observed <em>lasR</em> mutations alter quorum-sensing behavior and fitness in distinct, mutation-specific ways rather than causing a uniform loss of function?</p>
+                </div>
+
+                <p style="margin-top: 2rem;">The A231V mutation sits in the ligand-binding domain, while R216W affects the DNA-binding region. When I analyzed my data, I discovered these mutations produce distinct growth curves, suggesting they impact cellular signaling in fundamentally different ways rather than converging on the same loss-of-function outcome.</p>
+
+                <p><strong>Evolution has multiple pathways to similar selective pressures.</strong></p>
+            </div>
+        </section>
+
+        <!-- The Mutations -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>The Mutations</h2>
+            </div>
+            <div class="section-body">
+                <p>I reconstructed three clinically observed <em>lasR</em> mutations in controlled laboratory strains using allelic exchange mutagenesis:</p>
+
+                <div class="mutations-grid">
+                    <div class="mutation-card">
+                        <div class="mutation-name">A231V</div>
+                        <div class="mutation-location">Ligand-Binding Domain</div>
+                        <p class="mutation-desc">Alanine to Valine substitution at position 231. Affects how the protein binds to its signaling molecule.</p>
+                    </div>
+                    <div class="mutation-card">
+                        <div class="mutation-name">R216W</div>
+                        <div class="mutation-location">DNA-Binding Region</div>
+                        <p class="mutation-desc">Arginine to Tryptophan substitution at position 216. Impacts how the protein interacts with DNA to regulate genes.</p>
+                    </div>
+                    <div class="mutation-card">
+                        <div class="mutation-name">R216W+M230I</div>
+                        <div class="mutation-location">Double Mutation</div>
+                        <p class="mutation-desc">Combined mutation with an additional Methionine to Isoleucine change. Creates a compound regulatory effect.</p>
+                    </div>
+                </div>
+
+                <p>These mutations were chosen because they represent different functional domains and were frequently observed in clinical isolates. By reconstructing them in isogenic backgrounds, I can isolate the effects of each mutation without confounding genetic variation.</p>
+            </div>
+        </section>
+
+        <!-- Experimental Approach -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Experimental Approach</h2>
+            </div>
+            <div class="section-body">
+                <p>The project progressed through five main experimental phases:</p>
+
+                <div class="experiment-steps">
+                    <div class="experiment-step">
+                        <span class="step-number">1</span>
+                        <div class="step-content">
+                            <h4>Engineer Mutations in the Gene</h4>
+                            <p>Used allelic exchange mutagenesis to reconstruct the three clinically observed mutations in PAO1 laboratory strains. This involved preparing competent cells, running PCR amplifications, assembling homology arms and selection markers via Gibson assembly, and performing electroporation. Screened 20+ colonies via colony PCR genotyping to identify recombinants and verified through sequencing.</p>
+                        </div>
+                    </div>
+
+                    <div class="experiment-step">
+                        <span class="step-number">2</span>
+                        <div class="step-content">
+                            <h4>Build Reporter Plasmids</h4>
+                            <p>Designed and constructed four fluorescent reporter strains to track expression of different quorum-sensing regulons. Each reporter was built through PCR amplification, Gibson assembly, and sequence verification. These reporters allow real-time visualization of gene expression changes caused by each mutation.</p>
+                        </div>
+                    </div>
+
+                    <div class="experiment-step">
+                        <span class="step-number">3</span>
+                        <div class="step-content">
+                            <h4>Measure Gene Expression</h4>
+                            <p>Independently set up, executed, and analyzed quantitative plate reader assays measuring optical density and fluorescence across 12-24 hour growth curves. Performed data analysis using GraphPad Prism to generate growth curves, normalize fluorescence, and perform statistical comparisons between mutant and wild-type strains.</p>
+                        </div>
+                    </div>
+
+                    <div class="experiment-step">
+                        <span class="step-number">4</span>
+                        <div class="step-content">
+                            <h4>Test Competitive Advantage</h4>
+                            <p>Designed and performed flow cytometry-based competition experiments with marked strains to analyze relative fitness. Testing whether mutant strains gain fitness advantages in co-culture with wild-type strains—the "metabolic cheater" hypothesis where mutants exploit public goods produced by cooperative neighbors.</p>
+                        </div>
+                    </div>
+
+                    <div class="experiment-step">
+                        <span class="step-number">5</span>
+                        <div class="step-content">
+                            <h4>Measure Virulence Factors</h4>
+                            <p>Assess how each mutation affects the production of virulence factors controlled by quorum sensing. This helps understand whether reduced virulence factor expression contributes to immune evasion and survival in the CF lung environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Techniques & Methods -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Techniques & Methods</h2>
+            </div>
+            <div class="section-body">
+                <p>This research required integrating molecular techniques with quantitative analysis and evolutionary thinking:</p>
+
+                <div class="techniques-grid">
+                    <div class="technique-card">
+                        <h4>Molecular Cloning</h4>
+                        <ul>
+                            <li>PCR amplification</li>
+                            <li>Gibson assembly</li>
+                            <li>Primer design (Benchling)</li>
+                            <li>Plasmid minipreps</li>
+                            <li>Sequence verification</li>
+                        </ul>
+                    </div>
+
+                    <div class="technique-card">
+                        <h4>Genetic Engineering</h4>
+                        <ul>
+                            <li>Allelic exchange mutagenesis</li>
+                            <li>Electroporation</li>
+                            <li>Competent cell preparation</li>
+                            <li>Colony PCR genotyping</li>
+                            <li>Strain banking (-80°C)</li>
+                        </ul>
+                    </div>
+
+                    <div class="technique-card">
+                        <h4>Quantitative Analysis</h4>
+                        <ul>
+                            <li>Plate reader assays (OD + fluorescence)</li>
+                            <li>Flow cytometry</li>
+                            <li>Growth curve analysis</li>
+                            <li>GraphPad Prism</li>
+                            <li>Statistical comparisons</li>
+                        </ul>
+                    </div>
+
+                    <div class="technique-card">
+                        <h4>Microbiology</h4>
+                        <ul>
+                            <li>Media preparation (LB, PM, CAA)</li>
+                            <li>Aseptic technique</li>
+                            <li>Antibiotic selection</li>
+                            <li>Competition assays</li>
+                            <li>Detailed lab notebook</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Findings -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Key Findings</h2>
+            </div>
+            <div class="section-body">
+                <div class="finding-card">
+                    <h4>Distinct Regulatory Phenotypes</h4>
+                    <p>Rather than converging on identical dysfunction, the mutations produce distinct phenotypes. The A231V mutation in the ligand-binding domain and R216W mutation in the DNA-binding region show fundamentally different impacts on cellular signaling. <strong>Bacteria aren't simply losing quorum sensing—they're reconfiguring it in ways specific to each mutation.</strong></p>
+                </div>
+
+                <div class="finding-card">
+                    <h4>Multiple Evolutionary Pathways</h4>
+                    <p>Different mutations in the same gene create distinct growth curves and regulatory outcomes. This means evolution has multiple pathways to achieve similar selective pressures. Each mutation represents a different "solution" to the challenge of surviving in the CF lung environment.</p>
+                </div>
+
+                <div class="finding-card">
+                    <h4>Competitive Advantage in Co-culture</h4>
+                    <p>Preliminary observations from co-culture experiments suggest that some mutant strains do outcompete wild-type in mixed cultures, supporting the metabolic cheating hypothesis. Once I complete these studies and gather more data, I'll have a clearer picture of how these mutations contribute to bacterial fitness in polymicrobial environments.</p>
+                </div>
+
+                <p style="margin-top: 2rem;">This research taught me that evolutionary success isn't about maintaining all functions—it's about optimizing fitness in a specific environment. Loss-of-function mutations can be advantageous when they allow bacteria to exploit cooperative neighbors or evade immune detection.</p>
+            </div>
+        </section>
+
+        <!-- Why This Matters -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Why This Matters</h2>
+            </div>
+            <div class="section-body">
+                <p>Understanding these mutations has implications beyond basic science:</p>
+
+                <div class="implications-grid">
+                    <div class="implication-card">
+                        <h4>Gene Regulation Principles</h4>
+                        <p>We learn how mutations alter the function of transcriptional regulators, revealing general principles about gene regulation networks.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Evolutionary Selection</h4>
+                        <p>Understanding why certain mutants are selected helps predict bacterial evolution and adaptation in clinical settings.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Therapeutic Targets</h4>
+                        <p>These findings could inform new approaches to treating chronic <em>P. aeruginosa</em> infections by targeting quorum sensing or exploiting evolutionary trade-offs.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>CF Disease Progression</h4>
+                        <p>Understanding how bacterial populations evolve in the CF lung could help predict disease progression and inform treatment strategies.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    <h3>The Bigger Picture</h3>
+                    <p>This work connects to broader questions about how pathogens evolve resistance and adapt to host environments. Understanding these evolutionary dynamics is essential for developing durable therapies that can stay ahead of bacterial adaptation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentorship -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Mentorship</h2>
+            </div>
+            <div class="section-body">
+                <div class="mentor-card">
+                    <h4>Dr. Ajai Dandekar</h4>
+                    <p class="title">Principal Investigator, Dandekar Lab</p>
+                    <p>Dr. Dandekar's lab studies <em>Pseudomonas aeruginosa</em> signaling and evolution through genomic analysis and experimental evolution. He guided me in devising experiments and making strategic decisions about the research direction, while encouraging me to execute all the work independently.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>

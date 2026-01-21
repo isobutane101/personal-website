@@ -1,323 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adi Desai - Student Researcher & Community Advocate</title>
-
-    <meta name="description" content="Adi Desai - Student researcher at Lakeside School, Seattle. Building projects at the intersection of science, technology, and community health.">
+    <title>Adi Desai</title>
+    <meta name="description" content="Adi Desai - Student researcher at Lakeside School, Seattle.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: {
-                            DEFAULT: '#0a0a0a',
-                            elevated: '#0f0f0f',
-                        },
-                        card: {
-                            DEFAULT: '#141414',
-                            hover: '#1a1a1a',
-                        },
-                        border: {
-                            DEFAULT: '#252525',
-                            hover: '#3a3a3a',
-                        },
-                        text: {
-                            DEFAULT: '#f5f5f5',
-                            secondary: '#a0a0a0',
-                            tertiary: '#606060',
-                        },
-                        accent: {
-                            DEFAULT: '#6b8aff',
-                            secondary: '#c084fc',
-                        },
-                    },
-                    fontFamily: {
-                        sora: ['Sora', 'system-ui', 'sans-serif'],
-                    },
-                    spacing: {
-                        'section': '120px',
-                        'section-mobile': '64px',
-                        'page': '48px',
-                        'page-mobile': '24px',
-                    },
-                },
-            },
-        }
-    </script>
-
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-sora bg-bg text-text antialiased overflow-x-hidden">
-    <!-- Noise texture overlay -->
-    <div class="noise"></div>
-
-    <!-- ========================================
-         NAVIGATION
-         ======================================== -->
-    <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-page py-6 z-[1000] bg-bg/85 backdrop-blur-xl border-b border-border max-md:px-page-mobile">
-        <a href="https://adidesai.org" class="w-10 h-10 flex items-center justify-center text-xl font-semibold border border-accent rounded-full text-accent bg-bg transition-all duration-300 ease-out hover:bg-accent hover:text-bg hover:scale-105">A</a>
-        <div class="flex items-center gap-6 max-md:gap-4">
-            <a href="#about" class="text-sm text-text-secondary transition-colors duration-200 hover:text-text max-md:hidden">About</a>
-            <a href="#work" class="text-sm text-text-secondary transition-colors duration-200 hover:text-text max-md:hidden">Work</a>
-            <a href="#contact" class="px-5 py-2.5 text-sm border border-accent rounded-full text-accent transition-all duration-300 ease-out hover:bg-accent hover:text-bg hover:-translate-y-0.5">Contact</a>
-        </div>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html" class="active">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
     </nav>
 
-    <!-- ========================================
-         HERO SECTION
-         ======================================== -->
-    <header class="min-h-screen flex flex-col justify-center px-page relative max-md:px-page-mobile">
-        <div class="max-w-3xl">
-            <div class="flex items-center gap-4 mb-6">
-                <span class="w-12 h-px bg-gradient-to-r from-accent to-accent-secondary"></span>
-                <span class="text-sm text-accent uppercase tracking-widest">Student & Researcher</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1 class="name">adi desai</h1>
+                <p class="tagline">student researcher & community advocate</p>
             </div>
-            <h1 class="text-[clamp(3.5rem,12vw,8rem)] font-semibold leading-none tracking-tight mb-8 bg-gradient-to-br from-text via-text to-text-secondary bg-clip-text text-transparent max-md:text-[clamp(2.5rem,15vw,4rem)]">Adi Desai</h1>
-            <p class="text-xl font-light text-text-secondary max-w-lg leading-relaxed mb-10">
-                High school junior building at the intersection of <span class="text-text">biomedical engineering</span>, <span class="text-text">community health</span>, and <span class="text-text">technology</span>. Based in Seattle.
+
+            <div class="hero-photo">
+                <img src="./photos/profile.jpg" alt="Adi Desai" onerror="this.parentElement.classList.add('no-image')">
+            </div>
+        </div>
+
+        <div class="bio">
+            <p>
+                Based in Seattle, WA. I'm a junior at <strong>Lakeside School</strong> with a passion for sharing knowledge and learning new things. I love diving deep into problems that matter—whether it's investigating bacterial mutations in cystic fibrosis patients or creating multilingual health resources for immigrant communities.
             </p>
-            <div class="flex gap-4 flex-wrap">
-                <a href="#work" class="px-6 py-3 bg-accent text-bg font-medium rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent/25">View My Work</a>
-                <a href="#contact" class="px-6 py-3 border border-border text-text-secondary font-medium rounded-full transition-all duration-300 hover:border-text-secondary hover:text-text hover:-translate-y-0.5">Get in Touch</a>
-            </div>
-        </div>
-
-    </header>
-
-    <!-- ========================================
-         ABOUT SECTION
-         ======================================== -->
-    <section id="about" class="py-section px-page bg-bg-elevated border-y border-border max-md:py-section-mobile max-md:px-page-mobile">
-        <div class="grid grid-cols-[1fr_2fr] gap-20 max-w-5xl max-md:grid-cols-1 max-md:gap-6">
-            <div>
-                <h2 class="text-sm font-medium uppercase tracking-widest text-accent">About</h2>
-            </div>
-            <div class="space-y-6">
-                <div class="bg-card border border-border rounded-xl p-8 border-l-[3px] border-l-accent max-md:p-6">
-                    <p class="text-xl font-light leading-relaxed text-text-secondary mb-5">
-                        I'm a junior at <span class="text-text">Lakeside School</span> in Seattle (Class of 2027) with an endless curiosity and a passion for learning. I love diving deep into problems that matter—whether it's designing a <span class="text-text">low-cost biosensor</span> for vital signs monitoring or creating <span class="text-text">multilingual health resources</span> for immigrant communities.
-                    </p>
-                    <p class="text-xl font-light leading-relaxed text-text-secondary">
-                        Currently exploring research at the intersection of biology, wearable technology, and accessible healthcare.
-                    </p>
-                </div>
-
-            </div>
+            <p>
+                Currently researching at the <strong>Dandekar Lab at UW</strong>, exploring how quorum-sensing mutations in <em>Pseudomonas aeruginosa</em> create evolutionary trade-offs. I'm drawn to understanding the <em>why</em> behind biological systems and translating that understanding into real-world impact.
+            </p>
         </div>
     </section>
 
-    <!-- ========================================
-         SKILLS SECTION
-         ======================================== -->
-    <section class="py-section px-page max-md:py-section-mobile max-md:px-page-mobile">
-        <div class="mb-12">
-            <h2 class="text-sm font-medium uppercase tracking-widest text-accent">Skills</h2>
-        </div>
-        <div class="grid grid-cols-4 gap-4 max-w-5xl max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-3">
-            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">01</span>
-                <h3 class="text-base font-medium mb-2">Research</h3>
-                <p class="text-sm text-text-secondary leading-relaxed">Scientific Writing, Data Analysis, Literature Review</p>
-            </div>
-            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">02</span>
-                <h3 class="text-base font-medium mb-2">Science</h3>
-                <p class="text-sm text-text-secondary leading-relaxed">Biology, Chemistry, Lab Techniques</p>
-            </div>
-            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">03</span>
-                <h3 class="text-base font-medium mb-2">Photography</h3>
-                <p class="text-sm text-text-secondary leading-relaxed">Portrait, Landscape, Lightroom, Photoshop</p>
-            </div>
-            <div class="group bg-card border border-border rounded-xl p-7 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <span class="text-xs text-accent font-semibold opacity-70 block mb-4 transition-opacity group-hover:opacity-100">04</span>
-                <h3 class="text-base font-medium mb-2">Languages</h3>
-                <p class="text-sm text-text-secondary leading-relaxed">English, Hindi, Gujarati</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========================================
-         VOLUNTEERING SECTION
-         ======================================== -->
-    <section class="py-section px-page bg-bg-elevated border-y border-border max-md:py-section-mobile max-md:px-page-mobile">
-        <div class="grid grid-cols-[1fr_2fr] gap-20 max-w-5xl max-md:grid-cols-1 max-md:gap-6">
-            <div>
-                <h2 class="text-sm font-medium uppercase tracking-widest text-accent">Volunteering</h2>
-            </div>
-            <div class="flex flex-col gap-6">
-                <!-- Stats Card -->
-                <div class="bg-card border border-border rounded-xl py-8 px-8 border-l-[3px] border-l-accent text-center max-md:py-6 max-md:px-6">
-                    <div class="flex items-baseline justify-center gap-1 mb-2">
-                        <span class="text-[clamp(3rem,10vw,5rem)] font-semibold leading-none bg-gradient-to-br from-accent to-accent-secondary bg-clip-text text-transparent">350+</span>
-                    </div>
-                    <span class="text-sm text-text-secondary uppercase tracking-widest font-medium">Hours of Community Service</span>
+    <!-- Education Section -->
+    <section class="section">
+        <h2 class="section-title">education</h2>
+        <div class="section-content">
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Lakeside School</h3>
+                    <p class="entry-sub">Seattle, Washington</p>
+                    <p class="entry-details">GPA: 4.0</p>
+                    <p class="entry-details"><strong>Relevant Coursework:</strong> Honors Calculus BC, Advanced Biology: Molecular and Cellular Biology, Honors Chemistry, Spanish IV, Intermediate Computer Science I/II, Bioethics</p>
+                    <p class="entry-details"><strong>Test Scores:</strong> SAT: 1560 (EBRW: 760 | Math: 800) • PSAT: 1490</p>
                 </div>
-                <!-- Organizations Grid -->
-                <div class="grid grid-cols-2 gap-3 max-md:grid-cols-1">
-                    <a href="https://www.northhelpline.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">North Helpline Food Bank</span>
-                    </a>
-                    <a href="https://kcls.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">King County Library System</span>
-                    </a>
-                    <a href="https://www.uwmedicine.org/locations/harborview-medical-center" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Harborview Medical Center</span>
-                    </a>
-                    <a href="https://www.evergreenhealth.com/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Evergreen Hospital</span>
-                    </a>
-                    <a href="https://www.marysplaceseattle.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Mary's Place</span>
-                    </a>
-                    <a href="https://sewausa.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Sewa International</span>
-                    </a>
-                    <a href="https://www.helensplacewa.org/" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Helen's Place</span>
-                    </a>
-                    <a href="https://porchlightcares.org" target="_blank" rel="noopener" class="group bg-card border border-border rounded-lg py-3.5 px-5 relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5">
-                        <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                        <span class="text-sm text-text-secondary transition-colors group-hover:text-text">Porchlight Shelter</span>
-                    </a>
+                <div class="entry-side">
+                    <span class="entry-date">2019 — 2027</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         WORK/PROJECTS SECTION
-         ======================================== -->
-    <section id="work" class="py-section px-page max-md:py-section-mobile max-md:px-page-mobile">
-        <div class="mb-12">
-            <h2 class="text-sm font-medium uppercase tracking-widest text-accent mb-3">Selected Work</h2>
-            <p class="text-text-secondary max-w-lg">Projects spanning biomedical research, community advocacy, and creative work.</p>
-        </div>
-        <div class="max-w-5xl flex flex-col gap-4">
-            <!-- Project: Emergency Preparedness -->
-            <a href="emergency-preparedness/" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <div class="flex flex-col gap-1">
-                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2025 · Community Work</span>
-                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">Emergency Preparedness for the Elderly</h3>
-                    <p class="text-sm text-text-secondary leading-normal">Multilingual emergency preparedness resources for South Asian immigrant families</p>
+    <!-- Research Section -->
+    <section class="section">
+        <h2 class="section-title">research & lab experience</h2>
+        <div class="section-content">
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Dandekar Lab, University of Washington</h3>
+                    <p class="entry-sub">Research Intern</p>
+                    <ul class="entry-list">
+                        <li>Investigating evolutionary trade-offs in <em>Pseudomonas aeruginosa</em> quorum sensing mutations from cystic fibrosis patients</li>
+                        <li>Reconstructed three lasR mutations (A231V, R216W, R216W+M230I) using allelic exchange mutagenesis</li>
+                        <li>Built fluorescent reporters to track expression of four quorum-sensing regulons</li>
+                        <li>Designed primers using Benchling; conducted flow cytometry experiments</li>
+                        <li>Performing molecular biology techniques: PCR, Gibson assembly, minipreps, electroporation</li>
+                        <li>Analyzing data using GraphPad Prism to understand how mutations create distinct regulatory phenotypes</li>
+                    </ul>
                 </div>
-                <div class="flex gap-2 max-lg:hidden">
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">HTML/CSS</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Multilingual</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Community</span>
+                <div class="entry-side">
+                    <span class="entry-date">June 2025 — Present</span>
                 </div>
-                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
-            </a>
+            </div>
 
-            <!-- Project: Photography -->
-            <a href="photos/" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <div class="flex flex-col gap-1">
-                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2025 · Hobby</span>
-                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">Photography</h3>
-                    <p class="text-sm text-text-secondary leading-normal">Capturing fleeting moments</p>
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Computational Biology Research</h3>
+                    <p class="entry-sub">Independent Research</p>
+                    <ul class="entry-list">
+                        <li>Performed computational screening of 148 genetic perturbations across 221,273 single cells to identify novel therapeutic targets</li>
+                        <li>Conducted differential expression analysis and statistical validation with Bonferroni correction across large-scale single-cell RNA-seq datasets</li>
+                        <li>Developed a mechanistic analysis framework to establish regulatory connections between candidate genes</li>
+                        <li>Built training pipeline for transformer models on single-cell RNA-seq data to predict gene knockdown effects and regulatory networks</li>
+                    </ul>
                 </div>
-                <div class="flex gap-2 max-lg:hidden">
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Portrait</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Landscape</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Travel</span>
+                <div class="entry-side">
+                    <span class="entry-date">July 2025 — Present</span>
                 </div>
-                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
-            </a>
+            </div>
 
-            <!-- Project: Blog -->
-            <a href="blog/" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <div class="flex flex-col gap-1">
-                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2025 · Writing</span>
-                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">Blog</h3>
-                    <p class="text-sm text-text-secondary leading-normal">Deep dives into infectious diseases and medical history</p>
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>MD Anderson Cancer Center</h3>
+                    <p class="entry-sub">Clinical Research Assistant — Dr. Kanwal Raghav</p>
+                    <ul class="entry-list">
+                        <li>First author on "Global Representation in Cancer Clinical Trials" (manuscript in publication)</li>
+                        <li>Systematically reviewed FDA approval documents for 147 drugs across 155 clinical trials (2023-2025)</li>
+                        <li>Extracted data on drug mechanisms, trial design, patient demographics, and geographic distribution</li>
+                        <li>Developed standardized methodology using ClinicalTrials.gov to ensure data consistency</li>
+                        <li>Performed data cleaning, categorization, and stratified analyses by endpoint categories and disease stages</li>
+                    </ul>
                 </div>
-                <div class="flex gap-2 max-lg:hidden">
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Science</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Medicine</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">History</span>
+                <div class="entry-side">
+                    <span class="entry-date">Mar 2025 — Present</span>
                 </div>
-                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
-            </a>
+            </div>
 
-            <!-- Project: INVISION -->
-            <a href="invision/" class="group grid grid-cols-[1fr_auto_auto] items-center gap-10 p-6 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-lg:grid-cols-[1fr_auto] max-md:grid-cols-1 max-md:gap-3 max-md:p-5">
-                <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                <div class="flex flex-col gap-1">
-                    <span class="text-xs text-text-tertiary uppercase tracking-widest font-medium">2024 · Science Fair</span>
-                    <h3 class="text-lg font-medium transition-colors group-hover:text-text">INVISION</h3>
-                    <p class="text-sm text-text-secondary leading-normal">Low-cost wearable multi-modal biosensor for continuous vital signs monitoring</p>
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>MD Anderson Cancer Center</h3>
+                    <p class="entry-sub">Clinical Research Assistant — Dr. Nicholas Palaskas</p>
+                    <ul class="entry-list">
+                        <li>Second author on "Updates in Diagnosis and Treatment of Immune Checkpoint Inhibitor Myocarditis" published in <em>Current Cardiology Reports</em></li>
+                        <li>Authored the treatment section (~1,500 words) synthesizing clinical management strategies</li>
+                        <li>Compiled and analyzed existing research, clinical guidelines, and treatment standards from ACC, AHA, ESC, and ASCO</li>
+                        <li>Integrated evidence-based recommendations for immunosuppressive therapy, cardiac monitoring, and ICI rechallenge protocols</li>
+                    </ul>
                 </div>
-                <div class="flex gap-2 max-lg:hidden">
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Biomedical</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">ESP32</span>
-                    <span class="text-xs px-3 py-1 bg-bg border border-border rounded-full text-text-tertiary transition-colors group-hover:text-text-secondary">Wearables</span>
+                <div class="entry-side">
+                    <span class="entry-date">Oct 2024 — Apr 2025</span>
                 </div>
-                <span class="text-xl text-text-tertiary opacity-50 transition-all group-hover:opacity-100 group-hover:text-accent max-md:hidden">→</span>
-            </a>
-        </div>
-    </section>
+            </div>
 
-    <!-- ========================================
-         CONTACT SECTION
-         ======================================== -->
-    <section id="contact" class="py-section px-page bg-bg-elevated border-t border-border max-md:py-section-mobile max-md:px-page-mobile">
-        <div class="max-w-xl">
-            <h2 class="text-3xl font-medium mb-3 tracking-tight">Let's connect</h2>
-            <p class="text-base text-text-secondary mb-8 leading-relaxed">Have a project idea, research collaboration, or just want to chat? I'd love to hear from you.</p>
-            <div class="flex flex-col gap-3">
-                <!-- Email -->
-                <a href="mailto:adidesai1909@gmail.com" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">Email</span>
-                    <span class="text-sm text-text transition-colors">adidesai1909@gmail.com</span>
-                </a>
-                <!-- GitHub -->
-                <a href="https://github.com/isobutane101" target="_blank" rel="noopener" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">GitHub</span>
-                    <span class="text-sm text-text transition-colors">@isobutane101</span>
-                </a>
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank" rel="noopener" class="group flex justify-between items-center p-5 bg-card border border-border rounded-xl relative overflow-hidden transition-all duration-300 ease-out hover:border-border-hover hover:-translate-y-0.5 max-md:flex-col max-md:items-start max-md:gap-2 max-md:p-4">
-                    <div class="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-accent to-accent-secondary rounded-l scale-y-0 origin-center transition-transform duration-300 ease-out group-hover:scale-y-100"></div>
-                    <span class="text-xs uppercase tracking-widest text-text-tertiary font-medium">LinkedIn</span>
-                    <span class="text-sm text-text transition-colors">Adi Desai</span>
-                </a>
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>INVISION Biosensor</h3>
+                    <p class="entry-sub">Independent Engineering Project — 1st Place, WSSEF 2025</p>
+                    <ul class="entry-list">
+                        <li>Designed a low-cost wearable multi-modal biosensor armband for vital sign anomaly detection</li>
+                        <li>Programmed ESP32 microcontroller integrating PPG sensors for heart rate and SpO2 measurement</li>
+                        <li>Built custom signal processing algorithms for real-time vital sign monitoring</li>
+                        <li>Integrated LEDs, piezo speakers, and thermistors for comprehensive health tracking</li>
+                    </ul>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">2024 — 2025</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========================================
-         FOOTER
-         ======================================== -->
-    <footer class="flex justify-between items-center py-6 px-page border-t border-border text-sm text-text-tertiary bg-bg max-md:flex-col max-md:gap-2 max-md:text-center max-md:px-page-mobile">
-        <span>Adi Desai</span>
-        <span>© 2025 · Built with care in Seattle</span>
+    <!-- Leadership Section -->
+    <section class="section">
+        <h2 class="section-title">leadership</h2>
+        <div class="section-content">
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Lakeside Lifesavers Club</h3>
+                    <p class="entry-sub">Founder and President</p>
+                    <p class="entry-details">Founded a program to bring CPR and first aid training to Lakeside community; secured over $300 in funding from student government for training materials and instructor certification. Over 50 students and teachers signed up for the first certification session. Actively expanding the program to reach more students and faculty.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">May 2025 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Lakeside AI Student Ambassador</h3>
+                    <p class="entry-sub">Selected from 50+ applicants</p>
+                    <p class="entry-details">Helped draft AI policies; created AI orientation. Selected to present at NAIS AI Symposium in Houston, Texas.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">Sept 2025 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>SHARP (Student Hiring Applicant Review Panel)</h3>
+                    <p class="entry-details">Review and evaluate faculty hiring applications; provide student perspective on candidate selection.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">2024 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Lakeside Tour Guide</h3>
+                    <p class="entry-details">Leading campus tours for prospective students and families; representing the Lakeside community.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">Sept 2025 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Just a Call Away</h3>
+                    <p class="entry-sub">Founder and Coordinator</p>
+                    <p class="entry-details">Created a program to bring awareness about medical emergencies to local elderly immigrant communities. Prepared educational materials and infographics about stroke, heart attacks, and when to call 911.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">Dec 2024 — Present</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering Section -->
+    <section class="section">
+        <h2 class="section-title">volunteering</h2>
+        <div class="volunteer-stat">
+            <span class="stat-number">250+</span>
+            <span class="stat-label">hours of community service</span>
+        </div>
+        <div class="section-content">
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>North Helpline Food Bank</h3>
+                    <p class="entry-sub">Food Distributor — 100+ hours</p>
+                    <p class="entry-details">Distribute food to underrepresented and vulnerable communities.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">Sept 2024 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Sewa International</h3>
+                    <p class="entry-sub">LEAD Program Volunteer — 120+ hours</p>
+                    <p class="entry-details">Cook and distribute food to homeless shelters (Porchlight, Helen's Place, etc.). Lead meditation, yoga, and cognitive wellness activities at senior centers. Visit a senior center every other weekend for volunteer programming.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">Oct 2024 — Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-main">
+                    <h3>Harborview Hospital</h3>
+                    <p class="entry-sub">Front Desk Volunteer — 25+ hours</p>
+                    <p class="entry-details">Greeted and directed patients and visitors.</p>
+                </div>
+                <div class="entry-side">
+                    <span class="entry-date">June — Aug 2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
     </footer>
 </body>
 </html>

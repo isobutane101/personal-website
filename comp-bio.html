@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = './login.html';
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TWF2 as a Novel SNCA Modulator — Adi Desai</title>
+    <meta name="description" content="Computational discovery identifying TWF2 as a highly specific modulator of α-Synuclein in Parkinson's disease through large-scale perturbation screening.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Project Page - Alternate Theme */
+        .project-hero {
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: #c9a227;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            padding: 6px 12px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+        }
+
+        .project-meta span.highlight {
+            background: #c9a227;
+            color: #fff;
+            border-color: #c9a227;
+        }
+
+        .project-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tagline {
+            font-size: 1.125rem;
+            color: #555;
+            max-width: 750px;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            padding: 8px 16px;
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            color: #666;
+        }
+
+        /* Content Sections */
+        .project-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .content-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-number {
+            font-size: 0.75rem;
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        .section-body p {
+            font-size: 1.0625rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body p.lead {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 300;
+        }
+
+        /* Key Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .stat-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .stat-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #c9a227;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-detail {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-left: 3px solid #c9a227;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .highlight-box p {
+            font-size: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Discovery Box */
+        .discovery-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 2px solid #c9a227;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .discovery-box .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c9a227;
+            margin-bottom: 0.75rem;
+        }
+
+        .discovery-box h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .discovery-box p {
+            font-size: 1.0625rem !important;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto !important;
+            line-height: 1.7;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comparison-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .comparison-card.winner {
+            border-color: #c9a227;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+        }
+
+        .comparison-card.winner::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+        }
+
+        .comparison-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .comparison-card .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.9375rem;
+        }
+
+        .comparison-card .metric:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-card .metric-label {
+            color: #666;
+        }
+
+        .comparison-card .metric-value {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .comparison-card .metric-value.good {
+            color: #5cb85c;
+        }
+
+        .comparison-card .metric-value.bad {
+            color: #d9534f;
+        }
+
+        .comparison-card .metric-value.highlight {
+            color: #c9a227;
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: #fafafa;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            font-size: 0.875rem;
+        }
+
+        .data-table th {
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem 0.75rem;
+            text-align: left;
+        }
+
+        .data-table td {
+            padding: 0.875rem 0.75rem;
+            color: #555;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tr:hover td {
+            background: #fff;
+        }
+
+        .data-table .gene-name {
+            font-family: monospace;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .data-table .gene-name.target {
+            color: #c9a227;
+        }
+
+        .data-table .reduction {
+            font-weight: 600;
+        }
+
+        .data-table .reduction.high {
+            color: #c9a227;
+        }
+
+        /* Methods List */
+        .methods-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .method-item {
+            display: flex;
+            gap: 1.25rem;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .method-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .method-item:hover {
+            border-color: #c9a227;
+        }
+
+        .method-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .method-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: #c9a227;
+            opacity: 0.5;
+            line-height: 1;
+            min-width: 30px;
+        }
+
+        .method-content h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .method-content p {
+            font-size: 0.9375rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Mechanism Diagram */
+        .mechanism-box {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .mechanism-box .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #c9a227;
+            margin-bottom: 1rem;
+        }
+
+        .mechanism-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .mechanism-flow .node {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+            color: #fff;
+            font-size: 0.875rem;
+        }
+
+        .mechanism-flow .node.highlight {
+            border-color: #c9a227;
+            color: #c9a227;
+        }
+
+        .mechanism-flow .arrow {
+            color: #666;
+            font-size: 1.25rem;
+        }
+
+        /* Validation Cards */
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .validation-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .validation-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .validation-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .validation-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .validation-card p {
+            font-size: 0.8125rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.5 !important;
+        }
+
+        /* Implications */
+        .implications-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .implication-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .implication-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #e6c462);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .implication-card:hover {
+            border-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+        .implication-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .implication-card h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .implication-card p {
+            font-size: 0.875rem !important;
+            color: #666;
+            margin-bottom: 0 !important;
+            line-height: 1.6 !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .validation-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .project-content {
+                padding: 0 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .implications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .validation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .method-item {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .mechanism-flow {
+                flex-direction: column;
+            }
+
+            .mechanism-flow .arrow {
+                transform: rotate(90deg);
+            }
+
+            .data-table {
+                font-size: 0.8125rem;
+            }
+
+            .data-table th, .data-table td {
+                padding: 0.625rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="./index.html">about me</a>
+        <a href="./projects.html">projects</a>
+        <a href="./interests.html">interests</a>
+        <a href="./awards.html">awards & publications</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="project-hero">
+        <div class="hero-content">
+            <a href="./projects.html" class="back-link">← Back to Projects</a>
+            <div class="project-meta">
+                <span>July 2025 — Present</span>
+                <span>Independent Research</span>
+                <span class="highlight">Novel Discovery</span>
+            </div>
+            <h1>TWF2 as a Highly Specific Modulator of α-Synuclein in Parkinson's Disease</h1>
+            <p class="project-subtitle">A Computational Discovery from Large-Scale Perturbation Screening</p>
+            <p class="project-tagline">Using differential expression analysis across 150 CRISPRi perturbations in 221,273 single cells, I identified TWF2 (Twinfilin-2) as a novel therapeutic target that reduces SNCA expression by 88% while affecting only 10 genes—4.6-fold more specific than median perturbation.</p>
+            <div class="project-tags">
+                <span>Computational Biology</span>
+                <span>Single-Cell RNA-seq</span>
+                <span>Parkinson's Disease</span>
+                <span>CRISPRi Screening</span>
+                <span>Python</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="project-content">
+
+        <!-- The Discovery -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>The Discovery</h2>
+            </div>
+            <div class="section-body">
+                <p class="lead">Parkinson's disease affects over 10 million people worldwide, yet no curative therapies exist. Aggregation of α-Synuclein (encoded by SNCA) creates Lewy bodies causing neurodegeneration, making SNCA reduction an attractive therapeutic strategy.</p>
+
+                <p>However, most known SNCA modulators are transcription factors that affect thousands of genes, limiting their therapeutic potential due to off-target effects. The ideal target would strongly reduce SNCA while being non-essential and having minimal effects on other genes.</p>
+
+                <div class="discovery-box">
+                    <p class="label">Key Finding</p>
+                    <h3>TWF2 knockdown reduces SNCA by 88%</h3>
+                    <p>This represents the strongest non-self-targeting SNCA reduction in the dataset, while affecting only 10 genes (0.055% of transcriptome)—an exceptionally specific profile for therapeutic development.</p>
+                </div>
+
+                <p>Literature search confirms <strong>no prior publications</strong> directly linking TWF2 to SNCA expression or Parkinson's disease, establishing this as a novel computational discovery with therapeutic potential.</p>
+            </div>
+        </section>
+
+        <!-- Key Metrics -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Key Metrics</h2>
+            </div>
+            <div class="section-body">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-number">221,273</span>
+                        <span class="stat-label">Single Cells</span>
+                        <span class="stat-detail">Analyzed in dataset</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">148</span>
+                        <span class="stat-label">Perturbations</span>
+                        <span class="stat-detail">CRISPRi knockdowns tested</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">88%</span>
+                        <span class="stat-label">SNCA Reduction</span>
+                        <span class="stat-detail">By TWF2 knockdown</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Genes Affected</span>
+                        <span class="stat-detail">0.055% of transcriptome</span>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>Statistical Significance</h3>
+                    <p>TWF2's effect on SNCA has p-value < 10⁻³⁰⁰, surviving Bonferroni correction across all 148 perturbations (α = 3.38×10⁻⁴). With 1,008 TWF2 knockdown cells vs 38,176 control cells, statistical power exceeds 99% for all observed effects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specificity Comparison -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2>Why TWF2 Stands Out</h2>
+            </div>
+            <div class="section-body">
+                <p>The critical advantage of TWF2 is exceptional specificity. While other strong SNCA reducers affect hundreds to thousands of genes, TWF2 achieves comparable efficacy with 67- to 447-fold fewer off-target effects:</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card winner">
+                        <h4>TWF2 (This Discovery)</h4>
+                        <div class="metric">
+                            <span class="metric-label">SNCA Reduction</span>
+                            <span class="metric-value highlight">88%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Genes Affected</span>
+                            <span class="metric-value good">10</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">% of Genome</span>
+                            <span class="metric-value good">0.055%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Specificity vs Median</span>
+                            <span class="metric-value highlight">4.6× better</span>
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>SOX2 (Transcription Factor)</h4>
+                        <div class="metric">
+                            <span class="metric-label">SNCA Reduction</span>
+                            <span class="metric-value">42%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Genes Affected</span>
+                            <span class="metric-value bad">1,841</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">% of Genome</span>
+                            <span class="metric-value bad">10.2%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Comparison to TWF2</span>
+                            <span class="metric-value bad">184× worse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>TWF2 is <strong>4.6-fold more specific than the median perturbation</strong> (46 genes) and <strong>53-fold more specific than the mean</strong> (533 genes). This exceptional specificity likely reflects post-transcriptional mechanisms rather than broad transcriptional regulation.</p>
+            </div>
+        </section>
+
+        <!-- Affected Genes -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2>Complete Off-Target Profile</h2>
+            </div>
+            <div class="section-body">
+                <p>All 10 genes significantly affected by TWF2 knockdown (adjusted p < 0.05, |log2FC| > 0.25, |Cohen's d| > 0.2):</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Gene</th>
+                            <th>Reduction</th>
+                            <th>Log2FC</th>
+                            <th>Cohen's d</th>
+                            <th>Functional Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="gene-name target">TWF2</span></td>
+                            <td class="reduction high">90.4%</td>
+                            <td>−3.38</td>
+                            <td>−4.45</td>
+                            <td>Actin-binding protein (intended target)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="gene-name target">SNCA</span></td>
+                            <td class="reduction high">88.3%</td>
+                            <td>−3.09</td>
+                            <td>−1.71</td>
+                            <td>α-Synuclein (therapeutic target)</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="gene-name">ZNF233</span></td>
+                            <td class="reduction">68.7%</td>
+                            <td>−1.68</td>
+                            <td>−0.38</td>
+                            <td>Zinc finger protein (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><span class="gene-name">PPM1M</span></td>
+                            <td class="reduction">41.7%</td>
+                            <td>−0.78</td>
+                            <td>−0.23</td>
+                            <td>Phosphatase (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><span class="gene-name">SMIM24</span></td>
+                            <td class="reduction">35.4%</td>
+                            <td>−0.63</td>
+                            <td>−0.26</td>
+                            <td>Membrane protein (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><span class="gene-name">DPEP1</span></td>
+                            <td class="reduction">30.7%</td>
+                            <td>−0.53</td>
+                            <td>−0.21</td>
+                            <td>Dipeptidase (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><span class="gene-name">ZNF248</span></td>
+                            <td class="reduction">30.6%</td>
+                            <td>−0.53</td>
+                            <td>−0.26</td>
+                            <td>Zinc finger protein (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><span class="gene-name">HTR7</span></td>
+                            <td class="reduction">27.8%</td>
+                            <td>−0.47</td>
+                            <td>−0.34</td>
+                            <td>Serotonin receptor (may benefit PD depression)</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><span class="gene-name">PINLYP</span></td>
+                            <td class="reduction">22.2%</td>
+                            <td>−0.36</td>
+                            <td>−0.23</td>
+                            <td>Lipase inhibitor (non-essential)</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><span class="gene-name">HPN</span></td>
+                            <td class="reduction">19.5%</td>
+                            <td>−0.31</td>
+                            <td>−0.21</td>
+                            <td>Protease (non-essential)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>All 8 off-targets are non-essential according to DepMap analysis. Notably, HTR7 (serotonin 5-HT7 receptor) reduction may provide ancillary benefits, as depression affects ~50% of PD patients and 5-HT7 antagonists show antidepressant-like effects in preclinical models.</p>
+            </div>
+        </section>
+
+        <!-- Mechanistic Hypothesis -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2>Mechanistic Hypothesis</h2>
+            </div>
+            <div class="section-body">
+                <p>The TWF2-SNCA relationship is biologically plausible through established connections between actin cytoskeleton dynamics and α-synuclein biology:</p>
+
+                <div class="mechanism-box">
+                    <p class="label">Proposed Pathway</p>
+                    <div class="mechanism-flow">
+                        <span class="node highlight">TWF2 Knockdown</span>
+                        <span class="arrow">→</span>
+                        <span class="node">Altered Actin Dynamics</span>
+                        <span class="arrow">→</span>
+                        <span class="node">mRNA Trafficking Disruption</span>
+                        <span class="arrow">→</span>
+                        <span class="node highlight">SNCA mRNA Reduction</span>
+                    </div>
+                </div>
+
+                <p>TWF2 (Twinfilin-2) is an actin-binding protein that regulates actin dynamics through barbed-end capping and G-actin sequestration. Three potential mechanisms warrant experimental investigation:</p>
+
+                <div class="implications-grid">
+                    <div class="implication-card">
+                        <h4>mRNA Localization & Stability</h4>
+                        <p>The actin cytoskeleton regulates mRNA trafficking in neurons. Disrupted actin dynamics from TWF2 loss could destabilize SNCA mRNA or prevent proper trafficking to presynaptic terminals.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Direct RNA Binding</h4>
+                        <p>Gene Ontology annotations identify TWF2 as an RNA-binding protein. TWF2 could directly bind SNCA mRNA, regulating its stability, localization, or translation.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Synaptic Site Specificity</h4>
+                        <p>A 2023 study identified TWF2 as a modulator of dendritic spine morphology. Both TWF2 and SNCA are enriched at synaptic sites, suggesting localized regulatory effects.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Supporting Literature</h4>
+                        <p>Overexpression of actin-severing proteins (gelsolin, cofilin) rescues α-synuclein neurotoxicity in Drosophila, mouse, and human tissue, validating actin-regulating proteins as therapeutic targets.</p>
+                    </div>
+                </div>
+
+                <p>The exceptional specificity of this effect (only 10 genes affected) argues against broad actin disruption, which would impact hundreds of genes. Instead, TWF2 may specifically regulate a small subset of mRNAs through direct RNA binding or localized effects at synaptic sites.</p>
+            </div>
+        </section>
+
+        <!-- Methods -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2>Computational Methods</h2>
+            </div>
+            <div class="section-body">
+                <div class="methods-list">
+                    <div class="method-item">
+                        <span class="method-number">1</span>
+                        <div class="method-content">
+                            <h4>Dataset & Preprocessing</h4>
+                            <p>Analyzed CRISPRi perturbation data from the Arc Institute's Virtual Cell Challenge: 221,273 single cells with 148 genetic perturbations across 18,080 genes. Processed using scanpy (v1.9.6) with library-size normalization to 10,000 counts per cell and log-transformation.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">2</span>
+                        <div class="method-content">
+                            <h4>Differential Expression Analysis</h4>
+                            <p>For each perturbation, compared expression in knockdown cells to 38,176 non-targeting controls using Welch's t-test. P-values adjusted using Benjamini-Hochberg FDR (α=0.05). Genes classified as significant if adjusted p < 0.05, |log2FC| > 0.25, and |Cohen's d| > 0.2.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">3</span>
+                        <div class="method-content">
+                            <h4>Landscape Analysis</h4>
+                            <p>Ranked all 148 perturbations by both specificity (total significant genes) and therapeutic potential (SNCA expression change) to identify candidates combining strong SNCA reduction with minimal off-target effects.</p>
+                        </div>
+                    </div>
+
+                    <div class="method-item">
+                        <span class="method-number">4</span>
+                        <div class="method-content">
+                            <h4>Statistical Validation</h4>
+                            <p>Applied Bonferroni correction across 148 perturbations (α = 3.38×10⁻⁴). Verified chromosomal separation (TWF2: 15q21.2; SNCA: 4q22.1) and confirmed no technical confounding through cell quality metrics analysis (UMI counts p=0.85, genes detected p=0.96).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validation Evidence -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2>Ruling Out Artifacts</h2>
+            </div>
+            <div class="section-body">
+                <p>Multiple lines of evidence argue against technical artifacts:</p>
+
+                <div class="validation-grid">
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>Bonferroni Correction</h4>
+                        <p>All 10 TWF2-affected genes remain highly significant after correction for 148 perturbations</p>
+                    </div>
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>Cell Quality</h4>
+                        <p>No differences in UMI counts (p=0.85) or genes detected (p=0.96) between TWF2 and control cells</p>
+                    </div>
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>Chromosomal Separation</h4>
+                        <p>TWF2 (15q21.2) and SNCA (4q22.1) on different chromosomes; CRISPRi cannot cause trans-chromosomal effects</p>
+                    </div>
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>Weak Co-regulation</h4>
+                        <p>TWF2-SNCA correlation across all perturbations is only r=0.408, indicating specific effect</p>
+                    </div>
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>Statistical Power</h4>
+                        <p>>99% power to detect all observed effects with 1,008 TWF2 knockdown cells</p>
+                    </div>
+                    <div class="validation-card">
+                        <div class="icon">✓</div>
+                        <h4>No Compensation</h4>
+                        <p>TWF2's paralog TWF1 shows no compensatory change (log2FC=0.061, p=0.94)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Therapeutic Potential -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">08</span>
+                <h2>Therapeutic Potential</h2>
+            </div>
+            <div class="section-body">
+                <p>TWF2 presents an attractive therapeutic profile:</p>
+
+                <div class="implications-grid">
+                    <div class="implication-card">
+                        <h4>Non-Essential Target</h4>
+                        <p>DepMap analysis indicates TWF2 is non-essential for cell viability in cancer cell lines. TWF2 knockout mice are viable without obvious abnormalities.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Existing Inhibitors</h4>
+                        <p>Small-molecule TWF2 inhibitors exist (e.g., salvianolic acid E targeting TWF2-YAP interaction), potentially accelerating drug development.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Exceptional Specificity</h4>
+                        <p>Affecting only 10 genes (all non-essential) suggests a favorable therapeutic window compared to broad transcriptional regulators.</p>
+                    </div>
+                    <div class="implication-card">
+                        <h4>Ancillary Benefits</h4>
+                        <p>HTR7 reduction may provide antidepressant benefits—relevant since depression affects ~50% of PD patients.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    <h3>Next Steps for Validation</h3>
+                    <p>Recommended validation pathway: (1) Orthogonal validation using siRNA and antisense oligonucleotides to confirm the effect is not CRISPRi-specific; (2) Disease-relevant validation in iPSC-derived dopaminergic neurons measuring both mRNA and protein levels; (3) Mechanistic studies including RNA stability assays, subcellular fractionation, and live-cell imaging to determine the regulatory mechanism.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="mailto:adidesai1909@gmail.com">email</a>
+            <span class="footer-divider">·</span>
+            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
+            <span class="footer-divider">·</span>
+            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
+        </div>
+        <p class="copyright">© 2025 Adi Desai</p>
+    </footer>
+</body>
+</html>
