@@ -8,6 +8,10 @@ const HASH_LENGTH = 32;
 // Pre-computed PBKDF2 hash of the password with the above parameters
 const PASSWORD_HASH = '3715c241670eb724c2c52f2b263db73deac3fedb6212c17dc29349419dabe87b';
 
+// Auth token - stored in sessionStorage on successful login
+// This is a separate hash so console tricks like setting 'true' won't work
+const AUTH_TOKEN = 'a7f2c9e1d4b8';
+
 // Derive key using PBKDF2
 async function deriveKey(password, salt) {
     const encoder = new TextEncoder();
