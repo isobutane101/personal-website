@@ -144,9 +144,9 @@
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const isValid = await verifyPassword(input.value);
-            if (isValid) {
-                sessionStorage.setItem('auth', AUTH_TOKEN);
+            const token = await verifyPassword(input.value);
+            if (token) {
+                sessionStorage.setItem('auth', token);
                 window.location.href = './index.html';
             } else {
                 error.classList.add('show');
