@@ -1,8 +1,7 @@
-// Authentication module - IIFE to prevent global access
+// Authentication module - IIFE with anti-debugging
 (function() {
     'use strict';
 
-    // All constants are private to this closure
     const _cfg = {
         s: 'adidesai-portfolio-2025-xK9mP2',
         i: 150000,
@@ -10,10 +9,11 @@
         h: '3715c241670eb724c2c52f2b263db73deac3fedb6212c17dc29349419dabe87b'
     };
 
-    // Token split into parts - harder to find via simple string search
     const _tp = ['a7', 'f2', 'c9', 'e1', 'd4', 'b8'];
 
-    // Internal derive function - not accessible globally
+    // Max time for entire verify operation (stepping through would exceed this)
+    const _maxTime = 8000;
+
     async function _derive(p) {
         const e = new TextEncoder();
         const pb = e.encode(p);
@@ -33,28 +33,56 @@
         ).join('');
     }
 
-    // Store original toString to detect tampering
-    const _origFnStr = Function.prototype.toString;
-
-    // Verify function - frozen and tamper-resistant
-    async function _verify(input) {
-        // Check if this function has been replaced
-        if (_origFnStr.call(_verify).indexOf('_derive') === -1) {
-            return false;
+    // Constant-time comparison (prevents timing attacks, harder to breakpoint)
+    function _ct(a, b) {
+        if (a.length !== b.length) return 0;
+        let r = 0;
+        for (let i = 0; i < a.length; i++) {
+            r |= a.charCodeAt(i) ^ b.charCodeAt(i);
         }
+        return r;
+    }
+
+    async function _verify(input) {
+        const t0 = Date.now();
+        let result = false;
+        let token = null;
 
         try {
             const hash = await _derive(input);
-            if (hash === _cfg.h) {
-                return _tp.join('');
+            const t1 = Date.now();
+
+            // Timing check: if we got here too slow, someone is debugging
+            if (t1 - t0 > _maxTime) {
+                return false;
             }
-            return false;
+
+            // Constant-time comparison returns 0 if equal
+            const diff = _ct(hash, _cfg.h);
+
+            // Build result indirectly - not a simple if/return
+            const correct = (diff === 0) ? 1 : 0;
+            const arr = [false, _tp.join('')];
+            token = arr[correct];
+
+            // Second timing gate
+            if (Date.now() - t0 > _maxTime) {
+                return false;
+            }
+
+            result = token;
         } catch {
+            result = false;
+        }
+
+        // Final timing gate - any breakpoint stepping will fail this
+        if (Date.now() - t0 > _maxTime) {
             return false;
         }
+
+        return result;
     }
 
-    // Expose only verifyPassword, make it non-writable
     Object.defineProperty(window, 'verifyPassword', {
         value: Object.freeze(_verify),
         writable: false,
@@ -62,7 +90,6 @@
         enumerable: false
     });
 
-    // Clean up any attempts to access internals
     Object.freeze(_cfg);
     Object.freeze(_tp);
 })();
