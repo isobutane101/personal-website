@@ -9,7 +9,7 @@
         h: '3715c241670eb724c2c52f2b263db73deac3fedb6212c17dc29349419dabe87b'
     };
 
-    const _tp = ['a7', 'f2', 'c9', 'e1', 'd4', 'b8'];
+    const _tp = [97,55,102,50,99,57,101,49,100,52,98,56].map(c=>String.fromCharCode(c));
 
     // Max time for entire verify operation (stepping through would exceed this)
     const _maxTime = 8000;
