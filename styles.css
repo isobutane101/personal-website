@@ -512,6 +512,24 @@ strong {
     margin-top: 0.5rem;
 }
 
+.featured-badge {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #f5e6b8, #e6c462);
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+}
+
+.featured-badge:hover {
+    opacity: 0.85;
+}
+
 .entry-list {
     list-style: none;
     margin-top: 0.75rem;
