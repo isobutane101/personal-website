@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>(function(){var t=String.fromCharCode(97,55,102,50,99,57,101,49,100,52,98,56);if(sessionStorage.getItem("auth")!==t){document.documentElement.innerHTML="";location.replace("./login.html")}})()</script>
+    <noscript><meta http-equiv="refresh" content="0;url=./login.html"></noscript>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quorum-Sensing Research - Adi Desai</title>
@@ -556,7 +558,7 @@
             <h1>Quorum-Sensing Mutations in <em>Pseudomonas aeruginosa</em></h1>
             <p class="project-subtitle">Dandekar Lab, University of Washington</p>
             <p class="project-tagline">Investigating evolutionary trade-offs in bacterial communication mutations from cystic fibrosis patients. Understanding why bacteria evolve to lose seemingly essential functions - and how this becomes advantageous.</p>
-            <a href="./photos/qs-poster.png" target="_blank" class="btn-view-poster" style="display: inline-block; margin-bottom: 2rem; padding: 0.6rem 1.5rem; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; background: linear-gradient(135deg, #f5e6b8, #e6c462); border-radius: 6px; text-decoration: none; transition: opacity 0.2s;">View Poster →</a>
+            <a href="#" onclick="document.getElementById('poster-modal').style.display='flex'; return false;" class="btn-view-poster" style="display: inline-block; margin-bottom: 2rem; padding: 0.6rem 1.5rem; font-size: 0.9rem; font-weight: 600; color: #1a1a1a; background: linear-gradient(135deg, #f5e6b8, #e6c462); border-radius: 6px; text-decoration: none; transition: opacity 0.2s; cursor: pointer;">View Poster →</a>
             <div class="project-tags">
                 <span>Molecular Biology</span>
                 <span>Microbial Evolution</span>
@@ -834,5 +836,13 @@
         </div>
         <p class="copyright">© 2025 Adi Desai</p>
     </footer>
+
+    <!-- Poster Modal -->
+    <div id="poster-modal" onclick="if(event.target===this)this.style.display='none'" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; cursor:pointer;">
+        <div style="position:relative; max-width:90vw; max-height:90vh;">
+            <img src="./photos/qs-poster.png" alt="Research Poster" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px;">
+            <button onclick="document.getElementById('poster-modal').style.display='none'" style="position:absolute; top:-12px; right:-12px; width:36px; height:36px; border-radius:50%; border:none; background:#fff; color:#333; font-size:1.2rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.3); line-height:1;">&times;</button>
+        </div>
+    </div>
 </body>
 </html>
