@@ -1,190 +1,853 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="staticrypt-html">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gold: Why Is It So Expensive Right Now? | Adi Desai</title>
-    <meta name="description" content="Gold has shattered records in 2024-2025, hitting $4,000+ per ounce. What's driving the surge, and what does it mean when adjusted for inflation?">
+    <meta charset="utf-8" />
+    <title>Adi Desai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Adi Desai's portfolio website." />
+    <meta name="robots" content="nosnippet" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <!-- do not cache this page -->
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./post.css">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="c3ee6e0a-46f1-4be7-877f-d4f308521bd3"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .login-subtitle {
+            font-size: 0.875rem;
+            color: #888;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .login-input {
+            padding: 1rem 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 0.1em;
+            transition: border-color 0.2s;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #c9a227;
+        }
+
+        .login-input::placeholder {
+            color: #666;
+        }
+
+        .login-button {
+            padding: 1rem 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #c9a227;
+            border: none;
+            border-radius: 4px;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-button:hover {
+            background: #b8922a;
+        }
+
+        .login-error {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        label.staticrypt-remember {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #888;
+            font-size: 0.875rem;
+        }
+
+        .staticrypt-remember input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: #c9a227;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .staticrypt-spinner-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .staticrypt-spinner {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            border: 0.25em solid #333;
+            border-right-color: #c9a227;
+            border-radius: 50%;
+            animation: spinner-border 0.75s linear infinite;
+        }
+
+        @keyframes spinner-border {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body id="top">
+<body>
+    <div id="staticrypt_loading" class="staticrypt-spinner-container">
+        <div class="staticrypt-spinner"></div>
+    </div>
 
-    <nav class="nav">
-        <a href="../index.html">about me</a>
-        <a href="../projects.html">projects</a>
-        <a href="../interests.html">interests</a>
-        <a href="../awards.html">awards & publications</a>
-    </nav>
+    <div id="staticrypt_content" class="login-container hidden">
+        <h1 class="login-name">adi desai</h1>
+        <p class="login-subtitle">Portfolio</p>
 
-    <header class="article-header">
-        <div class="article-header-content">
-            <a href="../blog.html" class="back-link">← Back to Blog</a>
-            <div class="article-meta">
-                <span class="article-date">December 01, 2025</span>
-                <span class="article-reading">10 min read</span>
-            </div>
-            <h1 class="article-title">Gold: Why Is It So Expensive Right Now?</h1>
-            <p class="article-subtitle">Gold has shattered all-time records in 2024-2025, surpassing $4,000 per ounce. Here's what's driving the surge and what history tells us about where it might go next.</p>
-            <div class="article-tags">
-                <span class="article-tag">Finance</span>
-            </div>
-        </div>
-    </header>
+        <form id="staticrypt-form" class="login-form" action="#" method="post">
+            <input
+                id="staticrypt-password"
+                type="password"
+                class="login-input"
+                name="password"
+                placeholder="Enter password"
+                autocomplete="off"
+                autofocus
+            >
 
-    <section class="key-stats">
-        <div class="key-stats-content">
-            <div class="key-stat">
-                <div class="key-stat-value">$4,058</div>
-                <div class="key-stat-label">All-time high (Oct 2025)</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">27%+</div>
-                <div class="key-stat-label">Gain in early 2025</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">$883</div>
-                <div class="key-stat-label">Inflation-adjusted avg since 1913</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">13%</div>
-                <div class="key-stat-label">YoY demand increase (Q1 2025)</div>
-            </div>
-        </div>
-    </section>
+            <label id="staticrypt-remember-label" class="staticrypt-remember hidden">
+                <input id="staticrypt-remember" type="checkbox" name="remember" checked />
+                Remember me for 30 days
+            </label>
 
-    <main class="article-content">
-        <article class="article-body">
-            <h2>The Current Surge</h2>
-            <p>Gold has been on a remarkable run. In October 2025, it reached an all-time high of <strong>$4,058.98 per troy ounce</strong>, and earlier in April 2025 it had already set an intraday record of $3,500.05. Throughout 2024, gold broke price records in March, April, May, July, August, and September. The first four months of 2025 alone saw gains exceeding 27%.<a href="#ref1" class="cite">[1]</a></p>
+            <input type="submit" class="login-button" value="Enter" />
 
-            <p>This isn't a flash spike. It's a sustained rally driven by a confluence of global factors that have collectively pushed investors toward the one asset humans have trusted for thousands of years.</p>
+            <p class="login-error" id="errorMsg">Incorrect password</p>
+        </form>
+    </div>
 
-            <h2>Why Gold, and Why Now?</h2>
-            <p>Gold's appeal comes down to a few fundamental properties. It's scarce: all the gold ever mined would fit into a cube roughly 22 meters on each side. It's durable: gold doesn't corrode or tarnish. And it's universally recognized as valuable across cultures and time periods. These properties make it the ultimate "store of value," particularly when confidence in other assets wavers.</p>
+    <script>
+        const staticryptInitiator = ((function(){
+  const exports = {};
+  const cryptoEngine = ((function(){
+  const exports = {};
+  const { subtle } = crypto;
 
-            <p>The current surge is being driven by several reinforcing factors:</p>
+const IV_BITS = 16 * 8;
+const HEX_BITS = 4;
+const ENCRYPTION_ALGO = "AES-CBC";
 
-            <div class="info-box">
-                <div class="info-box-title">Key Drivers of the 2024-2025 Rally</div>
-                <ul>
-                    <li><strong>Central bank accumulation:</strong> Emerging markets like China, India, Russia, and Turkey have been aggressively building gold reserves to diversify away from the US dollar</li>
-                    <li><strong>Geopolitical instability:</strong> Trade disputes, the Russia-Ukraine conflict, Middle East tensions, and US political uncertainty have boosted safe-haven demand</li>
-                    <li><strong>Federal Reserve policy:</strong> Interest rate cuts reduce the opportunity cost of holding gold (which pays no yield)</li>
-                    <li><strong>Inflation concerns:</strong> Despite official inflation cooling, investors remain wary of long-term purchasing power erosion</li>
-                    <li><strong>De-dollarization:</strong> Some countries are actively seeking alternatives to dollar-denominated reserves</li>
-                </ul>
-            </div>
+/**
+ * Translates between utf8 encoded hexadecimal strings
+ * and Uint8Array bytes.
+ */
+const HexEncoder = {
+    /**
+     * hex string -> bytes
+     * @param {string} hexString
+     * @returns {Uint8Array}
+     */
+    parse: function (hexString) {
+        if (hexString.length % 2 !== 0) throw "Invalid hexString";
+        const arrayBuffer = new Uint8Array(hexString.length / 2);
 
-            <h2>Central Banks: The Biggest Buyers</h2>
-            <p>The most significant structural change in the gold market is who's doing the buying. Central banks, particularly those in emerging economies, have become major net purchasers of gold for the first time in decades.</p>
+        for (let i = 0; i < hexString.length; i += 2) {
+            const byteValue = parseInt(hexString.substring(i, i + 2), 16);
+            if (isNaN(byteValue)) {
+                throw "Invalid hexString";
+            }
+            arrayBuffer[i / 2] = byteValue;
+        }
+        return arrayBuffer;
+    },
 
-            <p>China has been especially aggressive. The People's Bank of China has been adding gold to its reserves consistently, signaling a long-term strategic shift away from US Treasury holdings. Russia accelerated its gold purchases after Western sanctions following the 2022 Ukraine invasion demonstrated how dollar-denominated assets could be frozen. India and Turkey have followed similar strategies.</p>
+    /**
+     * bytes -> hex string
+     * @param {Uint8Array} bytes
+     * @returns {string}
+     */
+    stringify: function (bytes) {
+        const hexBytes = [];
 
-            <p>The World Gold Council reports a <strong>13% year-over-year increase</strong> in demand for gold bars in Q1 2025, reaching 257 metric tons. When central banks buy, they're not trading; they're accumulating for the long term, which removes supply from the market.<a href="#ref2" class="cite">[2]</a></p>
+        for (let i = 0; i < bytes.length; ++i) {
+            let byteString = bytes[i].toString(16);
+            if (byteString.length < 2) {
+                byteString = "0" + byteString;
+            }
+            hexBytes.push(byteString);
+        }
+        return hexBytes.join("");
+    },
+};
 
-            <h2>Adjusting for Inflation: The Real Story</h2>
-            <p>Here's where things get interesting. Gold hit its previous nominal peak in 1980 at $850 per ounce. That sounds quaint compared to $4,000, but in <strong>inflation-adjusted terms</strong>, $850 in 1980 equals roughly $3,493 in 2025 dollars. For decades, the 1980 peak represented the "real" high water mark that gold never quite reached again.<a href="#ref3" class="cite">[3]</a></p>
+/**
+ * Translates between utf8 strings and Uint8Array bytes.
+ */
+const UTF8Encoder = {
+    parse: function (str) {
+        return new TextEncoder().encode(str);
+    },
 
-            <p>That changed in 2025. At over $4,000 per ounce, gold has finally surpassed its 1980 inflation-adjusted peak. This is a new all-time high in real terms, not just nominal terms. The inflation-adjusted gold price reached approximately <strong>$4,389 in late 2025</strong>.</p>
+    stringify: function (bytes) {
+        return new TextDecoder().decode(bytes);
+    },
+};
 
-            <div class="info-box">
-                <div class="info-box-title">Historical Inflation-Adjusted Gold Prices</div>
-                <ul>
-                    <li><strong>Average since 1913:</strong> $883 (in 2025 dollars)</li>
-                    <li><strong>Average since 1933:</strong> $974 (in 2025 dollars)</li>
-                    <li><strong>Average since 1980:</strong> $1,397 (in 2025 dollars)</li>
-                    <li><strong>1980 peak (adjusted):</strong> ~$3,493 (in 2025 dollars)</li>
-                    <li><strong>2025 peak:</strong> $4,389 (in 2025 dollars)</li>
-                </ul>
-            </div>
+/**
+ * Salt and encrypt a msg with a password.
+ */
+async function encrypt(msg, hashedPassword) {
+    // Must be 16 bytes, unpredictable, and preferably cryptographically random. However, it need not be secret.
+    // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#parameters
+    const iv = crypto.getRandomValues(new Uint8Array(IV_BITS / 8));
 
-            <p>This context matters. At current prices, gold is trading at roughly <strong>4-5 times its long-term inflation-adjusted average</strong>. Whether that represents a new normal or an unsustainable peak depends on how you interpret the structural changes in the global economy.</p>
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["encrypt"]);
 
-            <h2>A Brief History of Gold Prices</h2>
-            <p>Understanding today's prices requires understanding how we got here.</p>
+    const encrypted = await subtle.encrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        UTF8Encoder.parse(msg)
+    );
 
-            <p><strong>Pre-1933:</strong> Gold was money. The US dollar was defined as a fixed weight of gold ($20.67 per ounce), and citizens could exchange paper currency for gold coins. Prices didn't really fluctuate because the government fixed them.</p>
+    // iv will be 32 hex characters, we prepend it to the ciphertext for use in decryption
+    return HexEncoder.stringify(iv) + HexEncoder.stringify(new Uint8Array(encrypted));
+}
+exports.encrypt = encrypt;
 
-            <p><strong>1933-1971:</strong> President Roosevelt banned private gold ownership in 1933 and revalued gold to $35 per ounce, effectively devaluing the dollar by 40%. This price was maintained through the Bretton Woods system until 1971, when Nixon "closed the gold window" and ended dollar-to-gold convertibility.</p>
+/**
+ * Decrypt a salted msg using a password.
+ *
+ * @param {string} encryptedMsg
+ * @param {string} hashedPassword
+ * @returns {Promise<string>}
+ */
+async function decrypt(encryptedMsg, hashedPassword) {
+    const ivLength = IV_BITS / HEX_BITS;
+    const iv = HexEncoder.parse(encryptedMsg.substring(0, ivLength));
+    const encrypted = encryptedMsg.substring(ivLength);
 
-            <p><strong>1971-1980:</strong> Once gold could trade freely, it soared. Inflation raged through the 1970s (oil shocks, Vietnam War spending, loose monetary policy), and gold became the go-to inflation hedge. It peaked at $850 in January 1980 before crashing.</p>
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["decrypt"]);
 
-            <p><strong>1980-2000:</strong> A brutal bear market. Central banks sold gold, inflation was tamed by Paul Volcker's aggressive rate hikes, and equities entered a massive bull market. Gold bottomed around $250 in 1999. Warren Buffett famously dismissed it: "Gold gets dug out of the ground in Africa, gets shipped to Fort Knox, then we dig another hole, and bury it again."</p>
+    const outBuffer = await subtle.decrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        HexEncoder.parse(encrypted)
+    );
 
-            <p><strong>2000-2011:</strong> The tide turned. The dot-com crash, 9/11, the Iraq War, and the 2008 financial crisis all boosted safe-haven demand. Gold rose from $280 to nearly $1,900 by 2011.</p>
+    return UTF8Encoder.stringify(new Uint8Array(outBuffer));
+}
+exports.decrypt = decrypt;
 
-            <p><strong>2011-2020:</strong> Another consolidation. With the financial crisis contained and stocks rallying, gold drifted sideways, falling as low as $1,050 in 2015.</p>
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+async function hashPassword(password, salt) {
+    // we hash the password in multiple steps, each adding more iterations. This is because we used to allow less
+    // iterations, so for backward compatibility reasons, we need to support going from that to more iterations.
+    let hashedPassword = await hashLegacyRound(password, salt);
 
-            <p><strong>2020-Present:</strong> COVID-19 changed everything. Unprecedented money printing, zero interest rates, and supply chain disruptions reignited inflation fears. Gold broke $2,000, then paused, and then accelerated dramatically in 2024-2025 as the factors described above aligned.</p>
+    hashedPassword = await hashSecondRound(hashedPassword, salt);
 
-            <h2>Gold vs. Other Assets</h2>
-            <p>Gold is often criticized for generating no income. It just sits there. Stocks pay dividends, bonds pay interest, real estate generates rent. Gold's only return comes from price appreciation, and over the very long term, it barely keeps pace with inflation. That's essentially what it's designed to do.</p>
+    return hashThirdRound(hashedPassword, salt);
+}
+exports.hashPassword = hashPassword;
 
-            <p>But that criticism misses the point. Gold isn't supposed to generate returns; it's supposed to preserve purchasing power during chaos. During the 2008 financial crisis, gold rose while nearly everything else collapsed. During the 1970s inflation, gold massively outperformed stocks and bonds. It's insurance, not an investment.</p>
+/**
+ * This hashes the password with 1k iterations. This is a low number, we need this function to support backwards
+ * compatibility.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+function hashLegacyRound(password, salt) {
+    return pbkdf2(password, salt, 1000, "SHA-1");
+}
+exports.hashLegacyRound = hashLegacyRound;
 
-            <p>The recent rally reflects a world where investors feel they need more insurance:</p>
-            <ul>
-                <li>US government debt has ballooned past $34 trillion</li>
-                <li>Geopolitical tensions are rising, not falling</li>
-                <li>Confidence in central banks' ability to manage inflation has eroded</li>
-                <li>The international order is fragmenting, with countries seeking alternatives to dollar dependence</li>
-            </ul>
+/**
+ * Add a second round of iterations. This is because we used to use 1k, so for backwards compatibility with
+ * remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashSecondRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 14000, "SHA-256");
+}
+exports.hashSecondRound = hashSecondRound;
 
-            <h2>What Could Bring Gold Down?</h2>
-            <p>Gold isn't a one-way bet. Several factors could halt or reverse the rally:</p>
+/**
+ * Add a third round of iterations to bring total number to 600k. This is because we used to use 1k, then 15k, so for
+ * backwards compatibility with remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashThirdRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 585000, "SHA-256");
+}
+exports.hashThirdRound = hashThirdRound;
 
-            <ul>
-                <li><strong>Higher real interest rates:</strong> If the Fed raises rates aggressively (or cuts less than expected) and inflation falls, gold's opportunity cost increases</li>
-                <li><strong>Geopolitical de-escalation:</strong> Peace in Ukraine, calmer US-China relations, or Middle East stability would reduce safe-haven demand</li>
-                <li><strong>Dollar strengthening:</strong> Gold is priced in dollars; a stronger dollar makes it more expensive for foreign buyers</li>
-                <li><strong>Central bank selling:</strong> If emerging market central banks reverse course and sell reserves</li>
-                <li><strong>Cryptocurrency adoption:</strong> Some argue Bitcoin is "digital gold" and could absorb demand (though this remains contentious)</li>
-            </ul>
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @param {int} iterations
+ * @param {string} hashAlgorithm
+ * @returns {Promise<string>}
+ */
+async function pbkdf2(password, salt, iterations, hashAlgorithm) {
+    const key = await subtle.importKey("raw", UTF8Encoder.parse(password), "PBKDF2", false, ["deriveBits"]);
 
-            <h2>Is Gold Overvalued?</h2>
-            <p>There's no earnings multiple or book value for gold. Valuation is purely a question of what people are willing to pay, which makes it notoriously difficult to analyze.</p>
+    const keyBytes = await subtle.deriveBits(
+        {
+            name: "PBKDF2",
+            hash: hashAlgorithm,
+            iterations,
+            salt: UTF8Encoder.parse(salt),
+        },
+        key,
+        256
+    );
 
-            <p>Bulls argue that the structural shift (central bank buying, de-dollarization, fiscal unsustainability) represents a new regime. They point to gold's long-term average of around $900-1,000 in today's dollars as artificially depressed by decades of fixed prices and central bank suppression.</p>
+    return HexEncoder.stringify(new Uint8Array(keyBytes));
+}
 
-            <p>Bears argue that at 4-5 times the historical average, gold is in a speculative bubble. They note that every time gold has spiked to extreme levels (1980, 2011), it subsequently crashed and took years or decades to recover.</p>
+function generateRandomSalt() {
+    const bytes = crypto.getRandomValues(new Uint8Array(128 / 8));
 
-            <p>The honest answer is that nobody knows. Gold's price is ultimately a referendum on confidence in governments, currencies, and the global order. If that confidence continues eroding, gold could go higher. If stability returns, it could fall substantially.</p>
+    return HexEncoder.stringify(new Uint8Array(bytes));
+}
+exports.generateRandomSalt = generateRandomSalt;
 
-            <blockquote>
-                <p>"Gold is a way of going long on fear." - Warren Buffett</p>
-            </blockquote>
+async function signMessage(hashedPassword, message) {
+    const key = await subtle.importKey(
+        "raw",
+        HexEncoder.parse(hashedPassword),
+        {
+            name: "HMAC",
+            hash: "SHA-256",
+        },
+        false,
+        ["sign"]
+    );
+    const signature = await subtle.sign("HMAC", key, UTF8Encoder.parse(message));
 
-            <p>Right now, there's plenty of fear to go around.</p>
+    return HexEncoder.stringify(new Uint8Array(signature));
+}
+exports.signMessage = signMessage;
 
-            <div class="sources">
-                <h2>Sources</h2>
-                <ol>
-                    <li id="ref1">Macrotrends. (2025). Gold Prices: 100 Year Historical Chart. <a href="https://www.macrotrends.net/1333/historical-gold-prices-100-year-chart" target="_blank">macrotrends.net</a></li>
-                    <li id="ref2">World Gold Council. (2025). Gold Demand Trends Q1 2025. <a href="https://www.gold.org" target="_blank">gold.org</a></li>
-                    <li id="ref3">InflationData.com. (2025). Inflation Adjusted Annual Average Gold Prices. <a href="https://inflationdata.com/articles/charts/inflation-adjusted-annual-average-gold-prices/" target="_blank">inflationdata.com</a></li>
-                    <li id="ref4">Federal Reserve Bank. (2025). Federal Reserve Economic Data (FRED).</li>
-                    <li id="ref5">GoldPrice.org. (2025). Inflation Adjusted Gold Price. <a href="https://goldprice.org/inflation-adjusted-gold-price.html" target="_blank">goldprice.org</a></li>
-                </ol>
-            </div>
-        </article>
-    </main>
+function getRandomAlphanum() {
+    const possibleCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+    let byteArray;
+    let parsedInt;
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="mailto:mail@justacallaway.org">email</a>
-            <span class="footer-divider">·</span>
-            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
-            <span class="footer-divider">·</span>
-            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
-        </div>
-        <p class="copyright">© 2025 Adi Desai</p>
-    </footer>
+    // Keep generating new random bytes until we get a value that falls
+    // within a range that can be evenly divided by possibleCharacters.length
+    do {
+        byteArray = crypto.getRandomValues(new Uint8Array(1));
+        // extract the lowest byte to get an int from 0 to 255 (probably unnecessary, since we're only generating 1 byte)
+        parsedInt = byteArray[0] & 0xff;
+    } while (parsedInt >= 256 - (256 % possibleCharacters.length));
+
+    // Take the modulo of the parsed integer to get a random number between 0 and totalLength - 1
+    const randomIndex = parsedInt % possibleCharacters.length;
+
+    return possibleCharacters[randomIndex];
+}
+
+/**
+ * Generate a random string of a given length.
+ *
+ * @param {int} length
+ * @returns {string}
+ */
+function generateRandomString(length) {
+    let randomString = "";
+
+    for (let i = 0; i < length; i++) {
+        randomString += getRandomAlphanum();
+    }
+
+    return randomString;
+}
+exports.generateRandomString = generateRandomString;
+
+  return exports;
+})());
+const codec = ((function(){
+  const exports = {};
+  /**
+ * Initialize the codec with the provided cryptoEngine - this return functions to encode and decode messages.
+ *
+ * @param cryptoEngine - the engine to use for encryption / decryption
+ */
+function init(cryptoEngine) {
+    const exports = {};
+
+    /**
+     * Top-level function for encoding a message.
+     * Includes password hashing, encryption, and signing.
+     *
+     * @param {string} msg
+     * @param {string} password
+     * @param {string} salt
+     *
+     * @returns {string} The encoded text
+     */
+    async function encode(msg, password, salt) {
+        const hashedPassword = await cryptoEngine.hashPassword(password, salt);
+
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
+
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
+
+        return hmac + encrypted;
+    }
+    exports.encode = encode;
+
+    /**
+     * Encode using a password that has already been hashed. This is useful to encode multiple messages in a row, that way
+     * we don't need to hash the password multiple times.
+     *
+     * @param {string} msg
+     * @param {string} hashedPassword
+     *
+     * @returns {string} The encoded text
+     */
+    async function encodeWithHashedPassword(msg, hashedPassword) {
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
+
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
+
+        return hmac + encrypted;
+    }
+    exports.encodeWithHashedPassword = encodeWithHashedPassword;
+
+    /**
+     * Top-level function for decoding a message.
+     * Includes signature check and decryption.
+     *
+     * @param {string} signedMsg
+     * @param {string} hashedPassword
+     * @param {string} salt
+     * @param {int} backwardCompatibleAttempt
+     * @param {string} originalPassword
+     *
+     * @returns {Object} {success: true, decoded: string} | {success: false, message: string}
+     */
+    async function decode(signedMsg, hashedPassword, salt, backwardCompatibleAttempt = 0, originalPassword = "") {
+        const encryptedHMAC = signedMsg.substring(0, 64);
+        const encryptedMsg = signedMsg.substring(64);
+        const decryptedHMAC = await cryptoEngine.signMessage(hashedPassword, encryptedMsg);
+
+        if (decryptedHMAC !== encryptedHMAC) {
+            // we have been raising the number of iterations in the hashing algorithm multiple times, so to support the old
+            // remember-me/autodecrypt links we need to try bringing the old hashes up to speed.
+            originalPassword = originalPassword || hashedPassword;
+            if (backwardCompatibleAttempt === 0) {
+                const updatedHashedPassword = await cryptoEngine.hashThirdRound(originalPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+            if (backwardCompatibleAttempt === 1) {
+                let updatedHashedPassword = await cryptoEngine.hashSecondRound(originalPassword, salt);
+                updatedHashedPassword = await cryptoEngine.hashThirdRound(updatedHashedPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+
+            return { success: false, message: "Signature mismatch" };
+        }
+
+        return {
+            success: true,
+            decoded: await cryptoEngine.decrypt(encryptedMsg, hashedPassword),
+        };
+    }
+    exports.decode = decode;
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+const decode = codec.init(cryptoEngine).decode;
+
+/**
+ * Initialize the staticrypt module, that exposes functions callbable by the password_template.
+ *
+ * @param {{
+ *  staticryptEncryptedMsgUniqueVariableName: string,
+ *  isRememberEnabled: boolean,
+ *  rememberDurationInDays: number,
+ *  staticryptSaltUniqueVariableName: string,
+ * }} staticryptConfig - object of data that is stored on the password_template at encryption time.
+ *
+ * @param {{
+ *  rememberExpirationKey: string,
+ *  rememberPassphraseKey: string,
+ *  replaceHtmlCallback: function,
+ *  clearLocalStorageCallback: function,
+ * }} templateConfig - object of data that can be configured by a custom password_template.
+ */
+function init(staticryptConfig, templateConfig) {
+    const exports = {};
+
+    /**
+     * Decrypt our encrypted page, replace the whole HTML.
+     *
+     * @param {string} hashedPassword
+     * @returns {Promise<boolean>}
+     */
+    async function decryptAndReplaceHtml(hashedPassword) {
+        const { staticryptEncryptedMsgUniqueVariableName, staticryptSaltUniqueVariableName } = staticryptConfig;
+        const { replaceHtmlCallback } = templateConfig;
+
+        const result = await decode(
+            staticryptEncryptedMsgUniqueVariableName,
+            hashedPassword,
+            staticryptSaltUniqueVariableName
+        );
+        if (!result.success) {
+            return false;
+        }
+        const plainHTML = result.decoded;
+
+        // if the user configured a callback call it, otherwise just replace the whole HTML
+        if (typeof replaceHtmlCallback === "function") {
+            replaceHtmlCallback(plainHTML);
+        } else {
+            document.write(plainHTML);
+            document.close();
+        }
+
+        return true;
+    }
+
+    /**
+     * Attempt to decrypt the page and replace the whole HTML.
+     *
+     * @param {string} password
+     * @param {boolean} isRememberChecked
+     *
+     * @returns {Promise<{isSuccessful: boolean, hashedPassword?: string}>} - we return an object, so that if we want to
+     *   expose more information in the future we can do it without breaking the password_template
+     */
+    async function handleDecryptionOfPage(password, isRememberChecked) {
+        const { staticryptSaltUniqueVariableName } = staticryptConfig;
+
+        // decrypt and replace the whole page
+        const hashedPassword = await cryptoEngine.hashPassword(password, staticryptSaltUniqueVariableName);
+        return handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked);
+    }
+    exports.handleDecryptionOfPage = handleDecryptionOfPage;
+
+    async function handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked) {
+        const { isRememberEnabled, rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+        if (!isDecryptionSuccessful) {
+            return {
+                isSuccessful: false,
+                hashedPassword,
+            };
+        }
+
+        // remember the hashedPassword and set its expiration if necessary
+        if (isRememberEnabled && isRememberChecked) {
+            window.localStorage.setItem(rememberPassphraseKey, hashedPassword);
+
+            // set the expiration if the duration isn't 0 (meaning no expiration)
+            if (rememberDurationInDays > 0) {
+                window.localStorage.setItem(
+                    rememberExpirationKey,
+                    (new Date().getTime() + rememberDurationInDays * 24 * 60 * 60 * 1000).toString()
+                );
+            }
+        }
+
+        return {
+            isSuccessful: true,
+            hashedPassword,
+        };
+    }
+    exports.handleDecryptionOfPageFromHash = handleDecryptionOfPageFromHash;
+
+    /**
+     * Clear localstorage from staticrypt related values
+     */
+    function clearLocalStorage() {
+        const { clearLocalStorageCallback, rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        if (typeof clearLocalStorageCallback === "function") {
+            clearLocalStorageCallback();
+        } else {
+            localStorage.removeItem(rememberPassphraseKey);
+            localStorage.removeItem(rememberExpirationKey);
+        }
+    }
+
+    async function handleDecryptOnLoad() {
+        let isSuccessful = await decryptOnLoadFromUrl();
+
+        if (!isSuccessful) {
+            isSuccessful = await decryptOnLoadFromRememberMe();
+        }
+
+        return { isSuccessful };
+    }
+    exports.handleDecryptOnLoad = handleDecryptOnLoad;
+
+    /**
+     * Clear storage if we are logging out
+     *
+     * @returns {boolean} - whether we logged out
+     */
+    function logoutIfNeeded() {
+        const logoutKey = "staticrypt_logout";
+
+        // handle logout through query param
+        const queryParams = new URLSearchParams(window.location.search);
+        if (queryParams.has(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        // handle logout through URL fragment
+        const hash = window.location.hash.substring(1);
+        if (hash.includes(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * To be called on load: check if we want to try to decrypt and replace the HTML with the decrypted content, and
+     * try to do it if needed.
+     *
+     * @returns {Promise<boolean>} true if we derypted and replaced the whole page, false otherwise
+     */
+    async function decryptOnLoadFromRememberMe() {
+        const { rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        // if we are login out, terminate
+        if (logoutIfNeeded()) {
+            return false;
+        }
+
+        // if there is expiration configured, check if we're not beyond the expiration
+        if (rememberDurationInDays && rememberDurationInDays > 0) {
+            const expiration = localStorage.getItem(rememberExpirationKey),
+                isExpired = expiration && new Date().getTime() > parseInt(expiration);
+
+            if (isExpired) {
+                clearLocalStorage();
+                return false;
+            }
+        }
+
+        const hashedPassword = localStorage.getItem(rememberPassphraseKey);
+
+        if (hashedPassword) {
+            // try to decrypt
+            const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+            // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
+            // the user fill the password form again
+            if (!isDecryptionSuccessful) {
+                clearLocalStorage();
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    async function decryptOnLoadFromUrl() {
+        const passwordKey = "staticrypt_pwd";
+        const rememberMeKey = "remember_me";
+
+        // try to get the password from the query param (for backward compatibility - we now want to avoid this method,
+        // since it sends the hashed password to the server which isn't needed)
+        const queryParams = new URLSearchParams(window.location.search);
+        const hashedPasswordQuery = queryParams.get(passwordKey);
+        const rememberMeQuery = queryParams.get(rememberMeKey);
+
+        const urlFragment = window.location.hash.substring(1);
+        // get the password from the url fragment
+        const hashedPasswordRegexMatch = urlFragment.match(new RegExp(passwordKey + "=([^&]*)"));
+        const hashedPasswordFragment = hashedPasswordRegexMatch ? hashedPasswordRegexMatch[1] : null;
+        const rememberMeFragment = urlFragment.includes(rememberMeKey);
+
+        const hashedPassword = hashedPasswordFragment || hashedPasswordQuery;
+        const rememberMe = rememberMeFragment || rememberMeQuery;
+
+        if (hashedPassword) {
+            return handleDecryptionOfPageFromHash(hashedPassword, rememberMe);
+        }
+
+        return false;
+    }
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+        const templateError = "Incorrect password",
+            isRememberEnabled = true,
+            staticryptConfig = {"staticryptEncryptedMsgUniqueVariableName":"b54925027fb62fb92876b49ee5b4c2be23b76668a70ece005b184de49bf602ce72216d5255a9d3b6eda8de363bfee00a84e81aea346ebc18944e0f5cc880846d22fd43e414f8e20079bb22d952c57243be890753fc034dc0972a725363011e019c725a482fa547d1d94d7fc0f94ffce5ac6df16d459caa1bd734f70e787451bf13b7c31d08360ef83b5c5f932aa27b2cf61480cde100fca8001fb62b0b0e2ccae070d773446d4b53977aaf682a963bad9a4b0ad952e1554c75c1c7b0fe209abfee58d32e79d804d46acf3d6b373e239014ef5e7867be8d429a7f082436e154f9788a7f8a023d0d041c7a7fb20c722eebfa2580356624042faa620e6147d09b7c01d4c755b0032d742913428494e3a463021e40080eb62273afed92d1cde51f29abec280392496c8701e49dfa36aac90f9c507383485231d04c714f5e515d4eda3ac99b8864662232b5762e8beca8949e20fcde9e450206365fed01d8ec92203782cc95a1aea170538bf909cd70406939df9b9305bb8d79290dd0c2677e5a59175b4c9ae85867cca7b88fab12112b1acf43e2e519e9f7f7ac8d17f29977084a712638d08e8610041649b89bdd29d097bd8778df6493a01b356241360b11b2601cac6598cbee35a09efea20d7a53fe5fec5c98dcef0533909297564da570450c8bb8733b2a91dc4ba94e728624a2ceb19ba1469f2bffb6bdbdecd75006db5929ef47b4f2adb373d4de6ab625c129e0a12c3b3dac412a0100ddb129cd50bcffad1cd7e135473a538feb7254784669aa463e8ef9855f55ad9071fbfaf777a2909443917a08d628342f1f50a20ff7a5925ffbdf16ebb32f71a874383912724ef50fdbea5635599595d77eb6b2d831b09df394f385c0dfe55c2df2647ce38ee24afe595baca97e30e1f1561d3ce76b74dc3863a2bf090e4fc0582ce9139d74eb14f60f4813e344e853ca2b51baaf22d075ee87022807028e6150c1e91fb407f669dcc4874f36591de37828ca914752f092b36360919f520e02f7dbadee14529a67227f2612aa9336a361056988d49322e1152f1f4410d60c28192dd0bdafe516d94b103ff488bdaa86884ba215fdc843223d5db1985c3f411a81714f3b314b00110be1e9d07d28c3d549fbdb7867a883d25dd7271f377c055c9f3e9ad4e278715df2bc2e44e452a16be6491220ae36a550b5861996ee49b571d0530bb102ebbf11c7f5da45d36ea76bfe2516fff2e010597a100c242ccecae4e683bd417f618bb78f7e7f50ff86bcf870db8689bf263534dd183856e8a3c44ccfecda43d49cf85c64495c9e1d3174ffb40adc80718ca968d128dd76bb9792d8fb4a950fdea01ade0d801d64baae0bce2964799e320ae62ca01a20e229d35448e42970624d5757864679a8cb2386eafe5d668cef60f1525cfea0102bf66674672626f5cdb0904fbb68903f6b5da29a20089446360fea598059408db08fd7105a2d3e54256fbe3e82b2a87ac40307046770232384a9453b951f62076ad41bac244a6abab3e22746df25a5a5e0e3121c4b4850b9e2a91ca77714704da357811aa846e9637bd0db94b54d922df4f628a803f180131673a4fc30692dfdf1994e0dc21bdc8c1bdde8996a342796e36cf98290e7931cb121f12d423b59b7107ea8b53bb8eda8db98cce572d770ab8a215a74cc199214d1e941199c8dd9a347b37d9d550865966898e1aaec666d9abb2b2c5d4672b62bdf7ff1812d6e21380c163c1e1d7fe330b75011d37471131f48e16fa09423de62750472978adcd951571f51fcda73c51db95989255611230b88ee901355ffbe5c1ac4574452eb3c65d7f7ee48bbc6ff6853840dbf637f87ad8a45e740725df04694b7a05af23b0e0c6e16b4167b73997368f1ba5c271cceaf0085af136f28ddc376b06f226b83caa7e4077d9739e26278e5d2bc3712d799adb4d99097c9c7be8b614f626814f57e96e05dc43648351d86e043e45f8d06cb3f97289392d200d27bb8591ef27714ab66391c3f1b8fa61e98a0c40e557552c3d574eb2548d28a191199794de7f55c5943aba1ec96eb597d6c9e9549eda65d2a1b5699686a7194d8bbad7833450577aa200b359eb9569411879c55ce214e3d16bed6c1cfe3d7cd3757ed061fddb8ed78da0c2c483c85f7e90c57cdc6e980e7fe05b5104dcc8354d4d3a9fb4d0109ced9e64e4f3553bda8f0d0077c07f24ee0169fbd421ad87b3c6db5dd1eb4bad50245e9da3ae6763075d819a01402344a02463ffa71f29ffc42ae7734a9e80b437f9da770b9ba58765b1e03712492d3fa85277bf5e81e7247cc33f87a755c8c408f680465480e386e437e550613cd6ea3a5f60f5032754079a9de5d1f1e440acfb749b74ccf61ce351b09d950638700828af9367a9850f2b32a81793ccc3d6e071b1aa9484bcac664a54593efbcc498bf6ef6bb950d022ddea50bcfb6d13cb11526de03f7e2e58b5eea8a83aab177ec420b22bfd3366a648ff3d5e3ab0f6d3e08da32956aa439522f40b93ef0d27ff2a95cccb1d11ada9269c2ec1bf22464202ab0a40a260cefe446320d5c2b370c1b3d71228fd04b6da093ae52bb27a8129a9cc6347f280d4fe5dc01d6f5915276e63799882376ecded325ad1ed766cfdc4846da74f753c0cf2a0f5eb2771ff68443d97c25c26035f3e7d4b96554fd249d102e3f6cd9306d45b5dd35e3a454c0d25210c3e42b934d45512c185229966a2b89b5c62290499536e6fe1e646e95f0f71cdc1e0bcc0cac484ab6fd372c3c6b3fa9e420e1ce0b48d1bce932fd75d14a447c1cc5a26832acf1b487e1faf46ddaf95f1e140846da86f4db9b82f720810cbe61449cfcf6d0f0a59acfc1766db796d0a1b2e640448d2c4932bbd113d736937ee9b8c8e07687e6af29d80b6a072bf10a262ec470a894a574a52ff426071853a45755a386028553d9b0102b4d3cb1b74e2b72e88abfdaf0e597111dbbb357a1ea4021031dec681cf7d924ce3df4bd2cecbc087c81b945507c24dc340af96a8dd4b3139e82ecdeafd704efd1f7a289b06cf4cc03dd9d855945d0e60dd41b8e18bf999f9207b9f652fb4757c867f4117f38c9ef353d8c6e69a1a647d99f57ad1dae605e5b818cb9ca4de08b54f7ea1f34b99a8f34008bef236eb86ab1ee16144aa4d619e2550f1669f9e6741e7aaaa26fd01d29d5aa1560bf0cb6820e5d1d342e87345a152515f2ecc3aef9fc9c6b1ba78d7f3ea3a94f755cbdba4e0baabef4fd58385c93ac746e644540492b10ec521018d5462ed30505f0c09aee80693424f33602820a3d070802c1ce11091e263ac41837c7edc6909011b5c1a13b286e0e27ec9ae8f3534cf83ed46ba561d64ed9983056ed4a23ec50d9266632ad9c0fa04d587cf7e38ca7a03b165183eade4fa124b00769423d6eef4a6ac7f53bf32810badadea459f1a251f62c52467bb3023b383b0b8ba48c8bbfc66f6aed4d2cb596f994d6cc77d90c8ecbae23924369da73805842216af4e65f6df76e93c8264a7b470f01bbb5e538944d83710446e74107ff4ab9689ecae2b86308ec22eb86f0082715a2916abc3b84e88697ee1b70fde284b5f50e8cf6ad2b45917bc2acdf001fb0d74bcd84ddc4cd38f80cb9e6ab340f599c3abfcfc27f1c56200d02bc9d49737ade1608a2ab0d774ffd812667cc19705b2d44b7cb876e93b1134d048428a1670e1cbbc92d28d8cb7319f011783d31d16eb2375b87610c152e603fe6ef804ec44fe47b8cfba67c7a30c0f3b5e1dce6e9729aa3ee9be0bc97f7c95d2b2310bbcef7307cdf361dd5f9dc1ae24136d0f082360e15f0e7782aaa3d7786297eabe8f9289d443df91c006974bc3e320ae0ced1e2a4d180a8febd7774699a8e301ef22fec925f57571766c3aa6cb029c2e627576712d057e6a01ec624ca5261d7e6b16ef3b2afc6045732194734e835d4e233033dd7d73cde90b1ced1a953e40234eb2892a16b92a2eb6878db12e1306510fafd2dabdd45d8351fc4a6d6341b9025ce1f15bddfa3d5c6ce2aef86d8894fc05f4bbb2d04dcb4df1fb2f06d4d0ee845ceddda4374738087530680d178a1b68f6c65dc5cf7e82e38ee27727ef7c0f77d4c2b48a4feec4b145b8403b37876082ff7c576cee866be842a5d4d200f10d4ab857cd0bdd26e17acd1cd9cb27f15306b94101e95fffae6775bf6d8da6cb9d13a7285cdcd3dda11c16b3b04e86f2e7c480739093bd3a3c9f51c0f88409df9ffe6b02f921a44c9d85a4c6957a1bdc73676366d6def881e27e682550b55b272986423beceb7fad176701fb6481483d01e613f60916973e718fe147bcf840260c0d303d4f666f8880703e0ba106ac807c7efb7e2f301faacb8d73ee759b97599f2e0e9917a8316ba32162bfc7540810b431011e7d3c78fc53ac508f18802985d1ac82f413dad814dfb446125db27de0cd1f35784cf363af0dc92ac1c89eece63d03168fc169b06645700cc82def9d862e0bffbec1b65f874dee591758b8632ac9ed473428af69e6064b72fc0a8c01e6d50dbaa98fe6d48daa0e01bff458a1d70b2e9fd0cbc56822efbc399e4ffcaeb007a5dbe6b08990b6cc687f87e02d891dd8bff9c5b3566678bce3f2225c0e6bf4403e00e23d383ac981adbfa1da58f77ebcd4a534a1976a637dc2825ca53d5b39cad12d0a50b86a12651723aee5ccc109fa8e908c3dd1eb43de2d088a7c2f8b4232c773b00b89b0f683a499d8557991b816017cef774ed91957b89cbef17518e4595352fdb5e37dfff91123b2fa530f0831e8561817f5a98ab5324d75e8b40baef9f113ef8c13dde09a2b1abe5df27a8d44e86fc9ce127c45dcc9872a741420e30d539400e1ada0d8678d3b695277c622a888bf5b7e58ea4bf496dfc2e2e9d8790e3528ae4558c2ad05e67da873d2f2fb82f33cd8d5d16e8ca5295ce267ef4dbe92fd59d8010687893f85745942d72223e18964860766a20ee14424b7eabab38ed5e8eb4d0f94e67203e1f3d174ac7fe7215758a8832dd839f3662e5990d17dcc72ce4bef3185e02f3c9a1bb39a5aaa3593dd1e70fd0f1b920c6ce532f3f6b0554847dc3ba0492f9d466ee6904a6544365d89b99d76b36c978fcb766935a2affee801fec4a08c943aab564ef3a849d5abadefccbc041076028a9128a47015413d73fc8c58d522b7e6fa247b04888a1eb8f8b712a485482584b21a0481d117c63d53bd03a05045cedfc4f59f37f49fef3f2f2cd8a5418a713d3c1a0d8881697abf75f9440e25d8789b4556e4e66a5a6b688b7486f6b4b08b194a09151898f1b999682320652d5310c21b71177d02ec25176f0ae3fd44a0c10655bf5d79e27e1c629b23b255532eb23e742b35b11f63f923b2f946e52eea51ddc98e9bbd2cd9b896a000e059c14192108825e693c02553539a80a940432fab1f846229531eb209a31251b215fb316193cef89380f65cebc025d27869094d0ee748ec9c1ce9a7e2c40883fa95b200b6e40c07fecfa034185b00a18465f8b252874b0ca3cfc03b75c7e307e3d877fc5e5a91935268a8ad5088dca730e229c849f50beaf37ce293446c0f1975a97e1198545f2ebc45febccc43952dfe09116d4b9d3148a57b87067bb10fb287d3decdb456b354ab5c46c58f0c74185b77bbcd461dcbba6bb3ea266abfe310977e17b0eab24f4b498d80a4b884e5c07fb998f7b10259f27eac9c300be2760e7c1b005adf6802c2cccb58bf0aac3353d348505f0456543b2fd057a1a5ffa6f7cb7c549804c8fe230dd9f65524a507df6ef0e133526353d91c02fa49e532e4ea3beb14f0ca52ac742f0fbbfad8d1a6446dfeca4515bf92d05e5b8f9dd73cfb5005257cbddfab4216324ae4c993a40b5b21e978717f4da4197bbd1d4f34084955789b2f89502cf9b944a5bd6a017698f2aba85fff5d1a85b020ad48a14f573e8651b26ad545de5ab0bc2adbc6d58bf1849c87c04a76774c4b304a7bacfc122dd44155022a3ff3522b3a764586b248932044468baa9889c859b3809dc3b6faf3016d072806c2c9a5967f6121ee55ae0111a57676855d613744a6985939f6b400951ee9c607e8c37793e032547a1919ae6bae67b9efeeba7858c8905214cc528f192b4ff042e3d0f8e3855bdf80be30c6f0c453ec8eb7bfd963e9ce3ec5002894200ca1ecd4451f4bf7ba31733b3140a3a088d458fb72b57a80b7848971ef68b2d23a51bff60522735518d42f161b8c4791dc62ee0ab17375ba1a8dcc3ebd895208e3b5aa46ec540493da744bbb5e0fa3282f9c15c81d1f29aebdf61299cdce34eb173ff97987acc04a46ab9963ef264c7945f0a2ccf79be450f375471634396135c6d522be7b36e6f02bbe96af2823af581e4c3f39d8ddc6d47faa0fa9becc9519eb935cab97e82688ced356b45e9caf5a144b1e32ba1c24e3d7a68a6b279323a46721fe8ca78fa24879e5bf663c1cf3e441707b5d3c1cdc4cec26aaf55e92ae1d7ea714ee00d5c88ddb924e2ecc5d8e5559ddc1ff6bf5ea3dc162d2fc6529c83c4289104535dce92eea81ae0be5f8009d3daa8c044e45cf4c1f7bc93191ebd0992a0b6106c248a17b5e0822661bd3cb9631a95c6f1dcb8de4964678cbf02555f2bbbbe4823d53c625837ce774349c89b47584bdec09adb7a85432c2e3807a14e0a9cea3eb3831986bb016b67ded9e69701f6f295f46953aea7583de4be0f4b8303a20bcf6521230b178f36844b021f3c4ebb31f7ee1cc38a927fb40313b45634e335349f1f13e929f546b0624d0dd77a1938a94ce9e1c32cc5b01b15fc4eb62ce60f59600aa09e7b244092ec3e535a934f85c10ad0621122d159416a40c02e9b448588f78f2c5aa9c32086c38c31b5ce3ada874e5c9f563690015aa26ebb4981975c39872c6cf03ecfe105ddb64f5069ca665e3a790883210091d76c509b810a054a2e235f9d919f931f7f08835f8002d9d4004f8cf2129a902b84955765dece9a24809e2ae7bf4c2c6cebb21097e4359dade7ed82ec30b53074092fc2dd15a6aec6a38ab5e28bc745582a3601aeeb16c9691872aead7fc84a2424bd99a98ede125b062df17a45cd0605ed1b82023ba5cfb6c1efc16b03cd2026853dfc05a85f35b727f4eae1b929712b7bbe80f2a3f72803a524d3d8a2302a606589c2c62cb6133cf19472e9a86fe581fe2cbf99a18220f58721bd7bf202cc7a7e8f852b16350acc5b8eb2e441d9f7f1621a67395c298bb850140a3f0a7f06cb3735db3968b6c2ccc562e0fd13887fe30ab8d12b12b937e99774c3e12258a47efd3ed63bd5dbfc0a405d70fce5489cf5241fe82f0c814debcbc479133086d47e0583f345621c64e98abb985ba4d8f0ef49f5c26e0b9eac0280ad4ba7e18af0a564edb43ba4d417ef9c775b1ca370b325cccc808f6c70f2231aa59a74d60b845b3e03cd3b5c252f0264756dcbd753b58666336d5e8ac1ab4f149ef6e33c242a267e7b2c80f2e7cff87737efca58e28dbdc2f6a53fde83fcc2092300df1a7284658a5d04231683d4bbd3da4d27373f0b78dc1e307943d027917854fc6ded2ce78a14d9ab1b5e42e7d60193d6a40d49747af191ba18d6052aceb1ef66e7bac2a13b665e7fc4982de8a9898a5e2dd0141f196c7b96769824e058bc2404e5788e577dbb7edc98ed2fef55dadcad11b286fde1b564283f1b13c84623c64b3801d429cb0eb53ed9795db5e89209ed74c750203b9b32cc4d3d3ca6977b52c114e01b6224c031668ae9bfa43945d8b8f595cc26c0a8a4da684becb8b181dc20ac71c574b0e3134951542c90fa1d014e6d62dcff01d4eee378d02ba68a1a51abf1c4d85a447cc758a5dabdfcacbef5cc27822388371365807ff91f1d5ee705559e430c6e97baf3348b22e09326e3dfe778fdb5c493484580175f8208d22c25f8f09745102b7e57c511d398daff7234dfe0bb14b52991de65cf90a1aa4f9aecfaa6d8d2ab035cd54216d7f517930fd025d24558f4c40e831916d465aec85526c80d4cb4ae842e0c91b33517f1e7b2329479cd14121d4db565312d991e8c1491385f4fe3ac5f351284fc08ea98270578bb1db5615c4eb073a8d75bc2366f33f304ff91bd62df9b4c9aabbe902f88db301be35a2c20090c220ce5a71baa501ca471f682ce14b06390f35dd00856b254d05f7847fbe7712ee2b7e4424b46857cb786e35b22bd7e688beb1061379de2c389299fe661c851189956e8a88d1c496b6d17e4ce235f79ec26ac70f59d6377b4853f185a43e504be8637595ed72c8f34735504f2f0545be05b486bb21765f5d5d4ef60d7b3759726f8fd2fadec254dc90499f69e4de3f5edfdb5116339f2b419a4b8d521bad331052c111f5f8fd09d1ed0fb3b47e51943dfafe2367e30949326f253f24a712236c74eee727d5fb63ca210a6059d5b3ab8a948694d4311756c5f231e32f8cd128c582c6842437ae06f33f80062502cd2fe1c081ddddd9142f3507824c049d88db77a4e32d5f6e4ceccc512c6c0c0b3ec12a751124831d0085a68e0d504ba8ddb7730c745d398299a6618c88b1e6f21a9d0f7aa491c08e319e5e1d02de5c0feaa7f396420b065f42714849dfb62b5ea60ea28830effb79f2a7acfdc1bcec0b7287c9384325e719ef3e729da2e7ea4e82e6cd6acd4894299319dc8438508b30403ce91dfe371037a9562ca0c4dafddcdd5df11324eb0a5f3aa641d59082726c7c741972968ec5478b2fabbb5ce8fedd259de7521666f7e323f0afd3612d086472e83b787c83e67bc9193bc75e70a49115de27c2e424cefc6c1eb1d02e9785857d7d8464788d2697378de69d5cfee69f5b5af2905b9989613aafcfa02cb4aaa270c86aebb6e55ab8aacb210d35d8674b1e66ef4795f46d802d8eb34e070fd6e0f833857f33b3ecaaf47f69ca0d3388ef31e7bd189f32f17679752b26ef31ea5366776e051bd92376206f2af011ab183adbe7d671ac9b9cfaf69bc931290a4aeabd62d70ea8be50bd4b18147f2e2be9d0fd8834972599055c97d90dfef693e21e554930c66e135155678aef8b8caeccb99479fc153c3a316cfe6855ad2ce7aabc76b7993a669fa6b452f9d835933df5b438dacb5e539cb99e2771b4a5dbf00656583af6c8e8821b771c148d3cafe066e185bf3ffb31b16f8ae51e0577abfc236fce75f79afd7238cb31e4ae41e466ccad1f9066c7a18c1491aa35f63b2d8eb0111c2cf1f6f96312db390246e13565b79370757742e52ea13f6e5c43e9ca89b87dfb4a77866596db3db0cc34ae41e2d0767b1b5132d9f97540adcd2228ef7e1a8fbfcfd5dafab1e6a85c933c0db8acd9db21d8fd6d27d3d9494c428d4b77bc15b8c5e232467431a425ab80b66b4c4976939d63886115d455d3c7cbe99028477053a97a6ed52b9ab828e7e5058a4f12d6f623b7cf0f8940f06fe358cdc4806624fd0fcdc924ccb51b91b07d28da33caca796c68f43ce56d389ad70f766a08fec4c9a9aa6c27b026b4185e4868bc2c894b6e7124915a0666f92c3dd63325ab933bdad3c29c1e9863b94e63477b454990bfb3242baf4194dce78ef598084257e8794b33ea764bd1210a0cc2dd0027d5b3a58952be6deee9e3accaf2dce7513e49f5e240a158676c81178c847ff518eaa7e22f2fa4e80a32c30d2bf7cc5ce798a181b84b1ae6e8766af658ecdb0d33380da2eb30e8e2e5bf83afc440171b6fcf32ad7e905a8085113e91cec379befa6983cb7645e5bd0294bc7f6f0c4b3a5b22bd27a9a61c96a111f0b78fe84251f3103473f437e4f3b7f2ab4f1d06dbb6186a83875e1f6808623ecacc2ddcab875bd5f77284cc8f1e68ee0d0daa0969a2efecdb9e3e2dc94ef0aede82aaa1dcff5e9f8f20b4b953fd3c783aaf2b0449a2de413a899118f825ad48d1c678e362f591b4743d1da40d8b41ea3ebcee601f02082f7046390461da2703b1a03b5e0876b6070beaad4923ce3b48186cb17291f7494765f3ad7af523a545ad731435f2a6ad867dbde731d68f5baf7f1ce21daed9303921679114cabaa83c4c4a4f1b982f12497c9ea405dcbb4af64bed169c540a3068ad43f40bed3b8e5efc2ec1ed2b7357ce0f69c84d57bfce1e8dfd73da09d9fad85beda8c6c3c4494ad38a373a4bbf6097c4c243bebf4ad67db07af592a5d19d6f1e3bbd9c32f55fe7fc25469092f33f0c8f6d3e26889842becf1ce2649469944f2f1cc07cfaae49a839ca11a19db3dfbfe34509445e8eb894bed6e367e9be7bbbec12dfdaae9817cad03c7b1b0f95d0cea1551bb36d0fa8fd90535a275125f1432b727d65e58c015c5876c98fe03848456124058cdf22d2d4dc019ea1a2de403f434f82048310e2d649fd734a09eac6d6dfb7c620c41ca31e4aa172cecb30ddd1436626b91f060976d179329658168200d4c2a1a8f572054c56d42977a55b31bddb0b14f37fa820d5f1c6eb213e1728db34cc35cfa43ac7e8116b436939eaeeeb97dd599a176ffea2acf45a2e024fd02c1209cbade43bd967b90fe87a6a55cac10ac30563845be13ea0a8d65690ddad896cbba81e166ab33986f462cb92856a15aeb461d19ee9335401bad9f970e044de7d5819210d5fa08183b26e306eb29e3c16a53ead82501687b35e7947a76b77819ebe7112e78a69e49431ed4696ccec57496a123989376c004f8e215e551bfd56d9af9b69155ae6c0bc23b6f0971b09e002a64eca246f279b452b934bd337583a0756c51ef5b2962f3c8ed45daae3bc9db743e8adc1e86f4d45114358bfb8a89d38bfe1b5ecce63cfc04494fd3ba5f1d0750e534f9576f14f064be8a00e55518fa3d136b2bab27c5eb3f497411f88cfcffce3451e125032016a58678bc3191bb7b3f1ca66ea5d83512b83854cc810b91ffe86d694005f1271eb92b34486257e31f4fe88239d27f0a0d5e7a1d52be8536473db57a9ed5593ef6021dff619b50f340dad6758e6df503088000ae72bd51c0b2a5182a0c19fb080cb01326c39459009dac9509b42d99a08d07817fc748a50b5298bf8ee595402e75b5b3222b9d556d73e258639f193f419e9d81d80cf20b7a7e2dd36b05b4af132af2e6f1acdab4ea926bc7c0998aaa6035e0718d7a22508e7ef93c2bfac9779fc815b76dcb39a7ee85cb27a53c61b7000ada3712f6c4894fee74301f892a14dc319008a29bc3f532268b4f9b05c8d26623f36f165647831efd9b11814739026dd6eab0c573a375e0db22d1c26c522af546f68ecd0ad737678c61641f156d5cf0712cf07739259e2e27f0ca645f2f96eb9b3f8d80cce6e1d8fca1aef2cb99320089edf447b5b4cc653555cd7ec3f517e318fda6e9cc5fc042a83c20cb5f0c15f6a7e14489bf7ba62cdaf093e0314203c8afa02bb709fc3ee25e746cbc562608399b73a065f144989064fc9622d3df1955ec870614bd035dc709d5e4698940584c11e06fde8c8a37ee0927bee43b75fcbf4f47c302b7cbf6e3614a045b09ffed2f457b58559d8f2afeb36e54942b9d360b07005611104a3a3a75deec3daa66f8297a19628be765857d861a0651ff873518ee3dc785c410ca276c1a4438bc4f154a16887c85bcd5d0d749657fe581ddd862f2eef5219dee2cc1560c363251b9817dcdaa49748cb23ef0e369da3fb2aa0411a9f7e809610dd4ed06b7184237fc896328eebbddef2c819b12a43959763945753c65bef0e2d019a117bc56623d5f668277167d93cc149ea89c480ffa0af29b520772cfdcb766cbec88681e8911435a5b5f1c8f9d8e9d0bf89d10aedd4296596124193bc1dda9a25c0017a8ba468bc46a7b997d1d7497c1f2fb605578ccc1719f36c65cab73001ef401766aca8a5cc5e4fbf102a53c9d33b98e36f7dc95bf16fd127a0ce889508610fef33ec90c8a82111d57b29f8b0de68c5183c12ef6b098a170a848503f0712ca3e9c965d89cb74117368f0416c092b7fc15f69f088fd7b3b243fdd914d9efea97d8a2ce99f85fb756582184863d3b2882e0e7c5f5323e2c01e9c220ca67e6f030275ee96225eb6259db3cbeca66d9041f7b6c87a98bc612c283fd172fc04bc8b1baadfa5687b97dae7dc0f4b7fade9680216bf0cdce955d989dc9649a5389c7589a5d2a4e6469216ab2870db582f6533dc4faa4a01eeeb1f483c94e7b656e7b29244fb600c3ad3ed64e332b4c790c70d35b3f306a7ca7fda2fbf1fe8cd9c05b6e215146946af6765a807f0611e8e95d90d914346765a4ac948127efe97766b50095b8f040883d6f8a2d995eba503ee27feaa20609419d4166ee344994338c22d7a141e115b140b4d37babda2b59073ee4967480f3159c5074c42c19e2b912a71cf1e270880734b8aec6f91128a1db1cefd2a7539d7dea0adc7f6e2074d19fb704c0bf65b845352c8ff70afd779741a8fdd306fa0cef85918fc372951e733225cf389af148583ecb9eea6bec476adafe6aa2a36cafb25eb5e9ec00c02a8ab263669b8291bab67f7ed8b71419632ec94a09ddf3dac9bfb8938bc31e801728a0dceb644fd97120e494f3ad04108f22cc396a14eb10ea7066a7344e7b4786e884a5fc57772077b79eda68a355683f8817ae25e3fdb8de84002f231462cf82567bcf4ba3c5c0a14075a1d507bdd2a785d59a8dab016cf21a9421b2c5c3142554c4f466b62f05b2c3b4944b0d77e0c6e2b736d414455681e0ddf7f7c4a4e217ca4b241e3bcab4bfce9e71aee23cbd4b019b8158afb76353bbbabddfd0e1712a09f175d60bf7c53a43f75ac7a909ff6dba03a21d418aa768dc59a43382039f7f9ce718678f6d6862264418b49a3eb3618c6f8cbd66b1a25423c310b3ecb461004ed0a843ca6fc40cef548dc48154489cd58b15cd1b8d4e0a70f44074a8c939bd1ec12e831ad0e80e40731f06baf62f376ccfc08072efe587e8294fc71f4fe3b182199bf17db2b3b2a66d0ff2237f791cfd0037054ad950cef2bb07889e9c6c132b63fbba66352b64e83b2f5ad741fd0104012976a382a60cd2b4738c7bf4ed13a785f41f3f239b31dffa7d04836c5f41ac1b9ecb009fc0d5b307a4cc7b177c14e8a6455473135e4949b74242028944c570f05776ea02c2c8e383ba80a94e498d93b8a84480ce922a782fe55a09d3b9505fef3681e2af75c51abeba550938575faeb0050125eca786a66aeef73571730caee76c5002191a33bbfcc2d17933af2cadf713588415585c656fc27bd5ba64241a9c188aa3c98a26527832f29f72408ada247ed2491f4aa8f1b8d7a384a242f3d9d9bf71153ea6e2ec3ac77abf6515bf0409f10216c62a7f027948dffd8e417427554c755b8a0c696625f564423909a122806fc283e6e0e77f3d0d410525668e6433875732f00b59d230631548171766c50d13ab0215b4966828fb39bd8efbcc156151e3b8960ba16c162651559df655d93ac0fde5c0d6afda0895fc04dcd8d09774ace7fe6a0ab9c221d87914bafb177bc86a52380734644d6f3c755d9329724f093bc3f98151d0c883f55da584c0ceea9cbf5b1a08a29a13f97b5d3056d33445a707ca025b7c7841faa3dcbfec7ee9cd87dae33227bb7af5f743941225c9ba205a2855d70070794f48c71b84946aa4873a0bfb501bed3c654d5d35a2ac48813153d646053772e315ad93f6c3d9261cffed90037fbdb4d99989388280ea75ed26331a0254498f76e27788214d2a2d04474581d8f4a8f188ce28d2da870990658020ec1327b24d2158ad8c58ad82687c00f44855f62d10d66f1bbc31723498fa9428044cbac49df7b6303c96f2d5229185f82612f1c6612261849d8847e04075d73633588732b2237995b2a0ada5de7e561eb372dde629adee0b828004e2a6eff5f0708373df1ff2879c0e3339152fca53b571886a96ea0e7eedbb58f2f3fb245447588ace995fe8f25287ae79969ac78ca121bf7cd1148507529673d0a3df776e8a27bf920efb8e98b265c22b4e27b828eff9734259f5530fc16dffa4b5a71481a7ee268e4e33942b38b349d16defa99bb787d06ee8238dbc42e8b02a48b5559830a4596bad57a2abd8bc740239e5b004c3a694786ccf06bf54bf1052ade3e5a3e7d464b5a4e796cf0f7245391617266d4e17aeb0add2e8f9a59e753f1080ae5be0914a8d21e24d0dfe9f68c229183ca3fd33943f50773f1325ba76075af90ab42df3371f743c53173fa397b4de7efbed66fc04f8a4d807b33f82b214785083f263393278251cf8f810d6e14fa9406ca8de2f72ac32fed8e3ac995ab33508bc1e917b77f4cc9c98d3031c0d1117cfcd614e2a499ed5fb0fde4d90db8096f6ea7fc0beefa7b2adab74e534bf442d1c3607e387578bfc967acbfe7ead90481724c6a8d5e787e9e3143f314d9cb39312b7a231b452da9c44dea6fa90ea8aca9f66c3f41a77a1abcaa46b91c93f28e040309793173bb5898553dba8a30cae0b2377e9a4fd5d1132009a85754805f3f8434d2ee1768293519398a36025f25aa490b8a881159bb9df5878bc863c31668d366ac68f38d7d3e02b4684aec8cd992799a7e34cf41552f9484f85423125012102f09a6a8328c41dad116e4e3acdb0bc04b8cd6c270eabe2fe6655b3398c3396bde711a06f206e595d583ac8ada7c3cfcfc9778c22b7ef8e4339da2299d49f449e1c8feef9a2f112dea24d06d81df7e4db54d015576b13ba03b91115ef08dcf109990905f0e502669faf472231ba1a1c733def862efcbf3853608a6d5a4da871fa8ecf2a5a3d96129eb333251b448a11d0ebca39808ed3d809193795159fe883451a01ac484cdfcf1dc2a6dcb7e3726cd8b00b460e6d8c2390d0c9f2808204609ff8ca4cbefa50789b918619ad448974e20a5d6a28c9305823ee38ad51bcef672106dacec48bb1c92674b0c0cf37acc5497d5ac5aa16da6bcbd1c7cc0afc6cf357b784c8ba3994b427437d7779713b3ad361ee170020dc9d145ca99ea41623f5c92f7632ebf0cec6d842544997bb244ab70e397fa314af29de98dbf3c2270fe7cbe8fde3cc7bfc39b8f75c8233611ce605a070e218cf931f24a48fc7950951da188c083b592d7d346023de01d34a3931e92771a3cf8bfa07ae195aab7cb5df5ecd7cade074c2ea89d1328881209e8cc0d141c5c2ad3869648c91c52cecbac496c481232000f026f46646a6d79e4ba2e97aa2831380cb837a0149120d4d5d21a6c9dad3aee9705d4424704e07d06fe5716453ad52d47947fc376dca54f2e257ab47269ab090cdd0fda4334a4ae527e412600896e14115d082a0d886050912a0a15387d6a28dbcaca6676729b5613489fcf2cf9fc6ed54b22207d9ac84dfc8b527a3ddf4eb3d2d49fbfba6cbd711b0079c45daece08c09449630474d5a69fbd9d4018f8aa5a583f2e8db18f00ee34fd23e59bdf9e0bb4a120a9b55e4e54bb95486555faf6469b7ae99f138b20ad1ccc3bb616b7db180bc39f2076bd753bdc2b8b9482ca35f2089f70673a9bc5cf0966d7f00e723bf5c3b0ab68dc5b34584cd0357d326fef99c31261b0f89b7b908f85fedc14871f81dc2ed6153285f08d5cb6351ba59364222de3fe7aa5b769b43f87c8cd9266c3e5666f3e0a4f0d2fb80f27193881b8c04211ba1f44672cbbc772d5b6c85ce3024bd64e5f87e9c988fd9afd878a0e324a0e6fc287eb38522248edce4e8dbe8600dcbf4e388196a715e25df0959c5c0d159b3078a4963dc5bf7e938e82d554d08d72fe27bcd72dd99e7d85d5d7ffcc06af8099fcb764a740520df50221a7042c500b9eea43d834a5f1cb9ab5e2a594a83f539be2796ea4f023e90ca68b68974911c0ee6d88b736a8a34303b0e2edf4e34753dfc76e1c42cd1a2ceef7c1e0966a40751c2a71f9a8198f4c0691eff6acd2dd29e17b5a0bebf40e25e36279537fe12ed5df4df4d1a60f76cd10451447b85ea390808e1cedf95192e897eb9e3dbffbbb17e6c9d4230871be902b328de58ba3512fb5e0f9725a86f2ce91ee09b081d04b25cad2293ffc61a81c14c751e535fa151377db87a927e30b071dfb03f9415f421c5f83637f97c334a60780c18b1a6952cd69884636fd955a4854f71196e434db6df62b563fab09d515d8838b46ef600d6b2d8b34c835bebcf2cf5e0b4b604e0021e9f25a79b9915a01ceedd2fd7ed29341379bcd7bedb23900bc60442cefbfa922d56308a0af1a5aedda10a15bb1d2cd103ed7d19c70c12ba62ff45bbedbd1e5205dffeab4ed45969fbb449e3b0ce9a5bdcc625c5f001eb8cac3398c49b6bb88d2b40c3936af520c937f884921467c144f9224be49dda35cee79ab20f819efbb651992dbe043f447754360f7bbfbcb309b0df50278616e3572118c817cddcf26de91ef2979bca8c0faebdfd0086cec450bcaec64995fff09f912e3197706be1b6cba9b008958c7d6ccead6a956cfec40f6b5d126cdf0ba6d80d825c8bf9557d8378a67611758788da96b911d18336cd35124fa745d517058275bee5537f13c3e063aa28ed6584cbe14a353ae2f79753d28389de3aa2867486cac48d72aac83081747808caefadf3ba69767f8f9c760a2079a7896e12d6d62947a26c625fde0ba98922e10b7b6b2473e782e7ac9db0fe16f1094a8e186a44213f3b4b76de648d9a2907cf2f97163ab57d226bb74308cae6dec3d68f54a40e52f15b887ea68db7f4d6d4bad94a18c2120ec1820ea1beb474be1dcca0c4ee5e79165bf5174fb4f5d62168c7e658fac1c97a67cdb801aae01e687bdf2f51eab0e7e0bf4091d6e08043b52103d9c4a957f55745041b5fcddc62b1850328760a1f208cf5a3eac31f7d94c53d1bcbe946d58c95a9f6d0eef5d6548cf8870ae7779e85c3bef15f5dece0830b75e43d99de5089818338c83c2d6e809f08872a420d9f808785eb6bffcab3d458883ed75bce5671d900a5444f7055f099df7054d2bf124d66c1a46e8779fbbfd408eeb659f200e2ec114ebe75159a730efa33c4acfb6022fb106d7904f3657c750853e35a75672ab5d387fc1927c42c140c31efdb2f208035cd88577d8dda8038a368c756900f95d35db8b376493b88a9bf49dd52f7f013b309d3670a3c487e448760c617f6bb7a6ee617d9f41e3b6b693d2327e9718014339469a7d9894475e95b21442bbe150e2a2d9a01bdc5f23359fe36b7c00fe2c638c0c88ce250bf81e5aa490e4bbf635610a9dba30fc7ede39066375380becb920850054cd87d419ca80e28e37ea4cf4d052aefea1513c613ed556f789cc04f084c9b14fecc16acacc590c51704b52df6fe8de49ca29cfa67db75413df46fbad4ea52effce0b67f4019b8f8b534c786c59af3a5639e6aba5091f9742621820148d56edcb185c95e8b4de6f16609ff0acb2c3bd11261d29dc75497d2f35b96e90b3b52613c1f1d2fc54c2e2aadd200674198e2cfc0b05d75abd0904f1cebf084172b0b3dab45073bdd4df0c35e063f3f830628da12ecfd5e8351fcd528b7bfd5100307f76ed076d1741f7796f22a162a977e667904340143b196414ad1a94dcde156dcd30428398056e4b0c03ba62bc032e511935c7d841c821f1e3ce72767aba736a24578611cd77b1e6c4950f0049a0cf84edd5c7a612e3244f3bc831e8bae17c578377f9b18da30ac48722a5cb8ce54206aac7b8736ab9d554f07c4be65554febbc8db5e71fa82862e742abe6cffd8246e2ecde585311f6d57f6036298a29392b47ac298f1fc6305b3244dd65eedba771efbf1b2f429c6236e59ed4af0179cfb2d5db7c5a8f7c64caeb54805fd5d9e18584ffc736749050755c39672885f61c37b3cf108ee67560b4ced1f86858309b379fc6f63b4d4ce40ff32d836e6b64a8cc5a1afac5466e552b98efe867268fa0ca690b69e1e8e72ee918ecda2452e74382b84fe828550c8f7726daf52e62458fb4b9642583d94b3568e32d507616a473d0c9e074e08c39dfdbd75c9b4fa45027f5e8fe827f489d7cb79a6418b8ca58c7c03de5a42997e5c98b144872adcaf46800f0910d76c346cf01568cad976a9da8403689780340eb4c1e1cc9da5a705967e4a175847a261a5e1db1b92cd9c79c761e863e3014f0a99ea1f1cfbed1d1be21eec8a788cf4384ff655fba636a9ef55a8df41b4f1e085648ee0105ca6b2e0d4be5da2e5186c30b392eb5dba9eb819c4471a06997795405bc179b695c88579f292b409e08448397eabd62b68e7554f6b2bde690c6aa0c78923d60aad4535b2f0ab348e5a377160394c617886ca3afe7c727cd79fe90a8d1b2dddf4a399fa5c632d55343a4aea2cbbe5e9131bd78f9b4cd0440a1e3914dfff3f81893aaf83e3f33f40c7264341df4ae9d1fbdcfc26f8eb4b7d0cf4337c0b83aa3f38b25ccaed709b7cbac6728d8b829884792b9329f148bd3517a7e910e221e7e36c7046f6f1831e8dae13bc88d7a63d22f877ff4b9b2db53eecb6cfcdafd371640651b78283505d6b21093039eb4fb4ea74365c0c66910a03af0db3d2baabb18b060bb6f5aabada684970c054c019676065a4870f12c9ef835d627adba984347f06cdf5711df2db1aaafeb73c514aa3dd611b7d79c7927bb8497fbc8b71cf796857951e060212c4f634b62b2fa16b9f762c38bf5865d3acb068e2c14023f692b67240c0fb4e8b3724d378a580ea9bdd03d8c53748a7f686de5858d91294dd327404d647837cda2d7474b7ee3a04f4de9ac56c3f937ba3d733c259e08b01a6a3aa7697e1ce3ecd5010cd39f2e693bc4ef4acd4e3c1a6bbfbc39697604996e0ca5c6c0ea84bd747bcdf9d4552115ef1f111cbeb1b62e0c51eb1bc80c5326485745f1a05ab8c2ae98454d433b6a3949408c574dfcb38f4eec536eb8ef8d0cbce1c837322824b0f3223db2e07843a46a0434e1fd96addc3c52d4fb412fbddf871c9f8b1c550c4d14c9b2274dd9ed90671599debc3613bb50dd58f51621e6663269ac05d07b3f5a9c1e4f403ccf048995ee36095174e8bd7a566876b69db203a5f5f1b51e3f28ba4facdbb1f8996711bf287846211bc05d7f5b1fead6d65f0f6a4eff5ae9b29352ba22443252f9279ff7f50e3e2c1ebc8bd96ef87dba627796b3e5a441255070161cc847881e868aebb10c47389b124650f1f25b468952bc275f014ab6047caee5283ec1f3b420a4396735786499fd0f70e2e48bbbf9f9565b7cdd0b694eaf23e64273b1e79b68314df80e7c3efcadb74188b89f69841eb8afa77eb7f079a616e07791dd2b20f58de940a93df91ce11d8e55bc0b3228b8962a505c177dcc5a61382beed0d33a1eaf7129a6b68ffb371958e209d0feceae21730615f230c513afe5afc4f915d3ba269b0ae586ef34e22a09a064caaf52a5a9cf59de32c66f45595b26027718e14399fd16cdf910e592e21adfd1cfc4b21282b5bac3a96d5476bea81b19a858f5f881b5f5494f30cf18cc1c329a0ed94f4ebe42cc4f684ee233c1bb820554ce0bf824d8d8e7bf96e0ecf0958de7717b26f842e36a336883cc4890558543c00e4abf981044a573319783d8388f591c25d77ab988234968bed1dd4eadbf73787e6f9c73000b0325831c109a0b1a657e25c819be4536e46f601c78a7fa893587cbf1388e9be6759ec56bf1ccecd4d9a3c388dbceb53068984ae512ad1fa993898dc1afaa14b824704d8937ae9c7d022f4077f15568ee1a6dadd1e5be956302a8e8d33d37facd06cde0ba6ae4eca8f9ed9bcb68a787fb8970b6b9451d2f762b457ac12ee52236debf12a266f2a24673bbae5cdcf10ec51b95e8ea39d1e891e876dba91916615d2190492af4dbd851117cfc2c61335148dbfbedbc297673d84070db0983d6f7612f79d1ca4d712d08732512b7bddfee9510fcdb2b8ed3a05f5d2eb2b286fe924a54342a70dfc169dca94ad2db03de1832a81b9c6b8a9d199200e560b33eaebeb458671020ca3f7b2fb7a90ba4211ad560703b91991aa5ca7653bbd9eef47d3912b33e291af5babea54688acb66d0180848b496769eeacf7f84e9e74ffd38408a781783c9290039da98e2fc033001b210f5c34d9ba05ca19c7d7344c801e1079576bd8fac9bc421f8586005614f5fdf175ffc91b602780ed3d77638abd360421dd5d11555904752d4c2710319dc9b423bcddc85e9ce56112a99d83c3b750f873414ae55117deef3433d95f1447856b57cf49124ca9634ec7417657355820bcadf02b60e1f02412d75ffb486023e9e978134ca8fbf4a5b95cd5eea0c0613f99763ab4e436b80458f848f913dc7055fe3e17cdf2f5b96d197f4691ec73c22896a224aefa74d9a63f3a1c841132510451292aadadac5b55ad3de1e53b29833a99ffcab3a1445a23671aa7cf6f83b55f9e0e85faf146a443ea1f2e5978b3b79630c256248aaa2bccb58ccd1dfe47c17ff581a0f7c0d3bac3d33e0f6ee366dd4acb1b057a63a7f600fa108f08531809eddcdf0492cdd1a782f70bcfb8c1c19464111d407ea0c2cab6d392746696d1e181198a1c03d7616e786fadee96d49bf96b896da74bb37d35daecc13dabb02cae5d1aaee27bfbbc60c1045ac353c296c9f370fe5065e2d92d5484a703415d11200a244ab6175cdf8ff9b3a34520b953c4202b60e1941648fe9dbc2d5acf1559dba6eab0b4bb552327a1a0ed79c79b4dce4419ec950f693a395321149274a7762f942cb955c5f7e1dc59f06d222ffae829798d1d5683f69c7de0efdb062dab83106692e7879a010a8bbf0e5ab0ef9e5d0f7c3784b55cbdd8a9bb7254e6a3c54a742e56a052e62768d5c36f0022e6c2c1c93f7d166f90ad082417c580485d4111c67b31c67524288a85ff1af723aa00558b3eb4d4e8b5a4f485334672c19b25e707f17b83ab63f5d6db4d15c7a6d485e93f35294c5564187253294bd80152b6e34ed88e7c31cfba95bb8916f9e082c7b5bbd85b7708d393920493c6c581db833be34084b58947ac0ce1f8937fa64f39de65979788fd3547807dea6c8e09339b33cb7b1a8c7d1690703f373995e1f9738f29c181007ea5964f6296b56f587fba098dfef168dd14ec59637014dff6c2a983a5d13255170f55987e9e0a011bc00f11f3782c178911f64a61e4d6e694d3475ccc19031a0bebb5c692058dac7913cee50ad96eae6fcf0a0b43dc99807cb1b3faac1d2fe0dbe92b25a089bef5462e70b04d294b77f43e41bf87568450ac94716e506aad16e7148d9c20bc0bcfe4fab9306509a3631b8140cf91a3862f12d23f91e29c75bf0df45c504b6058078db52c7654b7b12ad3717a9a9b4d8172ad80aa2134b9bd68756f2d66a58a19d10f6d56814a1ae858f6e4544ec4f686047529fe2ea24c5598d35c73a055ec111d0aedfea68629e90a3144176e7b08f88f11084e985668a1e681f222d19afc5f9d00be371a50da0056832fc49d8816ee8e873c656c5b041b8a7a542757270e23b3665134f5ca294c7eade39b2ccfec7e5d38f31a1dba43dbb5ac16322c6237134aac2f4280f6977562ec77b5ebead53e2d49c1177f16d6f10e7832f5b691502935cc14cfbc5a912bf3a79878cf463204df89a895b4cba6ec70776c4d1b238019abb577efa920bdfc7e456a0a0b0b55d305f","isRememberEnabled":true,"rememberDurationInDays":30,"staticryptSaltUniqueVariableName":"31c292b3d78180c3e26926df4589dab1"};
+
+        const templateConfig = {
+            rememberExpirationKey: "staticrypt_expiration",
+            rememberPassphraseKey: "staticrypt_passphrase",
+            replaceHtmlCallback: null,
+            clearLocalStorageCallback: null,
+        };
+
+        const staticrypt = staticryptInitiator.init(staticryptConfig, templateConfig);
+
+        window.onload = async function () {
+            // first try localStorage (remember me)
+            const { isSuccessful } = await staticrypt.handleDecryptOnLoad();
+
+            if (isSuccessful) return;
+
+            // then try sessionStorage (same session, no remember me needed)
+            const sessionPass = sessionStorage.getItem("staticrypt_session_password");
+            if (sessionPass) {
+                const result = await staticrypt.handleDecryptionOfPage(sessionPass, false);
+                if (result.isSuccessful) return;
+            }
+
+            // show password prompt
+            document.getElementById("staticrypt_loading").classList.add("hidden");
+            document.getElementById("staticrypt_content").classList.remove("hidden");
+            document.getElementById("staticrypt-password").focus();
+
+            if (isRememberEnabled) {
+                document.getElementById("staticrypt-remember-label").classList.remove("hidden");
+            }
+        };
+
+        document.getElementById("staticrypt-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById("staticrypt-password").value,
+                isRememberChecked = document.getElementById("staticrypt-remember").checked;
+
+            const { isSuccessful } = await staticrypt.handleDecryptionOfPage(password, isRememberChecked);
+
+            if (isSuccessful) {
+                // save password in sessionStorage so other pages auto-decrypt
+                sessionStorage.setItem("staticrypt_session_password", password);
+            } else {
+                const errorEl = document.getElementById("errorMsg");
+                errorEl.classList.add("show");
+                document.getElementById("staticrypt-password").value = "";
+                setTimeout(() => errorEl.classList.remove("show"), 2000);
+            }
+        });
+    </script>
 </body>
 </html>
