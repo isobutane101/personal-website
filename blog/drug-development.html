@@ -1,220 +1,841 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="staticrypt-html">
 <head>
-    <script>(function(){var t=String.fromCharCode(97,55,102,50,99,57,101,49,100,52,98,56);if(sessionStorage.getItem("auth")!==t){document.documentElement.innerHTML="";location.replace("./login.html")}})()</script>
-    <noscript><meta http-equiv="refresh" content="0;url=./login.html"></noscript>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Economics of Drug Development: Why Your Medications Cost So Much | Adi Desai</title>
-    <meta name="description" content="It costs $2 billion and 10-15 years to bring a drug to market. Only 12% of drugs that enter trials succeed. Here's why pharmaceutical economics is so brutal.">
+    <meta charset="utf-8" />
+    <title>Adi Desai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Adi Desai's portfolio website." />
+    <meta name="robots" content="nosnippet" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>A</text></svg>">
+
+    <!-- do not cache this page -->
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./post.css">
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="c3ee6e0a-46f1-4be7-877f-d4f308521bd3"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -moz-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-container {
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .login-subtitle {
+            font-size: 0.875rem;
+            color: #888;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .login-input {
+            padding: 1rem 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            background: #2a2a2a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 0.1em;
+            transition: border-color 0.2s;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #c9a227;
+        }
+
+        .login-input::placeholder {
+            color: #666;
+        }
+
+        .login-button {
+            padding: 1rem 1.25rem;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: #c9a227;
+            border: none;
+            border-radius: 4px;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-button:hover {
+            background: #b8922a;
+        }
+
+        .login-error {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        label.staticrypt-remember {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #888;
+            font-size: 0.875rem;
+        }
+
+        .staticrypt-remember input[type="checkbox"] {
+            transform: scale(1.2);
+            accent-color: #c9a227;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .staticrypt-spinner-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .staticrypt-spinner {
+            display: inline-block;
+            width: 2rem;
+            height: 2rem;
+            border: 0.25em solid #333;
+            border-right-color: #c9a227;
+            border-radius: 50%;
+            animation: spinner-border 0.75s linear infinite;
+        }
+
+        @keyframes spinner-border {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<body id="top">
+<body>
+    <div id="staticrypt_loading" class="staticrypt-spinner-container">
+        <div class="staticrypt-spinner"></div>
+    </div>
 
-    <nav class="nav">
-        <a href="../index.html">about me</a>
-        <a href="../projects.html">projects</a>
-        <a href="../interests.html">interests</a>
-        <a href="../awards.html">awards & publications</a>
-    </nav>
+    <div id="staticrypt_content" class="login-container hidden">
+        <h1 class="login-name">adi desai</h1>
+        <p class="login-subtitle">Portfolio</p>
 
-    <header class="article-header">
-        <div class="article-header-content">
-            <a href="../blog.html" class="back-link">← Back to Blog</a>
-            <div class="article-meta">
-                <span class="article-date">November 03, 2025</span>
-                <span class="article-reading">12 min read</span>
-            </div>
-            <h1 class="article-title">The Economics of Drug Development: Why Your Medications Cost So Much</h1>
-            <p class="article-subtitle">It costs $2 billion and 10-15 years to bring a drug to market. Only 12% of drugs that enter trials succeed. Here's why pharmaceutical economics is so brutal.</p>
-            <div class="article-tags">
-                <span class="article-tag">Finance</span>
-            </div>
-        </div>
-    </header>
+        <form id="staticrypt-form" class="login-form" action="#" method="post">
+            <input
+                id="staticrypt-password"
+                type="password"
+                class="login-input"
+                name="password"
+                placeholder="Enter password"
+                autocomplete="off"
+                autofocus
+            >
 
-    <section class="key-stats">
-        <div class="key-stats-content">
-            <div class="key-stat">
-                <div class="key-stat-value">$2.3B</div>
-                <div class="key-stat-label">Average development cost</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">10-15 yr</div>
-                <div class="key-stat-label">Average development time</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">12%</div>
-                <div class="key-stat-label">Clinical trial success rate</div>
-            </div>
-            <div class="key-stat">
-                <div class="key-stat-value">68%</div>
-                <div class="key-stat-label">Costs from clinical trials</div>
-            </div>
-        </div>
-    </section>
+            <label id="staticrypt-remember-label" class="staticrypt-remember hidden">
+                <input id="staticrypt-remember" type="checkbox" name="remember" />
+                Remember me for 30 days
+            </label>
 
-    <main class="article-content">
-        <article class="article-body">
-            <h2>The $2 Billion Question</h2>
-            <p>In 2014, researchers at Tufts University published a number that sent shockwaves through healthcare policy circles: <strong>$2.6 billion</strong>. That was their estimate for the average cost to develop a single new drug and bring it to market.</p>
+            <input type="submit" class="login-button" value="Enter" />
 
-            <p>Critics immediately attacked the methodology. Médecins Sans Frontières called it unreliable. Economists noted the study was funded by pharmaceutical companies with obvious interests in high estimates. Others produced different numbers: some as low as $1 billion, others as high as $6 billion.</p>
+            <p class="login-error" id="errorMsg">Incorrect password</p>
+        </form>
+    </div>
 
-            <p>The exact figure matters less than the underlying reality: drug development is extraordinarily expensive, takes over a decade, and fails most of the time. Understanding why requires understanding the system that produces our medications.</p>
+    <script>
+        const staticryptInitiator = ((function(){
+  const exports = {};
+  const cryptoEngine = ((function(){
+  const exports = {};
+  const { subtle } = crypto;
 
-            <h2>The Long Road to Approval</h2>
-            <p>Bringing a drug from initial concept to pharmacy shelf involves several distinct phases, each with its own costs and failure rates:</p>
+const IV_BITS = 16 * 8;
+const HEX_BITS = 4;
+const ENCRYPTION_ALGO = "AES-CBC";
 
-            <div class="info-box">
-                <div class="info-box-title">Drug Development Timeline</div>
-                <ul>
-                    <li><strong>Discovery (3-6 years):</strong> Identify target, screen compounds, optimize leads</li>
-                    <li><strong>Preclinical (1-3 years):</strong> Animal testing, toxicology, manufacturing process development</li>
-                    <li><strong>Phase 1 (1-2 years):</strong> Safety testing in 20-100 healthy volunteers</li>
-                    <li><strong>Phase 2 (2-3 years):</strong> Efficacy testing in 100-500 patients</li>
-                    <li><strong>Phase 3 (3-4 years):</strong> Large-scale trials in 1,000-5,000+ patients</li>
-                    <li><strong>FDA Review (1-2 years):</strong> Application submission and regulatory review</li>
-                </ul>
-            </div>
+/**
+ * Translates between utf8 encoded hexadecimal strings
+ * and Uint8Array bytes.
+ */
+const HexEncoder = {
+    /**
+     * hex string -> bytes
+     * @param {string} hexString
+     * @returns {Uint8Array}
+     */
+    parse: function (hexString) {
+        if (hexString.length % 2 !== 0) throw "Invalid hexString";
+        const arrayBuffer = new Uint8Array(hexString.length / 2);
 
-            <p>At each stage, most candidates fail. For every 5,000 compounds that enter preclinical testing, perhaps 5 will reach clinical trials. Of those 5, only 1 might receive FDA approval. The overall probability of success from initial screening to approval is roughly <strong>0.02%</strong>.</p>
+        for (let i = 0; i < hexString.length; i += 2) {
+            const byteValue = parseInt(hexString.substring(i, i + 2), 16);
+            if (isNaN(byteValue)) {
+                throw "Invalid hexString";
+            }
+            arrayBuffer[i / 2] = byteValue;
+        }
+        return arrayBuffer;
+    },
 
-            <h2>Why Failure Is the Norm</h2>
-            <p>The human body is staggeringly complex. A drug that kills cancer cells in a petri dish might be neutralized by the liver before reaching tumors. A compound that works beautifully in mice might cause fatal heart problems in humans. A treatment that looks promising in small trials might prove no better than placebo in large ones.</p>
+    /**
+     * bytes -> hex string
+     * @param {Uint8Array} bytes
+     * @returns {string}
+     */
+    stringify: function (bytes) {
+        const hexBytes = [];
 
-            <p>Phase 2 is where dreams go to die. This is where companies first test whether their drug actually works in patients. The <strong>Phase 2 failure rate exceeds 50%</strong>. All the years of discovery and preclinical work, all the Phase 1 safety data, and still more than half of drugs simply don't work well enough to continue.</p>
+        for (let i = 0; i < bytes.length; ++i) {
+            let byteString = bytes[i].toString(16);
+            if (byteString.length < 2) {
+                byteString = "0" + byteString;
+            }
+            hexBytes.push(byteString);
+        }
+        return hexBytes.join("");
+    },
+};
 
-            <p>Even Phase 3 success isn't guaranteed. Roughly 40% of drugs that enter Phase 3 fail, often after hundreds of millions in trial costs. Sometimes the drug works but not better than existing treatments. Sometimes rare side effects emerge only when thousands of patients are exposed. Sometimes the statistics just don't reach significance.</p>
+/**
+ * Translates between utf8 strings and Uint8Array bytes.
+ */
+const UTF8Encoder = {
+    parse: function (str) {
+        return new TextEncoder().encode(str);
+    },
 
-            <h2>The Cost of Failure</h2>
-            <p>Here's the economic reality that shapes pharmaceutical pricing: every successful drug must pay for all the failures that came before it.</p>
+    stringify: function (bytes) {
+        return new TextDecoder().decode(bytes);
+    },
+};
 
-            <p>If a company invests $100 million each into 10 drug candidates and only 1 succeeds, that single successful drug carries the burden of $1 billion in R&D costs. The winners subsidize the losers. This math is inescapable.</p>
+/**
+ * Salt and encrypt a msg with a password.
+ */
+async function encrypt(msg, hashedPassword) {
+    // Must be 16 bytes, unpredictable, and preferably cryptographically random. However, it need not be secret.
+    // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#parameters
+    const iv = crypto.getRandomValues(new Uint8Array(IV_BITS / 8));
 
-            <p>The Tufts study that produced the $2.6 billion figure explicitly incorporated failure costs and the cost of capital (the opportunity cost of money tied up for 10-15 years). Critics who produce lower numbers often exclude these factors, but pharmaceutical executives making investment decisions cannot.</p>
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["encrypt"]);
 
-            <blockquote>
-                <p>"We don't get to choose which drugs succeed. We only get to choose how many we try."</p>
-            </blockquote>
+    const encrypted = await subtle.encrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        UTF8Encoder.parse(msg)
+    );
 
-            <h2>Where the Money Goes</h2>
-            <p>Clinical trials are the biggest expense, consuming roughly <strong>68% of total development costs</strong>. A single Phase 3 trial can cost hundreds of millions of dollars. Large cardiovascular or diabetes trials enrolling tens of thousands of patients can exceed $1 billion.</p>
+    // iv will be 32 hex characters, we prepend it to the ciphertext for use in decryption
+    return HexEncoder.stringify(iv) + HexEncoder.stringify(new Uint8Array(encrypted));
+}
+exports.encrypt = encrypt;
 
-            <p>Trial costs have escalated dramatically over the past two decades:</p>
+/**
+ * Decrypt a salted msg using a password.
+ *
+ * @param {string} encryptedMsg
+ * @param {string} hashedPassword
+ * @returns {Promise<string>}
+ */
+async function decrypt(encryptedMsg, hashedPassword) {
+    const ivLength = IV_BITS / HEX_BITS;
+    const iv = HexEncoder.parse(encryptedMsg.substring(0, ivLength));
+    const encrypted = encryptedMsg.substring(ivLength);
 
-            <ul>
-                <li><strong>Regulatory requirements:</strong> The FDA demands more extensive safety databases, longer follow-up periods, and additional endpoints</li>
-                <li><strong>Protocol complexity:</strong> Trials now include more procedures, visits, and assessments per patient</li>
-                <li><strong>Site costs:</strong> Hospital fees, investigator payments, and administrative overhead have increased</li>
-                <li><strong>Patient recruitment:</strong> Finding eligible patients who will enroll and complete trials is increasingly difficult</li>
-                <li><strong>Data management:</strong> Electronic systems, monitoring, and quality assurance add expense</li>
-            </ul>
+    const key = await subtle.importKey("raw", HexEncoder.parse(hashedPassword), ENCRYPTION_ALGO, false, ["decrypt"]);
 
-            <p>A typical Phase 3 oncology trial might cost $40,000 per patient in the United States. With 2,000 patients, that's $80 million just for patient costs, not including drug manufacturing, site management, regulatory affairs, data analysis, or the salaries of hundreds of employees working on the program.</p>
+    const outBuffer = await subtle.decrypt(
+        {
+            name: ENCRYPTION_ALGO,
+            iv: iv,
+        },
+        key,
+        HexEncoder.parse(encrypted)
+    );
 
-            <h2>The Therapeutic Area Lottery</h2>
-            <p>Not all drugs are equally expensive to develop. Success rates vary dramatically by therapeutic area:</p>
+    return UTF8Encoder.stringify(new Uint8Array(outBuffer));
+}
+exports.decrypt = decrypt;
 
-            <div class="info-box">
-                <div class="info-box-title">Approval Rates by Therapeutic Area</div>
-                <ul>
-                    <li><strong>Hematology:</strong> ~25% (blood cancers have good biomarkers)</li>
-                    <li><strong>Infectious disease:</strong> ~20% (clear endpoints, measurable pathogens)</li>
-                    <li><strong>Oncology:</strong> ~5-10% (heterogeneous diseases, complex biology)</li>
-                    <li><strong>Neurology:</strong> ~5-8% (brain penetration, poor biomarkers)</li>
-                    <li><strong>Psychiatry:</strong> ~5-7% (subjective endpoints, placebo response)</li>
-                    <li><strong>Alzheimer's:</strong> ~0.5% (nearly impossible historically)</li>
-                </ul>
-            </div>
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+async function hashPassword(password, salt) {
+    // we hash the password in multiple steps, each adding more iterations. This is because we used to allow less
+    // iterations, so for backward compatibility reasons, we need to support going from that to more iterations.
+    let hashedPassword = await hashLegacyRound(password, salt);
 
-            <p>The expected cost of developing an Alzheimer's drug, accounting for the near-total failure rate, vastly exceeds the cost of developing an antibiotic or a blood cancer treatment. This shapes which diseases pharmaceutical companies pursue and which they abandon.</p>
+    hashedPassword = await hashSecondRound(hashedPassword, salt);
 
-            <h2>The Pricing Controversy</h2>
-            <p>All of this creates the toxic pricing dynamics that dominate healthcare debates. Pharmaceutical companies argue they need high prices to recoup R&D investments and fund future research. Critics counter that much basic research is taxpayer-funded, that marketing often exceeds R&D spending, and that pricing in the US is far higher than in other wealthy countries.</p>
+    return hashThirdRound(hashedPassword, salt);
+}
+exports.hashPassword = hashPassword;
 
-            <p>Both sides have valid points:</p>
+/**
+ * This hashes the password with 1k iterations. This is a low number, we need this function to support backwards
+ * compatibility.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @returns {Promise<string>}
+ */
+function hashLegacyRound(password, salt) {
+    return pbkdf2(password, salt, 1000, "SHA-1");
+}
+exports.hashLegacyRound = hashLegacyRound;
 
-            <p><strong>The industry perspective:</strong> Developing drugs is genuinely expensive and risky. Without the prospect of profits, private investment would dry up. The US market, with its higher prices, subsidizes drug development for the entire world. Other countries free-ride on American patients.</p>
+/**
+ * Add a second round of iterations. This is because we used to use 1k, so for backwards compatibility with
+ * remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashSecondRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 14000, "SHA-256");
+}
+exports.hashSecondRound = hashSecondRound;
 
-            <p><strong>The critic perspective:</strong> Many "new" drugs are minor modifications of existing treatments. The NIH funds much early-stage research that companies later commercialize. Executive compensation and shareholder returns consume dollars that could reduce prices. Other countries achieve similar health outcomes while spending far less.</p>
+/**
+ * Add a third round of iterations to bring total number to 600k. This is because we used to use 1k, then 15k, so for
+ * backwards compatibility with remember-me/autodecrypt links, we need to support going from that to more iterations.
+ *
+ * @param hashedPassword
+ * @param salt
+ * @returns {Promise<string>}
+ */
+function hashThirdRound(hashedPassword, salt) {
+    return pbkdf2(hashedPassword, salt, 585000, "SHA-256");
+}
+exports.hashThirdRound = hashThirdRound;
 
-            <p>The debate rarely acknowledges that both can be true simultaneously. Drug development is genuinely expensive AND companies sometimes exploit market power to extract excessive profits.</p>
+/**
+ * Salt and hash the password so it can be stored in localStorage without opening a password reuse vulnerability.
+ *
+ * @param {string} password
+ * @param {string} salt
+ * @param {int} iterations
+ * @param {string} hashAlgorithm
+ * @returns {Promise<string>}
+ */
+async function pbkdf2(password, salt, iterations, hashAlgorithm) {
+    const key = await subtle.importKey("raw", UTF8Encoder.parse(password), "PBKDF2", false, ["deriveBits"]);
 
-            <h2>Who Actually Pays for R&D?</h2>
-            <p>The pharmaceutical industry spent approximately <strong>$100 billion on R&D in 2023</strong>. But this understates total drug development spending, because it excludes:</p>
+    const keyBytes = await subtle.deriveBits(
+        {
+            name: "PBKDF2",
+            hash: hashAlgorithm,
+            iterations,
+            salt: UTF8Encoder.parse(salt),
+        },
+        key,
+        256
+    );
 
-            <ul>
-                <li><strong>NIH funding:</strong> The National Institutes of Health spend $47 billion annually on biomedical research, much of which enables later drug development</li>
-                <li><strong>Academic research:</strong> Universities conduct basic science that identifies drug targets and mechanisms</li>
-                <li><strong>Venture capital:</strong> Biotech startups, often spun out of academic labs, take early risks that large pharma acquires later</li>
-                <li><strong>Foreign governments:</strong> Research institutions worldwide contribute to the scientific foundation</li>
-            </ul>
+    return HexEncoder.stringify(new Uint8Array(keyBytes));
+}
 
-            <p>A landmark 2018 study found that NIH funding contributed to every single one of the 210 drugs approved by the FDA from 2010-2016. The relationship between public and private research is deeply intertwined.</p>
+function generateRandomSalt() {
+    const bytes = crypto.getRandomValues(new Uint8Array(128 / 8));
 
-            <p>This complicates the pricing debate. When a drug succeeds, the company captures the profits. But when public funding contributed to the underlying science, should the public share in the returns?</p>
+    return HexEncoder.stringify(new Uint8Array(bytes));
+}
+exports.generateRandomSalt = generateRandomSalt;
 
-            <h2>The Patent Cliff</h2>
-            <p>Patents provide pharmaceutical companies with a limited monopoly, typically 20 years from filing (though effective market exclusivity is often 10-12 years after approval due to the time consumed by development). When patents expire, generic manufacturers can enter, and prices typically drop 80-90%.</p>
+async function signMessage(hashedPassword, message) {
+    const key = await subtle.importKey(
+        "raw",
+        HexEncoder.parse(hashedPassword),
+        {
+            name: "HMAC",
+            hash: "SHA-256",
+        },
+        false,
+        ["sign"]
+    );
+    const signature = await subtle.sign("HMAC", key, UTF8Encoder.parse(message));
 
-            <p>This creates frantic economics. Companies have a narrow window to recoup all development costs and generate profit before generics arrive. The rational response is to charge high prices during the exclusivity period.</p>
+    return HexEncoder.stringify(new Uint8Array(signature));
+}
+exports.signMessage = signMessage;
 
-            <p>Some companies engage in "evergreening," filing additional patents on formulations, delivery methods, or minor modifications to extend exclusivity. Critics call this gaming the system. Companies call it continued innovation. The line between the two is blurry.</p>
+function getRandomAlphanum() {
+    const possibleCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-            <h2>Alternative Models</h2>
-            <p>Various proposals aim to reform drug development economics:</p>
+    let byteArray;
+    let parsedInt;
 
-            <p><strong>Prize funds:</strong> Instead of patents, governments would offer large prizes for developing drugs that meet specified criteria. This would delink R&D costs from drug prices. The drugs would be generic from day one.</p>
+    // Keep generating new random bytes until we get a value that falls
+    // within a range that can be evenly divided by possibleCharacters.length
+    do {
+        byteArray = crypto.getRandomValues(new Uint8Array(1));
+        // extract the lowest byte to get an int from 0 to 255 (probably unnecessary, since we're only generating 1 byte)
+        parsedInt = byteArray[0] & 0xff;
+    } while (parsedInt >= 256 - (256 % possibleCharacters.length));
 
-            <p><strong>Public pharma:</strong> Government-funded institutions would develop drugs for neglected diseases or areas where market incentives fail (like antibiotics or rare diseases).</p>
+    // Take the modulo of the parsed integer to get a random number between 0 and totalLength - 1
+    const randomIndex = parsedInt % possibleCharacters.length;
 
-            <p><strong>Value-based pricing:</strong> Drug prices would be tied to demonstrated health benefits rather than whatever the market will bear. Several European countries already use this approach.</p>
+    return possibleCharacters[randomIndex];
+}
 
-            <p><strong>Importation:</strong> Allowing Americans to purchase drugs from countries with lower prices (Canada, Europe) would introduce price competition. Industry argues this would undermine the system that funds innovation.</p>
+/**
+ * Generate a random string of a given length.
+ *
+ * @param {int} length
+ * @returns {string}
+ */
+function generateRandomString(length) {
+    let randomString = "";
 
-            <p>Each approach has tradeoffs. Prize funds require governments to predict which drugs society needs. Public pharma faces political interference and bureaucratic inefficiency. Value-based pricing struggles with measuring "value." Importation could lead other countries to raise their prices.</p>
+    for (let i = 0; i < length; i++) {
+        randomString += getRandomAlphanum();
+    }
 
-            <h2>The Innovation Question</h2>
-            <p>Underlying every policy debate is a fundamental question: does the current system produce enough valuable innovation to justify its costs?</p>
+    return randomString;
+}
+exports.generateRandomString = generateRandomString;
 
-            <p>Optimists point to genuine breakthroughs: immunotherapy transforming cancer treatment, gene therapies curing inherited diseases, GLP-1 agonists addressing obesity. These represent scientific miracles that wouldn't exist without massive R&D investment.</p>
+  return exports;
+})());
+const codec = ((function(){
+  const exports = {};
+  /**
+ * Initialize the codec with the provided cryptoEngine - this return functions to encode and decode messages.
+ *
+ * @param cryptoEngine - the engine to use for encryption / decryption
+ */
+function init(cryptoEngine) {
+    const exports = {};
 
-            <p>Pessimists note that many "new" drugs offer marginal benefits over existing options. Studies suggest only about 15% of newly approved drugs represent significant therapeutic advances. The rest are variations, combinations, or modest improvements.</p>
+    /**
+     * Top-level function for encoding a message.
+     * Includes password hashing, encryption, and signing.
+     *
+     * @param {string} msg
+     * @param {string} password
+     * @param {string} salt
+     *
+     * @returns {string} The encoded text
+     */
+    async function encode(msg, password, salt) {
+        const hashedPassword = await cryptoEngine.hashPassword(password, salt);
 
-            <p>The honest assessment is that the pharmaceutical industry produces both genuine innovation and expensive incrementalism, both lifesaving treatments and me-too drugs designed primarily to capture market share. The challenge for policy is encouraging the former while discouraging the latter.</p>
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
 
-            <p>Until someone solves that puzzle, drug development will remain a high-stakes gamble: expensive, risky, slow, and occasionally miraculous.</p>
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
 
-            <div class="sources">
-                <h2>Sources</h2>
-                <ol>
-                    <li id="ref1">DiMasi, J. A., et al. (2016). Innovation in the pharmaceutical industry: New estimates of R&D costs. Journal of Health Economics, 47, 20-33.</li>
-                    <li id="ref2">Congressional Budget Office. (2021). Research and Development in the Pharmaceutical Industry. <a href="https://www.cbo.gov/publication/57126" target="_blank">cbo.gov</a></li>
-                    <li id="ref3">Wouters, O. J., et al. (2020). Estimated Research and Development Investment Needed to Bring a New Medicine to Market. JAMA, 323(9), 844-853.</li>
-                    <li id="ref4">Deloitte. (2024). Measuring the return from pharmaceutical innovation. Life Sciences R&D Report.</li>
-                    <li id="ref5">Cleary, E. G., et al. (2018). Contribution of NIH funding to new drug approvals 2010-2016. PNAS, 115(10), 2329-2334.</li>
-                </ol>
-            </div>
-        </article>
-    </main>
+        return hmac + encrypted;
+    }
+    exports.encode = encode;
 
-    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+    /**
+     * Encode using a password that has already been hashed. This is useful to encode multiple messages in a row, that way
+     * we don't need to hash the password multiple times.
+     *
+     * @param {string} msg
+     * @param {string} hashedPassword
+     *
+     * @returns {string} The encoded text
+     */
+    async function encodeWithHashedPassword(msg, hashedPassword) {
+        const encrypted = await cryptoEngine.encrypt(msg, hashedPassword);
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="mailto:mail@justacallaway.org">email</a>
-            <span class="footer-divider">·</span>
-            <a href="https://www.linkedin.com/in/adi-desai-20522a334/" target="_blank">linkedin</a>
-            <span class="footer-divider">·</span>
-            <a href="https://adidesai.org" target="_blank">adidesai.org</a>
-        </div>
-        <p class="copyright">© 2025 Adi Desai</p>
-    </footer>
+        // we use the hashed password in the HMAC because this is effectively what will be used a password (so we can store
+        // it in localStorage safely, we don't use the clear text password)
+        const hmac = await cryptoEngine.signMessage(hashedPassword, encrypted);
+
+        return hmac + encrypted;
+    }
+    exports.encodeWithHashedPassword = encodeWithHashedPassword;
+
+    /**
+     * Top-level function for decoding a message.
+     * Includes signature check and decryption.
+     *
+     * @param {string} signedMsg
+     * @param {string} hashedPassword
+     * @param {string} salt
+     * @param {int} backwardCompatibleAttempt
+     * @param {string} originalPassword
+     *
+     * @returns {Object} {success: true, decoded: string} | {success: false, message: string}
+     */
+    async function decode(signedMsg, hashedPassword, salt, backwardCompatibleAttempt = 0, originalPassword = "") {
+        const encryptedHMAC = signedMsg.substring(0, 64);
+        const encryptedMsg = signedMsg.substring(64);
+        const decryptedHMAC = await cryptoEngine.signMessage(hashedPassword, encryptedMsg);
+
+        if (decryptedHMAC !== encryptedHMAC) {
+            // we have been raising the number of iterations in the hashing algorithm multiple times, so to support the old
+            // remember-me/autodecrypt links we need to try bringing the old hashes up to speed.
+            originalPassword = originalPassword || hashedPassword;
+            if (backwardCompatibleAttempt === 0) {
+                const updatedHashedPassword = await cryptoEngine.hashThirdRound(originalPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+            if (backwardCompatibleAttempt === 1) {
+                let updatedHashedPassword = await cryptoEngine.hashSecondRound(originalPassword, salt);
+                updatedHashedPassword = await cryptoEngine.hashThirdRound(updatedHashedPassword, salt);
+
+                return decode(signedMsg, updatedHashedPassword, salt, backwardCompatibleAttempt + 1, originalPassword);
+            }
+
+            return { success: false, message: "Signature mismatch" };
+        }
+
+        return {
+            success: true,
+            decoded: await cryptoEngine.decrypt(encryptedMsg, hashedPassword),
+        };
+    }
+    exports.decode = decode;
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+const decode = codec.init(cryptoEngine).decode;
+
+/**
+ * Initialize the staticrypt module, that exposes functions callbable by the password_template.
+ *
+ * @param {{
+ *  staticryptEncryptedMsgUniqueVariableName: string,
+ *  isRememberEnabled: boolean,
+ *  rememberDurationInDays: number,
+ *  staticryptSaltUniqueVariableName: string,
+ * }} staticryptConfig - object of data that is stored on the password_template at encryption time.
+ *
+ * @param {{
+ *  rememberExpirationKey: string,
+ *  rememberPassphraseKey: string,
+ *  replaceHtmlCallback: function,
+ *  clearLocalStorageCallback: function,
+ * }} templateConfig - object of data that can be configured by a custom password_template.
+ */
+function init(staticryptConfig, templateConfig) {
+    const exports = {};
+
+    /**
+     * Decrypt our encrypted page, replace the whole HTML.
+     *
+     * @param {string} hashedPassword
+     * @returns {Promise<boolean>}
+     */
+    async function decryptAndReplaceHtml(hashedPassword) {
+        const { staticryptEncryptedMsgUniqueVariableName, staticryptSaltUniqueVariableName } = staticryptConfig;
+        const { replaceHtmlCallback } = templateConfig;
+
+        const result = await decode(
+            staticryptEncryptedMsgUniqueVariableName,
+            hashedPassword,
+            staticryptSaltUniqueVariableName
+        );
+        if (!result.success) {
+            return false;
+        }
+        const plainHTML = result.decoded;
+
+        // if the user configured a callback call it, otherwise just replace the whole HTML
+        if (typeof replaceHtmlCallback === "function") {
+            replaceHtmlCallback(plainHTML);
+        } else {
+            document.write(plainHTML);
+            document.close();
+        }
+
+        return true;
+    }
+
+    /**
+     * Attempt to decrypt the page and replace the whole HTML.
+     *
+     * @param {string} password
+     * @param {boolean} isRememberChecked
+     *
+     * @returns {Promise<{isSuccessful: boolean, hashedPassword?: string}>} - we return an object, so that if we want to
+     *   expose more information in the future we can do it without breaking the password_template
+     */
+    async function handleDecryptionOfPage(password, isRememberChecked) {
+        const { staticryptSaltUniqueVariableName } = staticryptConfig;
+
+        // decrypt and replace the whole page
+        const hashedPassword = await cryptoEngine.hashPassword(password, staticryptSaltUniqueVariableName);
+        return handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked);
+    }
+    exports.handleDecryptionOfPage = handleDecryptionOfPage;
+
+    async function handleDecryptionOfPageFromHash(hashedPassword, isRememberChecked) {
+        const { isRememberEnabled, rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+        if (!isDecryptionSuccessful) {
+            return {
+                isSuccessful: false,
+                hashedPassword,
+            };
+        }
+
+        // remember the hashedPassword and set its expiration if necessary
+        if (isRememberEnabled && isRememberChecked) {
+            window.localStorage.setItem(rememberPassphraseKey, hashedPassword);
+
+            // set the expiration if the duration isn't 0 (meaning no expiration)
+            if (rememberDurationInDays > 0) {
+                window.localStorage.setItem(
+                    rememberExpirationKey,
+                    (new Date().getTime() + rememberDurationInDays * 24 * 60 * 60 * 1000).toString()
+                );
+            }
+        }
+
+        return {
+            isSuccessful: true,
+            hashedPassword,
+        };
+    }
+    exports.handleDecryptionOfPageFromHash = handleDecryptionOfPageFromHash;
+
+    /**
+     * Clear localstorage from staticrypt related values
+     */
+    function clearLocalStorage() {
+        const { clearLocalStorageCallback, rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        if (typeof clearLocalStorageCallback === "function") {
+            clearLocalStorageCallback();
+        } else {
+            localStorage.removeItem(rememberPassphraseKey);
+            localStorage.removeItem(rememberExpirationKey);
+        }
+    }
+
+    async function handleDecryptOnLoad() {
+        let isSuccessful = await decryptOnLoadFromUrl();
+
+        if (!isSuccessful) {
+            isSuccessful = await decryptOnLoadFromRememberMe();
+        }
+
+        return { isSuccessful };
+    }
+    exports.handleDecryptOnLoad = handleDecryptOnLoad;
+
+    /**
+     * Clear storage if we are logging out
+     *
+     * @returns {boolean} - whether we logged out
+     */
+    function logoutIfNeeded() {
+        const logoutKey = "staticrypt_logout";
+
+        // handle logout through query param
+        const queryParams = new URLSearchParams(window.location.search);
+        if (queryParams.has(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        // handle logout through URL fragment
+        const hash = window.location.hash.substring(1);
+        if (hash.includes(logoutKey)) {
+            clearLocalStorage();
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * To be called on load: check if we want to try to decrypt and replace the HTML with the decrypted content, and
+     * try to do it if needed.
+     *
+     * @returns {Promise<boolean>} true if we derypted and replaced the whole page, false otherwise
+     */
+    async function decryptOnLoadFromRememberMe() {
+        const { rememberDurationInDays } = staticryptConfig;
+        const { rememberExpirationKey, rememberPassphraseKey } = templateConfig;
+
+        // if we are login out, terminate
+        if (logoutIfNeeded()) {
+            return false;
+        }
+
+        // if there is expiration configured, check if we're not beyond the expiration
+        if (rememberDurationInDays && rememberDurationInDays > 0) {
+            const expiration = localStorage.getItem(rememberExpirationKey),
+                isExpired = expiration && new Date().getTime() > parseInt(expiration);
+
+            if (isExpired) {
+                clearLocalStorage();
+                return false;
+            }
+        }
+
+        const hashedPassword = localStorage.getItem(rememberPassphraseKey);
+
+        if (hashedPassword) {
+            // try to decrypt
+            const isDecryptionSuccessful = await decryptAndReplaceHtml(hashedPassword);
+
+            // if the decryption is unsuccessful the password might be wrong - silently clear the saved data and let
+            // the user fill the password form again
+            if (!isDecryptionSuccessful) {
+                clearLocalStorage();
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    async function decryptOnLoadFromUrl() {
+        const passwordKey = "staticrypt_pwd";
+        const rememberMeKey = "remember_me";
+
+        // try to get the password from the query param (for backward compatibility - we now want to avoid this method,
+        // since it sends the hashed password to the server which isn't needed)
+        const queryParams = new URLSearchParams(window.location.search);
+        const hashedPasswordQuery = queryParams.get(passwordKey);
+        const rememberMeQuery = queryParams.get(rememberMeKey);
+
+        const urlFragment = window.location.hash.substring(1);
+        // get the password from the url fragment
+        const hashedPasswordRegexMatch = urlFragment.match(new RegExp(passwordKey + "=([^&]*)"));
+        const hashedPasswordFragment = hashedPasswordRegexMatch ? hashedPasswordRegexMatch[1] : null;
+        const rememberMeFragment = urlFragment.includes(rememberMeKey);
+
+        const hashedPassword = hashedPasswordFragment || hashedPasswordQuery;
+        const rememberMe = rememberMeFragment || rememberMeQuery;
+
+        if (hashedPassword) {
+            return handleDecryptionOfPageFromHash(hashedPassword, rememberMe);
+        }
+
+        return false;
+    }
+
+    return exports;
+}
+exports.init = init;
+
+  return exports;
+})());
+        const templateError = "Incorrect password",
+            isRememberEnabled = true,
+            staticryptConfig = {"staticryptEncryptedMsgUniqueVariableName":"7e2bfdf1288c5dc07927d7cabdb5d1faf6623c1e8c867b86e5c4c2bc2c7c57f17197db0ae1047c888780c25bae6847cdddcf93aee416d99b4c02a7d1cbf33a204953d293ed733019a306e918ab1f99b6874104e66d4c563aa12096a17a8d9299c945407ba2d56ec682f3c8f8fc15b2d68386803590abb5d23cd5e9fc6843a1de4dfa36e3f898568a7d47df8d29aadc5fa4480d8cbcf3ba9fb9d230ce77e3ee85d41614395f87e27887bd8a511b1b34c7437bd821dfcb49d0cc0e92fcdda7e6dad80f3beceec0bef721916add524d53d60daeeb7de8c7980033a4365325c2f1d15f25f978edcd43ee01702dfdad1d4eeb3ed8092d0d724c8dbf666d640a4ab22f4c7689c54ae1087a14ad0dbc487dbaa86044812a665c334f3b7b51eee69a281bcc28b06af655e2d20a3c3e971ec61543bf85a49b7c973784f53c272928e36018301eeb24fe605a94e8788f38bb6cf0dc0bfc61ab0f87e4e3a791f137febac8e6142bc647d85ae7c1e2d539b2f165ee425334231fc70329e8df101a4cdef4d2b7c4152ac76dcf1c027539baf90d33ae4498c243578b552552d09977626f02b7358d6c9f73d723f80d24f1e62ebed82f8135f3c3f4f6c314503c219b6f557258f86aae0b464daa6e98bd63dc358dcb71e8d94e7add304f9ed20190828c5ef7c451a1b7307b426416c3f096aeaea58b705eb5ffad7c626e45c2cafdfa7645515e88bf4ff365a635bedad3a61abf8ea53efdcf707f739958bc8e747caee85786aca841e45df9a880e6ff61eda6eeda5aa811d56339b66f50462f1905d34402480e23af9ca5785dbe990dffcab2e204522d0f05ae11df93cc967024a7113b82c7f4d95e7e9394fd2d62f9d338e102c2b086243ceeb0637cf9d220e31d77b5172a377a8a7b368cd812540e5a33c1267a6578b4c585e5893a536d85f84275193aec9a1912e3e26a77d68c53058ac7d5f3dc3f70cdd0662a8d1eb59ce689b76c4dd8969a05587c1c921be87c377251d3cb470182b2fb07b06dc2702d4c9b3d463188d1e2a737923993144c7edb4d4fe67851d165c63a2c87b662434bfabb72012974225256c99dae58732a79d24acbc21b053945b4aaf13557bf086f246a8d390416e465d2603919d491b8fde5b744515532ca47a3dd55ca9cd92a1dcf4ebc038cd1aac02c3769a35d8c02d852e46d75b951a4d0409e0812b605004079d28f3063b17900874ab6e1fe0c35297be8724c25bfae6c190ff62574e567c480b73d8b99d5d6b2fd1425d661c69f6f5d259fa62645078a53337eb819974ee2d68deed832f8f4e53353c3e51bc447dbfa3edbbb75442ff7db84992a8c48f9c7b5d089d63f9901bf40a9e5f3b70e7b35a00b4e6748f0dfe6322736c2632103307512e966112adeaf0c7aa0efc88c9d572d8658e3f63ceb43ed790d79b42153d4071e4f4e5da13c8c7dcbf9710c871d3eaff240246cb8c98ef0fb6831a069512fb138cace5acdb65368066b2df8389593c95ae301708c0d4078efb2219a3b3e49466f573ee07093221100d9e83050ad8010c912e47aa5297c840fc44a507e2ffd3e2b11ec06be863cf149a47cb79cf54914079bc381e8ff886ea589ed1b731d171aedab643bfdceb5bc5b9a1c9ab5fe6fbe61417c70ade6efe40c0245630aa58c68963146a751a3427c17b27f3ab3899947059024b3a5fd92bfdd7ac999076b76e52c4cdb489d62a320553f085248f2bd3e885f41186dd5dc2bcf5b99fd6ec1b9c43c8716865e37e648744e677003f3351787e3760cde8fd5c636a16ec53c7bee28c502f62c4b787b69d14c7174d1d2cf6510568111b4f383723ac663e0b77bae8ec2c04ed3be393daa0bf184927de818392196475c0eefd5fcead3b41ceaa497028c75b58e2cda6bbee664b47a80287e77ef77b5430f9177c40e26ffe97946d5286c5f739919630ac7e4a2d07998bbbb0d062aee98f31d4a58051a59edf3749e63671862a5da888fb79e0864da40339563d45e5f1c16c9611ce89661eacde45ce519e9735a177221f4d1f5ab8e4dd9b9260511e477862254f613cfe36ef386cbc93149124fecdc96c38458625da3e3fdbc47f33b3d95c0a0ceeba9137482a0cbb96a9267588dfb8d4ac2e826a551cc7a00bed243db7ecf7813abde22c23d8c162cd823a07cf6ac5eebec77dea368a85bb95e26adb4ffd1169a714c5a825890981d5b8fc84cdbf165c3ab06f946470de758a43c0740c69c5c9f5adfda9cfd80c3b5adb9da0abb5e6526774495822cdb0120ea44c440276a83555753c75911d4e3b6833a08d699d0e439b5b417aa46ec64b302c5ebb1f5bd5f4125ab795e8697af54bb0dc43bc8af5a0c08b01bfa7bd4f7f203015c521bc6cf47212d9c737c106eb6db3d30258a65eeb955bd6fd9c90d805819d3aa6bf80d280dbe9dfc44b837853c505413c38b11e5c35d4baffb4264bad92e2fa51977264c8c70c25a345f6e30550f33bbccf10283441f109f2ec07ee7f00aef61fa6f95c8b4126485d7da4b6ace2b03aec976438212a6c6be31eed927b4155cf15c99d5881323358ea35b347487315c38ec576a5533c0377a9564fd648df1ed5da97ec08910d0e594b2aca1ef4bb618552e8e8e130c5d34229d8dbc78e2acc0d107312ec83238758382f53c98a761f11c2c840e5dcb9df539443b03e5b9c3444a37a0109adc36d877c734b3b68baf02dd48d4dfdc7aa3cfb41eb7611418b905577fa21c3ece72e481f8513f75acf73b5a7f37d3a766af73acd448fd715b24cd83cc0170a93515d9026d9f71b3f79a8637fef983bccc19d7b77a2c317977c71f825fb5244f59044131ef037cd8d740a790aa28553a248d87bba2a6abf3208d970c68b13786ab0f29a050df2163a1fa5cab9e82e1263c701374a83b86f7ae9da4d4f8a68b5a11aa6c4c17b6b50f117bb13f739097a88812fd0b46e2b8bdb6cdeeb29033f637e0d73f0788dfea59abb3c2600871590188d9347dc4a02784381263385d7effe19e2751059f59cf89a6185960c681ed278e81d4da4fdac13457f623324834cac624714411ee6dd97901eb816f24ff62be8fda54745b31e898127041b2b0b00a8c848b5116e2bc1414fb663675e7f483072e734358f760575aeddf556fb0d9f0861825215c23340355e01b1a8450d252358d6b308ab34f2966cde203ecbfa10829ddbbf7bfaf19afc1eb2b90c012744108204d087f80a2dd4f91f7ce85c487b25cf2b13422b59e2b7b6dfc5554d435492352a892ce378ed2c9a7227cf241b9e970a482c97f553d9bfd2c468745e512e3d19472a05dfaf9d51db415a74e9a2bda139d3637a9abce068b4f6e52863672e46ad2b6d7f3e27391ecf8152d142f217e9f531c27d06dc4d6dc1b90527a88ca12a0073820df93fe5ff46bcf4bfca1ede0c344e008e3840824157f8e09faaa2795ccd95e7e90449bfcee59c6a31456fdb5fee5740ea653be17bb59446314430cdbba6a3f48bab732da8afd37e2a50627e1bc37d48b3ef9c14caae5751d54d7a91a9a576a04c8246e277008bdef738157c90cf53f8b02aecb3d6856cdf4527cafe72bc9686c3ad16f2f9a5456d6ac032ce9ab7d83991ab74a29bdf3991d7d5258afa0b43208b4bbc333c2c89f9ac70a9d433472f144f4da45ba209ece44983f18125bd1ab25f11bf959a2e35869c613a20923801fc8ae8137a1a183ec524b5933a4c3beaba16a84b3be5d2abe8e45a321fb788ad378e2f63f9a89f1f47bfe80b8c99d59de953ebd19a00908cee75ddd6153272453bd17e7f62980204c81374e2f5d5fc00a00fcf4040c451581576069832f4fed8f82269ac2771ce88355fae3a2b53ca34609c5e135cd6d75143e17204d3770a9aef5600857ebcf976089117da7913705d2d15d694deb3297df78d651f06f860c6419c9a5ca1a7301d30a0593f9f7d0fe53c4829ce9107ca6ad48ef85d62e5d0e0cddcfd714519227bd9352db0dadb33e12f38bc0414cb3efd3fab3833dce954212a10801b1f12b89a18a306cf73c3a7b48b14b6ede3878fdaa741803dfc69a268c29c2bb85251a3e16e5194af29ee4cc1401486d70f1e5c2b28e488a12bba8f2c684d4bdaed8ff87f53968415b55cbcf3ebd017a0f19d7a12c814c1e303a6d64b22177ed83cfdefbe6b984201fedb46be26df8c99cb0e4437472e2a34caf8fd6e5b282ac5791396ae3b835baf5cf8d6c754c74a565aab2f4688c50914f325b1b089c6d22e1a6a17e075e8609ae06b53d7adc3d4c894d592129bcf292b4aeb1685098db0eb11bb44105fc93dd7fd77a134d05a9443b1bfba5bfc644ce18674d96d0ba328619b3b509ec1377922dafa87ccc8cd9b152f5b72918a2e8defef1665908543372fed56d800be9ec31977ba162b23e64802fc58ae39b42d6f6892e829bc588485fafc2d359e7216bf344861eaf0d158d48cb8d28833d43a001b4aad97f9a11e1f1f7978dc1698a81ffc60c8ce1e4e75af5d882b33408b6cf47ec284ea6a982c0a58794233cc673b41c62e487767d8014236aa57a6711ed7f0c3931c22b76865cc38d541d738c860b85e943e23f2d414d5a16d019d592af52ca5935b1c2ea321af43276705080db8218a7f8d192d8351445e29bf631dad2e1f37ea5cf683b891a376c7a7be94562b4687435279fa79fd4ceac2da4f6d153de6b2c05d1fffe12103005f581ba4701b8b2b22aa44a3160b803a1ac3b796d616d7e8fa95ca6b8e1a45909c7b3ebafe7564baba709ccd74155a27b995a4bfc6feaf43a2dbda79f5c7fb6a662d6efd57555c9c32e8be734e3f3605d885e6827bd031b34ab05e8f6a935f901b67b4783aa8dfabfa98de8d3914b7d0b8bf584d7978f7df731d5c0ebc8eec17c4663aed49ed78ecc06483be1340f402eed8fcd9e9f6d3415657bdb920378591de76b13da7006c4143eb8f2d9b992f7ee636b330ec9520e4f18bd07f09a1ed0d1f934503b1ceb5cb7cdd5925a3d7658147647e1be67e5bb442162d120259da3dbc69082b79671573b8f081c98048759d78fc572631270cb75ed64601ffd801a9d28fe5c1cb60c2292b43d00ce4d2afc7b01882c4e247d1a362ca254a4265a92e914e0e49ec18106e08877bab47500ce4bc33d2c611cef0e3d167d7499ec6c50c21a1ff491de3f161e9aa63719e9c8ae829d2f55662df264be78bc3918c4160db3680653876724b99b460ae1e00d3cd618bf9c9b536cbd9b4cd16581a5e85cc2cc6be3cfc9857093565721d8d79ea2858426979eb1100284cd4f1aece91dcd6b30333e61ae9431e32725ff78f09e4937810e0cfdc2c33e59d93d44381f76634d79fd3f8bc691eaef44dc0754dfe714354009dc5be8b080b962b863da3c3559b349ec3e942b3e904e5f878b6d880d1472aedce7acbf345703a6964342924aa0b6a2f9c7a928cfd070c0650e6aba44516530142d5e2f262bf6b07e93e0c700d75ebea4adbb92849a48ab7744425c90c2a2a457aac94813c4e6a95909f73ca30afaa7e3fe35fc4a7bc9bcd2fca4f34ee882f23362ed441b00b975b61a2b67046477f51a7cdaf1129524cb7a6c5a12e8d3a87a87c130f5195d236da9f45653eb17bb047e3d50e60fbced5b0b1749e93ce38ddfd06d56f1ba7dfd45df52277e64e64e7b8805eb75137842614f005012c7c16b1885b01ed5334999a998472a64bc39587910a3559614bcda0be46652f0fb6a8ca7642a13fe6282252ec34f79b65e10d2643c3125b589942dc69e021698bc5e8e9b328c53f687571c115edf8949dae2d814d26dbefa8d715e5f1749e98c1bd76c0ff5a19f27f3a0a32b137030a65f93db801e764693c7de1afbdb28e23f1656b0b2add4300727ec361181c4a123c692e01b5a8df2acdfa796c5e129c7e0effe73492ca08507df3181d21b14ef444609216815d06f666bee807159e83e8f146d6b8290111d2bbbff3c5bb1f3204ed6e8355e668e65bd522566aed72cc560ad2129b160095f83c4ddba94efc6b021913d6be804a7771d8e64b87f57ba9a34d40a57dcc69f1d320268c6082968bdb45f492b0d8d90b95a1d69b89f2835c3c216a6faffeeff37b607ef234b3f9e66e84dfedd8ebe6757ef6647a1ca4e7a8fa15d7b263fe42f4798e0b763214faa6df4b205cec756c6332262207d9c076ac496cea038984239f93bee8349599c5cf0f29415bdfff42f0f4529c031cf939ea682e4bd533d973622aa08935e52b0211528315c17b744115ad9574b0ec18ba824dd5ea3815079a9b1f3dc27f2df8de2d1446a40cdcaedf3dd5e89a679fad03a7b3c66c3b4b8122df72b512b9d35b3b9a4549b63d3a4e86921dd6e9429f8af348502cf36ecf4cc7c5320ab2f678ccd665048e7b36cf7f173becd5cb9e7720fd75952d2ef055de12370d3a5a2a562acd91c7c39b65c4fdb6c087eb6127af173d3972253d767433b016b0af0fe2ff46f5376ab6fbac8283a2a6e6e400c68af3e5f0ebd1d090218039eef0fc3dbce7b384ac93ead5096620a767766720ac41d70238be576e5c2ac5707ab7db6fbb47eb79fda7c1914f3f04d37ecef5d2f06e52703dfb481835172ca6dc53c447871d6c87b59bba7cbd1e05d4ae923add860b5c636bf3c6c461a0784f7a1facd16ba9ca0a3cfc2650023b15bf88d1f0c80285fe490632ea57aa3fdcc67356f674ca4c776a397d4f3a481d1ca578f3643d48b83ffd2661732bf8d76eb6ad16df507a1370a00b416408c90941716abf8b65bd5a705d7574d7e09a986792ea1555bf9f2f4c00b655b50ab45cac4746c0e504b12a62d1577e217c33ee2efc579c1ee56f40f77a34b2ca3cc09fcd66fc199bb820a9e7cfe2cfa2e80b274ce744aff7c7e4f1a6fc19b58d858423e201920041144ef41432d51325b742af0e24808f4c364b11d8c0075404b3701f0b7ea72c74d845254b2cc1781797fb36d1197cef83d8ee7b0c877a32e83898f7685a3dba15118186e371e2bdfe7cea925329e86a2f526bf3f5ff95acde866447ea8d11a085830224b3a8920951f67868adfb5f0b96addcc8d9ee3fce05ea0e8c46cdfcfdf277188c74d459d8b759beffdf85fe154b4b9da8dc79f6da4b6c903236a9aa43afe65b769e212212e2c4f0bcaff82f42b7d6915d681781df8bd609d40eb446be050a205285eaf524c422c51f18e54c668148148c1a01f9544731888082cb8551ffa4e2a08b280ad1327b4a406fa66079c555575d11d0c77758a08a8db36e7c8137b2c41f77b197aa94d8f3136d1b8cdc3d168a17a3867032247e048bbeab0d1bdaababe13874c981f76ec684b11549adb3991dd74b200b6b64eb032c85751448d179b92fd31a3cedd57392d9246069b035af33c32a160ff94ab2d8c2062a9c4814c388262865ef858fa771afa7dac45e55f721bce42874d1c670ac129cceb609c0ccf8563cefc1bc5032ecda243300eeb615491efd5c33046531af49508b8092d5267145288cd8ded123ae6cedec171b6631cb22616b45bb1c9a89b09a1253d5742f673ed60268a358369c899aae757f7aa51003d2c8b653aeb4e08b693a1781655ab91d546f9712b5c4bc864f38fd360e2f1acfd0f8a0ecfa8d5584da242bf0813a42d13628259d5673714a0d7ae9ddadf140cf1e42a5a9f56e35b4b07a6c94dc750431303c0022fc9b8f83f741dde857c6053ef0c337235873037d038bdc8104b98ff94d5b47e702e556e39c23b6b2b20a151e5ca4b47b4e217bbdaac92d958db29f42d7115b078a57ee05a630cca525e6ce0ff1cfa3fdad12e1a49ae146d8d8dfeccc34a3f61196e834b007fa00f0984f6e7d7013ce597f58faa6e3fe707b1c39fe7a726027548fd08b94fd15aef7517a5c0e838a65555e9bf50180501d925f6d742e863f8e8d14c7ae411272a0d87149579ead99a1c8b2f8b2fd8feff6b81f4cbf49c2686cd8c3814d16220faf39d34fe3c53641bc5bb2b9fdf0788954853d8623401e957e2141ac0bb60092c3ab69f2929e1ed4fae753383d036cd2287dae26286c25914a874ed36de376eacb2fe564dbc51acad84a9a1cb33c221436a856341e4e98a8ea0b5fa0e6971cbc11f9de25242c62e30c9c8f40e08374065dcd8f5c2148a2a60bd9cf5e9f66bbd14e0b411b33fac617005ac89d3568d185fb5d6cbce052c20df52d4fb4b4c95a2387104314cbed1358f2c324cf1550d94d84a41d4c7a598c2992b748ab0bc8345c3f0087f3a3cbee94d4df3246a04bc1eda30434f162a71569aebdd60f482f7d75f00c98bfede3773e74d53c549e831954757dd0c428d17a12b9a27148d776fb69863cf1678c182de697e5d677875238241b2a45be64805888133ba0226695c108997ae1c57400cb2e84f7759f27b0bfae69459d2c8dfa3db25fe52d972fbd1fa3a39612a7479ad9ac21b1fa5140782d301f3398ff02738e70361a07c636e68fa3108f0f3bc5143ca5f201273a1cb71a9553a5f9c8b64a98cc55dadabf4c75b0256f56045417602349bbb31829ed00fe6fef2a1b0dc4551c503c0f734bf5c6696fbf9758453950b44cf74711c9a08b9dcf7bf6c4aff752e011611c2d12996621571998069125516db3cba4d70685de23bc89235cae66b20cd339ec6e1ff1096af9678446aac79221203528c1d56291e769ae7ad694a7c73ee88a229f4f3b5db37c497f6659e60d25709aa38afe33ff814073b89d9f3566a196b36ba34be26e86f7e12ea1d3b3c0eb64377ba0949c9c712e77486a32bb55ed0b1ac8ebe5c7dbac84a40463de6e32e0d95ac88dd9531f1a5a038630765f0fbea34cdf536270be11150c82873c65fc60feeb3e94f8f155da8b2d674bbd3a1454e7f9a2961b3b734618ca4676073693f557dba8a16d8fcdc46252f9ffffa051c143e96111414f2c8152ba1747d3a3cc664768a4bce20aab69b7176455078090cf3afb7cae7b2421ed3cb9eaf1027ab91da648a7797cf78ef515db55a247d87365f3b916629dbaf875be87d6e9ac87469e8c4f8afdd5b2053febacd9d2fddd5bccb645911852d9bcc2f6d5df6a54a7a6fd05a4a63ad289f0019292b7b420da04808d6c509992b4439440ce8fad187f7e00406d025ff08e7f09858cfe011724fc285df3fcfe3caeb2f654fe79cf43dd351f3d5d674e93dab5255a06f1b281d63219470a4b8e36f9a9e9ae293cdc3b4ad2d06757737b369268ccf694f7f25ae85c416bcb2c2adbbfbfb212e3023d3e7ece01b0db356ba54c7036230790c801ceb36be64f3fc72743b8d1079aaffc00fc85341bc1e0aa54c54b521d5a8b1b4bb81e93346e3005d0d05f62f03dba210422c01df62d21e39bbc3f0e73b2ad5a8520e57e2db96eb6fe17bfb46d3b6b2dca4dc8e20a3cc500c5faec6ded17605f294d388a67864ea50b17ae3e60c4494239820bf578a2cf3d41d352f96c9c60c3d67769a16349c87553a99cde497d4ba7d1ebd1abb01875e88e7e24cd6194ab8836763ab8d39fb0c9f4e41bfb9dfc328c9f427c954c0258fbe2b155324bc4ae78f4b7a6ff564633b9004995d225722d6e2a9c8a32ff381d35ee832f619aeea185fd24f3d5c6643f035209c19a06995692fe2b5c4de0372f11f3911f9b83dfdbb4786112ebd112e19ed537c32d53e857a3d58a27182fa60758f009500a7e4405fc6e0d05dbbf5d07e46872302c2644797ef3f6bcc2cbb29c4c1650e14bfa206e0a2d621916e6efa9b1f9e3d1b82c0e0d1f13070cf04ec08145c23ce64cc4a680bc79921862b0fbf8c2b739786e4847a74fd9bcd43cc70408e233fcad4f7093f38a00d0c18e627ca378e91fb9bca7b7ac763a0de7cfd7be1d2844f9cc234240c02a56274d8ebd1542b7295e1b69d9e2b3b758cb67a52f44b8e202c7cb1829a50f0a5a7e33d54e40dcd4ec49e37dd7cc28cc38a9fa1bc2d041f817c5755c864f131331ae776b72b9495e34c73f91a975e4a005e734fcd500f1ba5c5add4d06a9e713414582e9662fa6d86aed2db3c97bb091517655c718bd036c449677b84e4872c02af9da565ca257c32ff1760f14d65a0f83153160cc4dec99d151af54ccfa6d7610387e78aa886beefc8807484801ca6f9c07a1174b85c4762ac05d8073217a33a322b97351089de63cdb3c99d89e9ec6e2617b38ab53e32728b7bf5ffaee1e5d84a7c68c75d9593130858abe843533d820fac3875b857f1bf86adcdded5276215ad9c0db84dced26e987aec50b050372710fc29934ec3e1b6637681731cde892a9788a296263475dfe94f12428ef65cd3ff75a39bb9d4afe232a865ef94614fe770aa06897e3044fc4e9e3ccf7e6a9c2f03057ce9ecb101c024bd536b0668c1ff7689b357fa23fbfd2fb5b5f726d323747d5dea7a4521beeffb10ae895315b6cd741973f7e15605f57d686c154d88f71674610762a6f95ab69b337682383def2cb259620493c6a9eb13a88468a447f364cbbd0e1da48b9fc8199705b795049e49993178d42770aef39ed424a2bd502acf4e4524ed703901286aaa8263d53de961c251439227bf63eff47643f33bd6a2ad220ef0ef26f9fed43a7065edf2a706810f7fee60114abd12b2898a0f0ae9dabf2ae378d47da832c4cd4c131d79f8dcd7348967056a56635f4090e6e09512911ee8175da0b2a71a1bbb9c10970e4f53e9e1c3ffc2da6f0cc041286278b626d5f836cb077a4cd2e6f9aa1208a225e6c2c4484d6b1f5c9ef4a9eebd7453b27874c96efb136a1d3932d81815f0c164524b30bb2513b6552b44f572867321addfb5cf7e850eb471cc08213abd443ff023cf11581a7bf03fd6b948fc6213bf770a89a5affb0743598af1203db874e53c3cbdb1fccdc9697f321b2fe3677663be0afc9acf367b56257b38e73e1ac6aa9b14c325baeb47388513a732184230000b52921278bd418903b3652e0c04e7ff00fd542cec99be202057ab37e462c45795f720c1881d85f7483f088bd4c2160def3b3a26406d003f629130ebfdebac76a7fd5a35d24b77274638e160369c7d2aab82ed3af977968e36a9ddd93602b35663ba165308525ae1e8ef9f7cc3e34a2ed2239149e6c28f44fb1fbd94d68b5e1d72fff569478f40e899f57ab471ef2f2d78a0fc7a2b9e77d362602b92f9eca2b56f9ea6e1fc59f7528675cd092be28b52dc2ded8294d90ee88bdc0bd42be7fc12b31399efcc3893275dc2c5012a3b81da4583adb9e0bee2a733e4eccdb8a01942fa946c08ad15837c6354e72818db6202b8890737fdf3f213ce707c6d351996128685167f8ea2678c6d3a781ae40bae5d060b720d57eb6f742b6ad31e655e36cb3f776429776402da200e40f6abd3d83e85054cef5831147093bb1231dd1992b94de163f43dccb7bb15ee37ce3d6a08bd2612f7fe39ec57a1a6462c5dd845bb7ee594e03aa0ba80a210fb60f149c79f6d140c2d773f43af503191fd21088d462cd51b98b407221db6e76e7109d5572b3be3c0f6d7a5862d47824a69107f6ed2f2c084ba87193eca2af35cff6f91a70db3cbbc0116b31007102a01f7a95550797998fd8178b78df9643048343c9b9238424cc6405e7f304fb0b53ffa7ca2a3d6ccdb09e680b5aed14e02fbd3f728144ce98c51639b74f48755470508e70b75fec746df9a8d70d2ff5f578f988026be23dfcef9e4340750091cf8ee788a86b059900788630a20ef5030144369ace1d63245211493bd4d0369f0bfee6cf1596de69bd5fe5474ed978533dc27d596aa2cf0286843f296c526d20277132637a8447c6e05aa7656df3bd0729902409ba75d0bf404025103edabe8a31565be7d44e7783c2f4c4bce09a0fd2cf5431fe1e721192befef261026dbdef4945f462e30fef01ccf001f9c471e557c6058c41317ac9bdc6a4e1ae11359ef8056810283de298acff7c850bdcef525e2590a608796d5000107c868e1931a49526ce20f15bda04b17b788b1da6450261cf68ac7d1e9686642284e1c7eb1ac35dbaa5593fafbdda6f3c1ce88201cfa4791e0aab4364b623f713044b5f44e0d6f7b0b5e8977113bdbf8e89e305e9c747e8712b58c8637e65c38854869c06816d2a85c12ad510045ffcd8357a221f9704535acb54081b98975da0fe45267a1d5d03711cee74b3f5d6e048519a1f7178f727e47de396ea8102daf06de50a7f5e2411c1bfe3f9a1267fa2a57c64bcdd7960c5ef57cf92d9fea420c4ed797cf7c00c2391b4e4e6d0984da4f65b14adaaae970e04fd3ee85a553e817e437091ab6f0c2138b0d965e34955fd3090d3ea10e7d7a946391234a0520c0f129c9297b5d17cc0dc6154eae7b31c7d09209f6e5d16dc01dde1de95a76d4814c7ca8ff11c229bfdcce7d5fe79b4f235ef5082d42d4934a386d854eddcc12b8a2576de8f523dbd973605ec9049b0540e8296d8ef20e3631b43f6bd90daf7102c3e88f02adf57100ab07dd8f3b88abc380f7a19884eae7e760e528bed80c5f5e7b20cb94877f994cb6e5177ed60b7924653e2fcfea1bcc926761779d6a3e908ab11d38730fba39e7b3aecddf2db69443a2d7ddc5e5362eeb1acaed57ff3674dbd3b9bf9ce9c805879963cc4c57dc343b886b4b8593500d249d0d407833c92ef63ef1934e150ab3eb96eecc4f158ddcaa92d883b01d21a247a64832e650d585f9931d0efbc6815d4787b7ee784bb3e8dd621ff934ba58f5f5cc1cc4bfbddce7206f43c60bea49e83b95d53a8f6e0fb4d68de16252c18974c392bda05cb47f80231b8fd54b991a4dc4cbdc65c133e3805880d68cfaad48a8f9698c84fe134b5f12555bc433d38c50b3434d2cfd0df6ca67df56c281c1a71fd6a469dfff9208530520e8464666925184d37a21328aa3999576d61babd4db7afd1f7fd27d9ec76422fbdab665e5fd3b0315ec7e3fd88c383c6b285af6a2a0deabf900ece23d17d7789a3bbd8d1b806117b837bf27671bc6e7694b834ed1a39ae93ecac63f50cbe2ca458d3baaf636c09e1559906eb80ac0c8de6dee42a01ce2108867fa273ed9126af23adc2b40645ba9ec9b93d8512c37787bfff23b17556745b6882776b74e6b5853e20635e2c108ed2568a34dc6b07e74706acd4c6707708566a861ad592ef4a22c73e0611495bf3e0dd0a21a5414d31bfbfce205db230c1a1fe41eb0da67f9e22282bfcc01db73835fbcf2f6e15809bef9ce2d1b3166d176ffd29deb717c5d157597a9b1a5456d16c4438a288e960d99f94dbba853b57a49042a208aee24218003171d02e3aec4c1a3cbfda5c447d4435d35011da43bfeda1c138f1f0e6c67f607e05b6578939f1a6576f33893464f5f8ef36197a7062dd8dc95cae0592f5d99c30d645ab8cb4218a5b5066094a30df4ff9721121a1b17a8098190839d808a092902553cdd986e26367509dc44de0875e5b01bb8c76107ae096bb011012f2e35940e96ef77f2c14449c3dadd49344a6ee9a421d7bdcc39e474464bebb2b96f3c51e2faae511a8f25436aae0978acdb9aa1e3c80c9413a7bebab96714704c7fc8971a9d7a15a3f733fc17580087781a601d9536bcf0cb6a88f7ab09308b454973760fb92442be4b81966d10a5ae83e1f4b0e839b03aaaf27f6a552e0cf7fa38b71641eeb5c57c31f0365ec00938ab7453aa7ab56f0a38d4083201fbfeffc3209efc03dc3365a8f33f37885e1e653a39190e0ab4d3d2b75a415b184a8296815ede9cb783f71111d83236576d150920f15e8bd18e14efa45040d625f4daffe0a1daf3feacc3363d5d18bc676f0f5f0abd26b4b4f07915937d34a7fc3b0c7ac71940ff3c64c2b89fd7e7ba3e4f311c26a4c3c9039b2a25f0f1037aac16b6cbb58137e5a2f857f0bb298e8386537516880a8e10dbb4f4c09795cb4d13ebba3e73c32f0eb1f42a44443109f585d987660ce8e3824092b6f84c1536fa64eb0596cb8c43168a5c7147eab53d343f29cde86abc0f4823ec355571d05754cc7025f33569be0ddfbbaf2ccbde2e03a0041a78d36645b3ac1ec683773f7bcdc8fc13c17b62ba8b0724560680f35deefbb4fe4b5481a401c89e74aadd5a88a33df0c3573514617521003a7fcd19a8da1c557e861f19915d7b689249f8d0c3acc4513ff49157c9b46e6f77fbefed67dc52e99eaeb671867f29f72ee4ea2e2d65eac8af9682d0e5f95eb75268b44d2f5c0a3e750a72961d22b0f7a222358e49d70749a74c53c8487aeb99792550840147b8d01fca76d6e25b9aedbb74a55c6daeb11c4b344205a75a0ea0554bc015bbae8096f6f4d659f7cacbf0d83dbeb226a8f4472c55249f28680517f38224e771ce1846a108e47d9ee1cd737f72d6e33cb214bc4b62dc837fabb6d4636daca37557f8c672ea20a4b835cb34bed3e790cb1f93a78692bc02cfbc46bf4366da0fe95efceca02f94929b88220f53c500c2887238d6cf13588904edf390832e4354d065b2bf588a0d45ca2e805effea66c975bd2fb4802355ab138090acc6e477ee7f2bb79f26e9717f26d6b4cd5cc2059883873827104d34b9308a1ce640007778ea74d3327f635756fc1486a1132147c07b091bd86247b73b739f18b4702d129244568098f1ab514ca42fbaa22b50a603e4003728fc4e42a37a52b6ff3532954fcb6babfb6bdffb81eeeedfabf0d8d6e934af1ab5c606403f2cf5396bc2c5ee0453632d7d186e111c3f9306dcfa3a10d6647ebf484d38ecd48802f435222cad5531596d79c412054a3b4c31c388997e5a56202481f83c8cc3e02181bb0e4fb9cf28835a213208962038f3c93cd2a376afe3189e7e32c11a062be7d36ed1a3327ac84d8bf1ccd305a456379aca88054f791f4f7f5425e2f510dd590f71e579087bd01cb63f71fcf2d837bf125a32f29c5b08f25c7f066bdbbf5984501d88b01abb4976aec55ba6bcdbdf69a8cb498ce80b33018b2d2f7a54e78c174acfb65d20ae48ba764013c64fcf761216d201bc56c9119bebfe7431a20912dd3fbb7d090f7984c5edff9ced09221338eb73521f1b7459091c3156201494cb379676c597652109f3b2d0a5349cc3a8fc9e5c9fabaab68497ad51f9e117466f67c3f4fbf8674dc4ece0cf28e06443799e96b6d7e14de4bd0db1a69d9682ce8fd088712279c44dd2f14572132ebe26a710bfe1e3978318574a1f6beb43efe37a77fc50ea56c82cd0fdddfce1b6aed9a191a8a502363ea3ef11171c66d3f33575a262d9f027c9a35cc8a3eebacee60f0e07cd5ba0c0cf8b5335c3210432cd854c1959a0b1ad4ba4f80659b247f50face12051dba63593e00360d2b2ba2692bc7801eb67a29eb86f67040abddf2cdad0532cbd501bcb451fc7b923b7a9fda8193f71ea772c17db33669785562ec393d42687b6c27957f2478ae97fb0a04a4b6c00193c1ef6b8ec24302f84a9b8dabcc8f3a7696d1e8fddd49529c67b095ae71b884923eb04d8264a7f33145c8ab34a411bf54f62f64fb92368030595ef6b87ff888d127badf5b6279bcfe859b5f7543c9cb39fc9346701e9bdf0ad68dc9cd61f3fcfdea23419390adf3a60f6fd4579f150ecce1d06f2c4f2e9e6c822a56609e3aa1e3a016d190a76fbf214c5d9d325d1bcc9ac25f77c7e160623719eecb1e301824ac50b87e6f1b5bcf886708f037b824433c76c4a2a3f7025e9c8c5fd644d931010ca7026b8ee88d89bdd2a567ed6c3ceb66772b95b2eed14203b180c63b9f918b520d7939da2a5715f5cfa727a1b7a35eec85ff09d931e3f726116b06f00dd753d82c3eb92adea283808ba74c6209261bfa377f8a495d15aef36028d592658778364f51b358be8d952ce8f5351f065a134779eaced95128b8b8fbc628c47d385fdd99bdc80ec7f854b9fb202814904c903612dcb8d1b46298cf5314a95df1e759f6954ca5cbe8c8895af86334a02220c444d0ab16c1dc65cb67b35bab3bfaf5a290f34482cefa258bdf5d2149e66cfa2f6a6eb1405ef6a75a64d8cc32dcd07aabdeeb03c284f362de5ca4e27a48af2d26fbe53f1186931616e8878395c886a6a4dde8e07a557fa4ef84427b705ee333de01b8141a7ca516c43af3e1d97c78123af50b41a2312278f76ae6d85d15901641c8790e582fb6dd3a96137786153e5b94b9be12aada79e42c5cfdc4cd81c04d8bc4639e993418ff8ef26d17470bda8a5f18a471d4bf63593cbfa2360f383c3b7638d182042bf5484b46b780ab71d823cab7673690100d5cec7bc1267176fdbfa3f596fce6c7d0d3fbcac2f39f8112132044399d19fd08b71fb8bc3fe735efeb132ca1ddaf13062091459633c7b76bdd4ec9c3c77771c8348f9a9f980580f8d47719cae0ceef9049ef7679d7d1d8ed51d10e509807b3db590874800121660fe464ba4f96c0934342f89d636a01999acfc86dac3b85a3938fc767d7ac7cc56429cb1294d4673ff15237e30e352b0ff7ad675b27465406073c53c5fba4571e87b1c701f719a16bff6b76cfd535c45aeba3a590b86c7eb8ce9ead012ae006c8828431a0715234c8e4c3094b08a4fdc5114173016936a4700311da5bb22b258c235cc6898c5a4dcac5cfaf654ebc1263c0a8bcb7e9df437210125f718aeec8fa577a19949011ef295dd1a22c4d13c7ff68d6bff22714489156d575d88a00042a4930f7ee9bc25dfef113ddceacc5db96bd02081747a8c07b6561d5c12d63306bfe70b5d6d63fefdcc82bee64b48aa180374993b91d2f72c55207cf8ac9b8c6080f2665874b4994c9c6f5a4ccbda37384845cde65ce3b6e22597c502ac0138d652f81e48944dac850608ccfa83f2c00756c669a1768fffa778f452cc7e28cd583589604e446b12702dad6fc49a99d5c7a9696f6c0af920ac95df995312ff9bea8585f0d66256264543e1decd9b719aaee9ede0b231f6ff3884a5d3743ec80cd969585b5e61da78232721da4f015412da5eb13a1fc4a544be14aac2d59b67a6bc94c92a1eb77bcfb6f33e5351d0f15ebcfd99b13dd35093cc977808f71f0dcca14470d494a6992465690942f4c9738362f04fc279a784f1b32729d676a2baf12dd88bd38b562a637bc00e3ddc7411c7a5effe006e1c35cdff87d7c1fec41629165803472fab3195cec98a36695346ec09a47e3c2f1021d316a29cca8c457c2ce756c45899736a088a4b5f5e5b9c4730971e6b7b77467d410f6283ff3cf430ffdae87af2eb71bd56ed948ae188b0d22aa9cbe042badf2ac4739be97f5a65c2ba5b2b2143db3c2d1c8f54bafb48d710c0296f65229e1d864966f15e626427e74df0ad588cef9429bf29e46c91e031f5d3abcd84d708b9d554a6b5f4a0f394a08bba8efdd2d52f23f56efc2c68ce526620fda7588abebe657e34d4b358f596fa4f12d05d0ddf4ed66b5dceada6d57496baf008002e0a7d5939124207dec4bc8a50a39391a3ae37f102c82c4cdfe8c8d3ef367b8f436467470ed81572087caf99b896462a4a72bb735d06aef930b6c56ff9894e9b944c1aa846ada1c1e009ff9ac5e92bad9901e5cefa0f541201a892f8296ce7ee4dd23ac8c925536f30574e14521b382a71d302204a7689a0628ebaa32c0328375ee60f7810553d614de0c603e0259342d03bb900cb66e77e0af09079af90cee3a481997cbe53c547fb47a41ea2c7e7147a01b1aba00df53243ffda7211931ebfccaf6f092fca8903157f7add5d4167d8ed7f18a2540a9e9ed29cd07c8c9db6cac2e2e8895f731624175b77aa362e1e6ebefee5fa1020c9da9ac526c85a51cbe63334a56726fbc856c88e7928774a99cac7729d962191257f4a7fd32535915af2dda65fb275a1e7a048b53cb293cd001dcc8a189b8b5f62ef4eac99867ea37a8c0300b2ad0bf436396514000e566f6ad45b3714be22fc4393a63617f1bf60d4f47c46046fe2402ea93b923492fb9604a2447a28d521b1493e9b8c2c9908978244901b2c4bd163fc6ebd08f05b2dd034942aa00561dde07eefdcced4b9416eb2403c8343140b3f6e702c6c8547078f7a5e6938a97711b1850c04fa5dc127e954ff4946656f983fd70ffed7650033e8caa52726ebe8183ce22fd9b521883ea8d0cc0dcdabfa749a965b9b833dde039b5976511804cf91ce846d8ded8a08fb85b6fa3f6ae52990bdba382b2bcecf2fecefa5f1f5caf771795e5ff749e581eb02faa3ab38a5b8e349d2b7a67d1a560eab1480d63aea62fd351bac8ee5987d77baf1cb0ba0d936af5852abedaa5c833368f5ec5e423fa05de31c40f19721a36ef4ddaa429d4d79f3330f5648d7c3c36506a02350dbf3d42b2f2cc0b21905c84e5c9cd1bfd651c50de72edf3d4a63d604b581efde46fe88cbd5f0df3ce164baaf0ae94dfd7612e7e6175ce777c3723ebdd27a0914d88cf7fdbf075e4625f7125b63aa13e41d77aed7c612753e0f2d919e6bb96d4f3eee55c1ca2e4020db6fc7886decd4ec962bece28ee85a8a986aaeef9c5544b7c13bb4b4e43917f1d1e179641042d85621ee6c96f0caa7b74e0a377f0879fd8ba2f0c09c18afe83736fed9267029bc2e2b31a3f4cb4ebda6acd28a616deb05c776f7a9a32762117f73b93f512c319f77a884e7bac7da02d76c643b86cf367b17314d6c27087235c2f1a0fd485cbaa777f96bc205233e6d7e3bdb1730131b49672ebac991af765ef45f7b4616439e52660d0664ad7e6552d73beab4c71d37fb1f0c3ee27849374a5f2b6848849365444bc134b1bebd18a2341692ea77a29be09cbfcf4b72b490f06b177e1d9aedae1d68d4958a6a299bf093bb9189c8a4c45b934d7ce587a0ae5325c663cda0503c5067f82af54f989199ef22d60a3ba828273e76ed76b44ffba80c18573ac1267a7b1ce9769341268113ffeaa10e5b085621cdb182e1f194f138f0c1214fc622ecb2f09d293a9e58977f031cd1dd0fac0baaa9d47a3d8439c19e6ec6b67d420f64e699bc729846921be5f892620ef789c6d4379aac7364894443e6f674d7f369f3e1de355c427b818dafe10eb4806af3fba5d0c068a541244db4a1a778f461611467d9af4210c99ae6b1c8de696bdbe2bcaa494828e8a814406093c9c148decdc4526c557204c924ec585f5b81f54c5420fdef62cd1293d017ab3b7074d7552ced408d9103fb2f8909ad167fbc0bf8b95b1364dcc885d4f6ad8e66c809d6f0b3518db1340fb79836c4693182f728161022b54e37454625eafc37b1d758a6e4bbe7e0c7dea9164d9189a736702d0a961c79fbf26e7e7e95835f7d705d6710b438d47f4d4e4fe458140c40d7918ab1fe0ade2973a1331c65aba8af57f080a3e3d743409810d23fcaa446262aa0bc256ff086366aae3d1d421489dd600338877e296ac5e9919209b6d777797e6f03affec34a432db4a7fd9767729c08b3b1fe44390d8e47cbd8192454e3e07c2991601c0e8cbdb44270d567dfa04898f3b7572e5541c01f73df61d7b14d1b22d2ae12fb923a5dd861e9239bac42986bf267555f3829919a9bac6a5f0d184a294b6245aadf6ede47cac3e0ed0445c6b6d8d54a065b134a5993f1be2b6cd4b8888ebd60eba41a6e670b8bd69dd62768d6c0bcb6cdea21ed2f999408f188f17f1138b3151f9cdfa29940cd3953e25d7291450fd6435264626c86c35c15b890c3c1741722121cd3f1148409db0593a22748b01d3eca3270f045a9f3f8854f0f91c5dbdb3e55b60dcaf1c2f08426e222ad63e4e287a56dbfcb8714259824f4e89a32e1a1bfd75d169771672dca5158d4893697541157346e838615384c97b08332f3e429c8e5ebca308850d18ea23272241601b483a5ca3ecbf81e2d8908dbf523eedf998c4304a0eb8f1138ffaeea0909775f3b4204027a6a3c1d3841414be572559dc0c1bad1b954fde6a005ca729233a9b74f504b3658f3a3f6b834f8dfe816d148756cddc3a862c67b557c546dbfc69a94049d446028134dfdd5bfeff63dfc983d47e2b66497c2c1e7138a10fd8534f55cedd74d92cf0d898aa00b86f110c7fa8c1e7244b9824eb058f89149f05f4a57267ac5bdc431f1909950d729a7fa4ece867fd3662a67bf2e8d10be2cf47c27dfbb74959001a122d681d621671c2da2f0df479cf95f3e782437f7ca6a939c6fd1ff4a43378e699acdd2526b36898f7de587eeafd43f08b1f1a1db46214f33cfdebf8e9719d770887f0a8413f225217a3e4b320cdbd93306a0279bf625496b0c5433a154d6f1e5483784c966630cab15588f0bdc36424576378151e049314f9e0e4aa019b71e7c57ad822f0a4d1a5c0ad66bf54f30eea5ab1d56e00de0c109469b285c92bebd4901970863d1a240783499a8491a762dfbb0bfc9edbfd8e8c8778734209d53e8ae9d36cd96550f6d0c4d8e1739acb9892cfd362280cb4817de43340a63458e78da8ca141c09cab85eab5987b5e2ce57641ba5a48c807a1836e00b608e6f847a128aed32e61a1d7eac44be7aa35d93b29f069546bc75047bdff825f1ea5e5d23d66a8e7018901be1c6b53828544ca35b58f84003c62be0c9917c88c44cbde96ff7fce064715f7b1dca82fb196bf3a9eca3b2894e61c29c72d5294f5f96ee95485cb504dda6638968391d770ff4fdd8aec8c006a06deec2dbae8b53d5e2939340cb948b94ce3713016cfb2965520128eed2804a6480fd30e5335be652ac4c824ff903018494149aa5232b52125ef2fd5d18dcc537853e3f4d4fa24f51705f8d2dade1d037fa4c64163feefd65024acdd4809a51c4b0fbf59382391609d503df17696aade95e00e31da543d800d85b91d5baf41f4ca30ea7ebb4dcee44e5f0d3d67a8db59858d73bd941e042797f3693b7df07545291302eccd76d0f8fcaf4ec83878654eb567980354d46e9e57095464897a2cac41230546ba8cd4761a1e3dbb9a111020f9410d7db76a7f2428267684671e3cb0c5bf3f832ec2dc9c2b4bb0f393fd71c582ecf55e0deaacacc53d648375fc48d0eca0b5d9a1c167c70433ac120870db68cbd7e464147dd6d0c1f6ebd50ad5d27b2be9d1adb5beb3dd19b9f29d08fb475abbce559cd0d921afe9e961bd8c82913479dea1d635920058731fe8c442743d5bc84e7e176ccdfb495b8f09a5c88328e8f0c1837bb4dc61a042cc3c91172f90fac48271a0f7d2b5400d0055134c3f00090fb6f651b7aea9b8eaeed1802a8cab6bd500c7b8e8c5cbe7450bcc79be18dc10e6ba3bce05613f8d99d37f1e6243a26c1c8ea4b677e3baf6f0cf1ffde7fa4793b0bfae35cbe5697e4f58aaae8b90fbe448ecf2ad2592f2a37023c1f85ca0570df45562de467dc69935bf994a4c57a286711b62687725a2d0d5d6ea43df68825011c6e0e3ce888b4be3e7d5d9609c1a370cbebd85eac89f1224cee13f7d8bdce067a3e44a73321fa85a5c73bea874919df01c8e14f40142ef2f995d064402dd6d8065c184726e1a55c8a0edaa98176708640f19e2224f7a4f21f4e4d6dd9fe6c8dd35531c1798c333f756bdaa937de59bef1e966ecbe42387076e609a27d753a10cfd8bb01d21eeeed16208a38926f2d39ef2110b3c9bb85aa4f70fc0344f93227c360762d137fa53dfad1772438af4ae0183f5167281b297c0298875cd7bbee059aabc1191abba60baa7062e264ed54b32076038e86483a417c586967fb2626c801fa56b527e9e67950acab572ab2751d07d651378f43b1d727d821c25e3f89610a01f6a15e85f77265c1ae70d2e26c821086c2a20f988084ee8a3af0ff0b9bb68dc66574424f5b5660374d58bb141a8b8fff9e6017d714b65e7174f0cba1d901f0d90297b0958b22f8975cb5f4f2947592e034646ab046636bccc9d49960fc970740711962435ef560f8011ff57d80dd9c294e9ec231f0e75062cd5a71e411c4c2e95a539c1ee7abaf74f0b91104fd917b479266fe9a8079a5779ec99e722b67a1f61fd53640f5fddeac5a87300f8567b23b879aef4c0e0fb0beb718afb08968b6c427730f8b2d97ccd57b64f7dcdbc128fb67a2373830bb9d926612e81bf306b3932647e7f8efea68fa375280cad6231e5c342167ec58795c18147429b028890094b9b2ae873a31993cfe33e5f899c2b74e6f420c090ef804d93b9660e282076572b202807088a3d9dbfac65ae1191cd2d7fc1a0e8a940afa13551fa65b279ab0dea3942d4e07c93b5616096f6a9223616d901bdef2f59bd1b87010f467131282907ec30ad5a6d28e108d32f356c3949970276c3969a8a02ec0e507bc885e8f1a77bd205f9d6e8f28a578e0dd20714186c37f661294dde25fd378206842e8cbb8199a2d73a5f513d54c43dee253e777a328feafec57b5a0efaad107ecf09a19707b4d3a670459cc4cd9b8458b106b9d3d1f655609b56f4ef39e157485ba55c24101cb91fd1c21ad4ca228521bf0b964cee60b792f4dee27a7f8ef4d084d26a62d5b7073d19c41bd308a3e5f972f9a0e513396310a7fe5d93111a72b5cc1d393b7359ef3a792fc26c3d531808a9270aef647bcc35b66400ad7bf72377c04d4a7fc88bf09d236f6a326a369524b5897a3a30fda1afb8ccb44b7f842f39647cdfe907d3b30d68c23d1e8db168c7c9c281f9638e35d61c0da1b01a380efe846a897568b90876ad2fc9209f0571c6ac12ee8ce703c7b04e5292e84d8e0de5c57df4793c2fff50ba1135a4d35e89f62a9911ee51867e1e7fbaefe8f027f1465fe6052f327299561f780376419617872d1c96151cb12f1b3516c77fe25e7efd5dc13ef57fab20eaea6748ac4eb394a479442408794d710945d2878e178bd87f76c374c73c3dd8e69d8621cf28f1a0ee3c95e69384940698e10bea728419f86405b584a0715d4965b5ffa2302011900dd78a8ba07dc8083b1df1ab6fc43aa284589e496b5c61d6f48962bd6a6c173b2e2bf83d9a8356a0adad04eabde64fb15a7c9acbe5a6211a44e73f83ee0cec7f9eb9be9707337a93b46e3e308ae09b4eed61ffa330fbda362ba3b6087428de75d7eec75957a445369f5fc7f8c3643687f740f67b3052c4f65f1f2285822caf903174de7dbc9b62a5cc862349fbf173e21eb0b049676030c98b93e2f73bfc6f2d54ef305f9d79c35c90f81affa7051d006a69a1f499e4e4e848067acabf57132092102e24356bb5723ca6ef4e6003405b6046c57aa4833fb21a1c2f7ccd1beca61c21a2ed55cd05a2fa56ec405b6eb8799c7ca86aa8c03e145877e4ba409442414382c5f83500efd76b93de97fc3cf418955b666b6071e9ae7fbc96dbc67384581d808443c654c3e5898be495d2c904c9c73c684a233d6bd899a4a20849afc1b8b3a38ec96bb5a19b88faf5e908d9cbf3e67442a74d65d634c66a0742f14a1073528d8d4608c08f10de6ba7203805926d0a98fdd12de0ec0dede9171645fc09f06c5c8caef51cccae4880d4bba27118b05065798bc8d838d1f335a602e0d1b16aca71c9479d73261a668e151de8cd61f51d3a2af75c71641cf811d5b29fa6b16ab3bf3c2ca70d2bc75c955d18ff39dbd09e35a2e8b5b663dbe6362e90f02cd12a2d633c501846ab822c84ff62227f650f891ebd9e591cd16a4abdaa2df168ba58fbfd9694fbb7feabf6a03e24285df8d312a5d7ec875fc8ae56ab275d998e36e704467e088a05f8e27aadcb90ba803025efe04dd121bf2a4e14cbb8249f74d6f887097ff280e523e3646c8ea35bfbdd7d75295820982c6ff74424dae1b0ce85871cf8ad20ffd1c16fc7ab405fca65ea19d59548d47a7cae492fa00b52a9f048b47a73fa6158f2f3256942b4fd55f2cb84b61127c9fa6e225794a5b91a6bc651b7552ec946c218b965eadc0ba9d3c07ad9ac7624e2ec5b7daa98a8cc545c02120c181212f9a0fe6962e72388f6ea4f797354bcc8552af239061f17609a5b05b80888e59b47b36476bd3414a0a208364e6b8db060b97eae6d7eabdf90bb3071e0cbbbf452daa0d4a65dbd5ad9514e40ffdf2441b81e4eefce7629b28c99925a4c0f64b58d7aa71361b7d59abf56cbeabc1b646c65d27c2ca2c4f61f3ea7a1d69a7123e9fc6e2f2ca7d791e1e72d37cf91697a7c3813118e410265fd832d1e503873dd187d2f5e737b9d301529d0bc58a661ed8fc81781acd1e8a37869b7ba4be2401acad0688ca7d1d74cb07417fe41180541f6dc7e7b342cbf8d8766fe29651a874ecc54ebed143bd6a24fa8507b23818f252f857838519dc0892b8992d0bf48315d884e323ebe6659a2e53c4b21d9b266d651d70be5899f90d1a864df67db1493a8ba3bc9e9733ebbff84b7f8849683f219b3f60e028eaec6eca01f4f043c234cb396d54721f33cca41e486efb3560eec139ad4bd653c9dade616222c4c114c7e7da1f2f815aea23c0b696822ffea1cc6a7e1bc268e7f50223d9781a71f560ae87329ea4466836cf152300c5b935b616cd64e6279040d815475b50587b2ced2c04838a5270b6199a64051e11b279e8f9684a5dfdaf9e38877c75a759a3cd42792f90b6d6d1ecfc46136b14ae52d39a1e787c51675bd48c15f49cb2b2421ba663c6dfd635f0cc55860d07f3020ef7b45386cc2e05579070f03a935b22400807167cb9f2070c8cf3b5055880e92a9f007174685e6d188d32db7ad315ab836c1e533ab5064682b0b972b28baeffee8d750b0acb6245a4e4dc9d23c1468adc938106fd0bd370180f7914912729ecbd2a2caafe2a17845387d68a1ae166c4b2bc828fde7cf82f3038744d443acf3f1dbd3cf9293204908a66a78eac560bf0d3df27f25ad5d04ff8d959af0cb38ce32cf27fac283ab09378b2d5ee743d794fb9bdfc417d0785acb4cf787c6eed7a8deea44e1d161958c23e0f73a19757d01f43e37431cde8e7bc057df2ed903f6cab3ae8ed303632fede7b6c7b95faf49fbc6b6d6dacffd38cea90c10d56cd0fa7757061dd4d7a1703fe1f100e18656cf9fad5488a973b689d7446a74b6080f715d5df4bc972f8b064f0565b0236b77b40ec3576dee69c99f431d894202127d5194b77cb9270ce37340ecb652e012e13f1f4642d63ee8f0eb6c09d6fdb0ee03acbb999639ca6144c1e21e86bef68857605a404799b28d0a92617bff0ba9b84b10e50c0b7401146b2eab5c7c9d9ec52fccd60216240e041b7e15e915296eb6081130c29bd74494cd8dd6a6e1234ce0038c2046be032fac3194ebb50f403061552db710e84e003b811e0a5348dbd0280117ee9cd0c88e6c7c42c91821090c14963ab572e47b188ded3f2d83e07813a224b22569d60f3c2a2489bdc0caf361a80916520d111b41adeb13c2075df7b0eaa3db654b2acd83d62059e2555a59251bf548c493fb1f08d6d304e36307f952e89458e13613991ea247879de3f729dee905def4b8033b","isRememberEnabled":true,"rememberDurationInDays":30,"staticryptSaltUniqueVariableName":"31c292b3d78180c3e26926df4589dab1"};
+
+        const templateConfig = {
+            rememberExpirationKey: "staticrypt_expiration",
+            rememberPassphraseKey: "staticrypt_passphrase",
+            replaceHtmlCallback: null,
+            clearLocalStorageCallback: null,
+        };
+
+        const staticrypt = staticryptInitiator.init(staticryptConfig, templateConfig);
+
+        window.onload = async function () {
+            const { isSuccessful } = await staticrypt.handleDecryptOnLoad();
+
+            if (!isSuccessful) {
+                document.getElementById("staticrypt_loading").classList.add("hidden");
+                document.getElementById("staticrypt_content").classList.remove("hidden");
+                document.getElementById("staticrypt-password").focus();
+
+                if (isRememberEnabled) {
+                    document.getElementById("staticrypt-remember-label").classList.remove("hidden");
+                }
+            }
+        };
+
+        document.getElementById("staticrypt-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const password = document.getElementById("staticrypt-password").value,
+                isRememberChecked = document.getElementById("staticrypt-remember").checked;
+
+            const { isSuccessful } = await staticrypt.handleDecryptionOfPage(password, isRememberChecked);
+
+            if (!isSuccessful) {
+                const errorEl = document.getElementById("errorMsg");
+                errorEl.classList.add("show");
+                document.getElementById("staticrypt-password").value = "";
+                setTimeout(() => errorEl.classList.remove("show"), 2000);
+            }
+        });
+    </script>
 </body>
 </html>
